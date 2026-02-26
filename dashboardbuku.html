@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Buku · Anggaran</title>
+    <!-- Font & icon sederhana (opsional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #f3f5f9;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+        }
+
+        .dashboard {
+            max-width: 1100px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 35px -8px rgba(0,20,40,0.15);
+            padding: 2rem 2rem 2.2rem 2rem;
+        }
+
+        /* judul utama */
+        .dashboard h1 {
+            font-size: 1.9rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0b1b32;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dashboard h1 i {
+            color: #2b4b8f;
+            font-size: 2rem;
+        }
+
+        /* tiga kartu ringkasan */
+        .summary-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .card {
+            background: #f9fafc;
+            border-radius: 24px;
+            padding: 1.3rem 2rem 1.3rem 1.8rem;
+            flex: 1 1 180px;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border: 1px solid #e6ecf4;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            border-color: #cbd6e4;
+            background: #ffffff;
+        }
+
+        .card-icon {
+            background: #e2eaf9;
+            width: 48px;
+            height: 48px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1f3a6b;
+            font-size: 1.6rem;
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #536b86;
+            letter-spacing: 0.02rem;
+        }
+
+        .card-value {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #0d1f3c;
+            line-height: 1.2;
+        }
+
+        .card-value small {
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #60758e;
+            margin-left: 4px;
+        }
+
+        .status-chip {
+            margin-left: auto;
+            background: #e1f0e8;
+            color: #0d6632;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid #b7dac9;
+        }
+
+        .status-chip i {
+            font-size: 1rem;
+            color: #1c8140;
+        }
+
+        /* garis pemisah halus */
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .section-title h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #14273e;
+        }
+
+        .section-title i {
+            color: #2c4c7c;
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        /* tabel area */
+        .table-wrapper {
+            background: #ffffff;
+            border-radius: 22px;
+            border: 1px solid #dee7f0;
+            overflow-x: auto;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 14px rgba(0,10,30,0.04);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 880px;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background: #f2f6fb;
+            color: #1e3a5f;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            padding: 1rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #c9d8e9;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 1rem 1rem;
+            color: #1f2e46;
+            border-bottom: 1px solid #e5ecf5;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* placeholder baris kosong (seperti contoh) */
+        .empty-row td {
+            color: #9aafc9;
+            font-style: italic;
+            background-color: #fbfdff;
+        }
+
+        .empty-row td:first-child::before {
+            content: "—";
+            margin-right: 8px;
+            opacity: 0.5;
+        }
+
+        /* tanda titik-titik halus untuk sel kosong */
+        .placeholder-dots {
+            color: #b6c8dd;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* tombol catat belanja */
+        .btn-catat {
+            background: #1d3b5e;
+            border: none;
+            color: white;
+            font-weight: 600;
+            font-size: 1.05rem;
+            padding: 1rem 2.5rem;
+            border-radius: 60px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 20px -5px rgba(22, 55, 100, 0.3);
+            cursor: default; /* bukan interaktif, hanya desain */
+            transition: 0.1s;
+            border: 1px solid #284b77;
+            margin-top: 0.5rem;
+        }
+
+        .btn-catat i {
+            font-size: 1.2rem;
+            color: #ffd966;
+        }
+
+        .btn-catat:active {
+            transform: scale(0.98);
+        }
+
+        .footer-note {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        /* untuk menyamai tampilan "&nbsp;&nbsp;" di desain (spasi halus) */
+        .dot-placeholder {
+            display: inline-block;
+            min-width: 30px;
+            color: #bbcfe4;
+            font-weight: 300;
+        }
+
+        /* warna status anggaran bisa ditiru meskipun kosong */
+        .status-badge {
+            background: #f1f4f9;
+            color: #4f688b;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            width: fit-content;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- HEADER dengan ikon buku -->
+        <h1>
+            <i class="fas fa-book-open"></i> 
+            Dashboard Buku
+        </h1>
+
+        <!-- TIGA KARTU: Jumlah Anggaran, Sisa Anggaran, Status Buku (digabung) -->
+        <div class="summary-cards">
+            <!-- Kartu 1: Jumlah Anggaran -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-wallet"></i></div>
+                <div class="card-content">
+                    <span class="card-label">Jumlah Anggaran</span>
+                    <span class="card-value">IDR 00,00</span>
+                </div>
+            </div>
+            <!-- Kartu 2: Sisa Anggaran -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-piggy-bank"></i></div>
+                <div class="card-content">
+                    <span class="card-label">Sisa Anggaran</span>
+                    <span class="card-value">IDR 00,00</span>
+                </div>
+            </div>
+            <!-- Kartu 3: Status Buku (dengan chip) -->
+            <div class="card" style="flex: 1.2; justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 14px;">
+                    <div class="card-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="card-content">
+                        <span class="card-label">Status Buku</span>
+                        <span class="card-value" style="font-size: 1.5rem;">Disetujui</span>
+                    </div>
+                </div>
+                <!-- label status opsional di dalam chip -->
+                <span class="status-chip"><i class="fas fa-check"></i> Aktif</span>
+            </div>
+        </div>
+
+        <!-- JUDUL TABEL: Daftar Anggaran -->
+        <div class="section-title">
+            <i class="fas fa-list-ul"></i>
+            <h2>Daftar Anggaran</h2>
+        </div>
+
+        <!-- TABEL DENGAN BARIS KOSONG (placeholder sesuai desain) -->
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nama Akun</th>
+                        <th>Anggaran</th>
+                        <th>Pengeluaran</th>
+                        <th>Sisa/Lebih</th>
+                        <th>Realisasi</th>
+                        <th>Status Anggaran</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Baris 1: kosong dengan spasi &nbsp; / placeholder dots sesuai contoh -->
+                    <tr class="empty-row">
+                        <td><span class="placeholder-dots">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+                        <td><span class="placeholder-dots">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+                        <td><span class="placeholder-dots">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+                        <td><span class="placeholder-dots">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+                        <td><span class="placeholder-dots">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+                        <td><span class="status-badge">—</span></td>
+                    </tr>
+                    <!-- Baris 2: dengan beberapa &nbsp; (seperti gambar: "&nbsp;&nbsp;" di kolom) -->
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td><span class="placeholder-dots">&nbsp;&nbsp;</span></td>   <!-- dua spasi -->
+                        <td></td>
+                        <td></td>
+                        <td><span class="status-badge">•</span></td>
+                    </tr>
+                    <!-- Baris 3: lebih banyak spasi, menyamai contoh "&nbsp;&nbsp;" di kolom 3,4,5 -->
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td><span class="placeholder-dots">&nbsp;&nbsp;&nbsp;</span></td>
+                        <td><span class="placeholder-dots">&nbsp;&nbsp;</span></td>
+                        <td></td>
+                        <td><span class="status-badge"> </span></td>
+                    </tr>
+                    <!-- Baris 4: sesuai gambar (kolom sisa/lebih dan realisasi ada spasi) -->
+                    <tr class="empty-row">
+                        <td></td>
+                        <td></td>
+                        <td><span class="placeholder-dots">&nbsp;&nbsp;&nbsp;</span></td>
+                        <td><span class="placeholder-dots">&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+                        <td><span class="placeholder-dots">&nbsp;&nbsp;</span></td>
+                        <td><span class="status-badge"> </span></td>
+                    </tr>
+                    <!-- Baris 5: lagi, agar mirip ada 5 baris isi (seperti contoh 5 baris) -->
+                    <tr class="empty-row">
+                        <td><span class="placeholder-dots">—</span></td>
+                        <td><span class="placeholder-dots">—</span></td>
+                        <td><span class="placeholder-dots">···</span></td>
+                        <td><span class="placeholder-dots">&nbsp;&nbsp;&nbsp;</span></td>
+                        <td><span class="placeholder-dots">&nbsp;&nbsp;</span></td>
+                        <td><span class="status-badge"> </span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- TOMBOL CATAT BELANJA (seperti di gambar) -->
+        <div class="footer-note">
+            <div class="btn-catat">
+                <i class="fas fa-shopping-cart"></i> Catat Belanja
+            </div>
+        </div>
+
+        <!-- catatan kecil: desain murni statis, semua nilai IDR 00,00 sesuai gambar -->
+        <div style="margin-top: 1rem; font-size: 0.75rem; color: #90a4c2; text-align: right; border-top: 1px dashed #d5e0ec; padding-top: 1rem;">
+            <i class="far fa-eye"></i> pratinjau sesuai gambar: IDR 00,00 · status disetujui
+        </div>
+    </div>
+
+    <!-- penjelasan: semua elemen non-interaktif, hanya desain (termasuk tombol tidak berfungsi) -->
+</body>
+</html>
