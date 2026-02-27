@@ -5,21 +5,22 @@
 </head>
 
 <body>
-    <div class="signup-block">
+    <div class="signup-container">
         <p class="header">Sign Up</p>
-        <div class="input-block">
-            <p class="title">Username</p>
-            <input class="value" type="text" placeholder="Username">
-            <p class="title">Email</p>
-            <input class="value" type="text" placeholder="Email">
-            <p class="title">Password</p>
-            <input class="value" type="text" placeholder="Password">
-            <p class="title">Confirm Password</p>
-            <input class="value" type="text" placeholder="Confirm Password">
+        <div class="input-container">
+            <p class="input-label">Username</p>
+            <input class="value" type="text" placeholder="Username" autocomplete="off">
+            <p class="input-label">Email</p>
+            <input class="value" type="email" placeholder="Email" autocomplete="off">
+            <p class="input-label">Password</p>
+            <input class="value" type="password" placeholder="Password">
+            <p class="input-label">Confirm Password</p>
+            <input class="value" type="password" placeholder="Confirm Password">
         </div>
-        <div class="input-block button-container">
-            <button>Sign Up</button>
-            <p>or</p>
+        <div class="input-container button-container">
+            <button class="signup">Sign Up</button>
+            <div>or</div>
+            <button class="signup">Sign up with<img src="https://www.google.com/favicon.ico" loading="lazy"></button>
         </div>
     </div>
 </body>

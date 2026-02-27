@@ -1,67 +1,103 @@
 * {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
 }
 
-.signup-block {
-    background-color: whitesmoke;
-    border-radius: 16px;
-    max-height: fit-content;
-    min-height: 512px;
-    width: 426px;
-    top: 0;
+body {
+    background-color: #C2E1DF;
+    margin: 0px;
+    padding: 0px;
+}
+
+.signup-container {
     bottom: 0;
+    height: fit-content;
     left: 0;
-    right: 0;
-    position: absolute;
     margin: auto;
+    max-width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30rem;
 }
 
-.signup-block .header {
-    font-size: 1.5rem;
+.signup-container .header {
+    font-size: 1.75rem;
     font-weight: bold;
-    margin-bottom: 48px;
-    margin-top: 48px;
+    margin-bottom: 3rem;
+    margin-top: 0px;
     text-align: center;
     width: 100%;
 }
 
-.signup-block .button-container {
-    margin-bottom: 24px;
+.signup-container .button-container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0px;
+    width: 75%;
 }
 
-.signup-block .button-container * {
+.signup-container .button-container button {
+    align-items: center;
+    background-color: #CCCCCC;
+    border-radius: 8px;
+    border-width: 0px;
+    display: flex;
+    font-weight: bold;
+    height: 2.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.signup-container .button-container button:hover {
+    background-color: #AFAFAF;
+}
+
+.signup-container .button-container button:active {
+    background-color: #969696;
+}
+
+.signup-container .button-container button img {
     display: inline-block;
+    height: 1.5rem;
+    margin-left: 0.35rem;
+    vertical-align: middle;
 }
 
-.signup-block .button-container button {
-    height: 44px;
+.signup-container .button-container div {
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.input-block {
+
+.input-container {
     height: fit-content;
     margin-left: auto;
     margin-right: auto;
     width: 75%;
 }
 
-.input-block .title {
+.input-container .input-label {
+    font-weight: bold;
     margin: 0px;
-    margin-bottom: 4px;
+    margin-bottom: 0.25rem;
     text-align: left;
     width: 100%;
 }
 
-.input-block .value {
+.input-container .value {
     margin: 0px;
-    margin-bottom: 24px;
+    margin-bottom: 1.25rem;
     text-align: left;
     width: 100%;
 }
 
-.input-block input[class="value"] {
+.input-container input[class="value"] {
     border: 1px solid #ffffff;
     border-color: #d9d9d9;
     border-radius: 8px;
+    box-sizing: border-box;
     height: 2rem;
     width: 100%;
 }
