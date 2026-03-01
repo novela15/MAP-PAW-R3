@@ -9,7 +9,7 @@ body {
     padding: 0px;
 }
 
-.signup-container {
+.registration-container {
     bottom: 0;
     height: fit-content;
     left: 0;
@@ -21,7 +21,7 @@ body {
     width: 30rem;
 }
 
-.signup-container .header {
+.registration-container .header {
     font-size: 1.75rem;
     font-weight: bold;
     margin-bottom: 3rem;
@@ -30,7 +30,7 @@ body {
     width: 100%;
 }
 
-.signup-container .button-container {
+.registration-container .button-container {
     align-items: center;
     display: flex;
     flex-direction: row;
@@ -38,7 +38,7 @@ body {
     width: 75%;
 }
 
-.signup-container .button-container button {
+.registration-container .button-container button {
     align-items: center;
     background-color: #CCCCCC;
     border-radius: 8px;
@@ -50,32 +50,39 @@ body {
     padding-right: 1rem;
 }
 
-.signup-container .button-container button:hover {
+.registration-container .button-container button:hover {
     background-color: #AFAFAF;
 }
 
-.signup-container .button-container button:active {
+.registration-container .button-container button:active {
     background-color: #969696;
 }
 
-.signup-container .button-container button img {
+.registration-container .button-container button img {
     display: inline-block;
     height: 1.5rem;
     margin-left: 0.35rem;
     vertical-align: middle;
 }
 
-.signup-container .button-container div {
+.registration-container .button-container div {
     margin-left: auto;
     margin-right: auto;
 }
-
 
 .input-container {
     height: fit-content;
     margin-left: auto;
     margin-right: auto;
     width: 75%;
+}
+
+.input-container .forgot-password {
+    color: black;
+    display: block;
+    margin-bottom: 1rem;
+    text-align: right;
+    width: 100%;
 }
 
 .input-container .input-label {
@@ -94,7 +101,7 @@ body {
 }
 
 .input-container input[class="value"] {
-    border: 1px solid #ffffff;
+    border: 1px solid #FFFFFF;
     border-color: #d9d9d9;
     border-radius: 8px;
     box-sizing: border-box;
