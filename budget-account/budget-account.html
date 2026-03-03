@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="../app-skeleton.css">
+    <link rel="stylesheet" href="budget-account.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">Menu</div>
+        <button class="sidebar-button">Buku Anggaran</button>
+        <button class="sidebar-button">Kategori Anggaran</button>
+        <button class="sidebar-button selected-sidebar-button">Akun Anggaran</button>
+        <button class="sidebar-button">Catat Belanja</button>
+        <button class="sidebar-button">Laporan</button>
+        <button class="sidebar-button">Tutup Buku</button>
+        <button class="sidebar-button">Keluar</button>
+    </div>
+    <div class="container">
+        <p class="container-header">Akun Anggaran [namabuku]</p>
+        <div class="subcontainer">
+            <div class="horizontal-flex">
+                <p class="container-header">Daftar Akun Anggaran</p>
+                <div class="add-container horizontal-flex">
+                    <button class="add-button">+</button>
+                    <div>Buat</div>
+                </div>
+            </div>
+            <table class="budget-account-table">
+                <tr>
+                    <th>Nama Akun Anggaran</th>
+                    <th>Kategori</th>
+                    <th>Keterangan</th>
+                    <th>Volume</th>
+                    <th>Satuan</th>
+                    <th>Jumlah</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td></th>
+                    <td></th>
+                    <td></th>
+                    <td></th>
+                    <td></th>
+                    <td></th>
+                    <td><div class="table-action"><button class="delete-button trash-can-button"><i class="fa-regular fa-trash-can"></i></button><button class="write-button pen-button"><i class="fa-solid fa-pen"></i></i></button></div></th>
+                </tr>
+            </table>
+            <div class="bottom-action"><button class="delete-button trash-can-button"><i class="fa-regular fa-trash-can"></i></button><button class="write-button pen-button"><i class="fa-solid fa-pen"></i></i></button></div>
+        </div>
+    </div>
+</body>
