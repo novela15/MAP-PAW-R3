@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kategori Anggaran</title>
+    
+    <!-- Panggil CSS External -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Font & Icon -->
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@600;700&family=Inter:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <button class="sidebar-icon-button"><i class="fa-solid fa-bars"></i></button>
+            <button class="sidebar-icon-button"><i class="fa-solid fa-circle-plus"></i></button>
+        </div>
+        <div class="sidebar-search-container">
+            <input type="text" class="sidebar-search" placeholder="Search">
+            <button class="sidebar-search-button"><i class="fa-solid fa-search"></i></button>
+        </div>
+        <div class="sidebar-label">Menu</div>
+        <div id="nav-group">
+            <button class="sidebar-button">Buku Anggaran</button>
+            <button class="sidebar-button selected-sidebar-button">Kategori Anggaran</button>
+            <button class="sidebar-button">Akun Anggaran</button>
+            <button class="sidebar-button">Catat Belanja</button>
+            <button class="sidebar-button">Laporan</button>
+            <button class="sidebar-button">Tutup Buku</button>
+        </div>
+        <button class="sidebar-button logout-btn">Keluar</button>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <h2 class="page-title">Kategori Anggaran</h2>
+
+        <div class="table-card">
+            <div class="table-header-row">
+                <h3 class="table-title">Daftar Kategori Anggaran</h3>
+                <div class="buat-wrapper">
+                    <div class="icon-plus-box"><i class="fa-solid fa-plus"></i></div>
+                    <span class="text-buat">Buat</span>
+                </div>
+            </div>
+
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>Nama Kategori Akun</th>
+                        <th>Keterangan</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 5 Baris Kosong sesuai request -->
+                    <tr><td></td><td></td><td class="action-cell"><div class="btn-mini-disabled bg-red"><i class="fa-solid fa-trash"></i></div><div class="btn-mini-disabled bg-teal"><i class="fa-solid fa-pencil"></i></div></td></tr>
+                    <tr><td></td><td></td><td class="action-cell"><div class="btn-mini-disabled bg-red"><i class="fa-solid fa-trash"></i></div><div class="btn-mini-disabled bg-teal"><i class="fa-solid fa-pencil"></i></div></td></tr>
+                    <tr><td></td><td></td><td class="action-cell"><div class="btn-mini-disabled bg-red"><i class="fa-solid fa-trash"></i></div><div class="btn-mini-disabled bg-teal"><i class="fa-solid fa-pencil"></i></div></td></tr>
+                    <tr><td></td><td></td><td class="action-cell"><div class="btn-mini-disabled bg-red"><i class="fa-solid fa-trash"></i></div><div class="btn-mini-disabled bg-teal"><i class="fa-solid fa-pencil"></i></div></td></tr>
+                    <tr><td></td><td></td><td class="action-cell"><div class="btn-mini-disabled bg-red"><i class="fa-solid fa-trash"></i></div><div class="btn-mini-disabled bg-teal"><i class="fa-solid fa-pencil"></i></div></td></tr>
+                </tbody>
+            </table>
+
+            <div class="bottom-actions">
+                <div class="btn-large bg-red"><i class="fa-solid fa-trash"></i></div>
+                <div class="btn-large bg-teal"><i class="fa-solid fa-pencil"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const btns = document.querySelectorAll(".sidebar-button");
+        btns.forEach(b => {
+            b.addEventListener("click", () => {
+                btns.forEach(x => x.classList.remove("selected-sidebar-button"));
+                b.classList.add("selected-sidebar-button");
+            });
+        });
+    </script>
+</body>
+</html>
