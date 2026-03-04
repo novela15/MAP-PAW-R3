@@ -7,23 +7,31 @@
 </head>
 
 <body>
-
+    
     <!-- SIDEBAR -->
     <div class="sidebar">
-        <div class="sidebar-top">
+        <div class="sidebar-header">
+            <button class="sidebar-icon-button"><i class="fas fa-bars"></i></button>
+            <button class="sidebar-icon-button"><i class="fas fa-plus-circle"></i></button>
         </div>
-
-        <div class="search-box">
-            <input type="text" placeholder="Search">
+        <div class="sidebar-search-container">
+            <input type="text" placeholder="Search" class="sidebar-search">
+            <button class="sidebar-search-button"><i class="fas fa-search"></i></button>
         </div>
-
-        <div class="menu-title">Menu</div>
-
+        <div class="sidebar-label">Menu</div>
         <button class="sidebar-button">Buku Anggaran</button>
         <button class="sidebar-button">Kategori Anggaran</button>
         <button class="sidebar-button">Akun Anggaran</button>
         <button class="sidebar-button">Catat Belanja</button>
-        <button class="sidebar-button">Laporan</button>
+        <button class="sidebar-button selected-sidebar-button has-submenu">
+            Laporan
+            <i class="fas fa-chevron-right submenu-icon"></i>
+        </button>
+        <div class="submenu">
+            <button class="sidebar-button">Jurnal Umum</button>
+            <button class="sidebar-button selected-sidebar-button">Buku Besar</button>
+            <button class="sidebar-button">Realisasi Anggaran</button>
+        </div>
         <button class="sidebar-button">Tutup Buku</button>
         <button class="sidebar-button">Keluar</button>
     </div>
@@ -90,3 +98,4 @@
 
 </body>
 </html>
+
