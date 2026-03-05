@@ -30,6 +30,17 @@ body {
     width: 100%;
 }
 
+.registration-container .sign-in-link {
+    float: right;
+    margin-top: 1rem;
+    padding-right: 4rem;
+}
+
+.registration-container .sign-in-link a {
+    color: black;
+    text-align: right;
+}
+
 .registration-container .button-container {
     align-items: center;
     display: flex;
