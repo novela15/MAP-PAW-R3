@@ -137,7 +137,16 @@ body {
     padding: 1.2rem; border: 1px solid #B9B9B9; text-align: center; height: 60px;
 }
 
-.action-cell { display: flex; justify-content: center; gap: 10px; }
+.action-cell {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.action-header {
+    width: 128px;
+}
 
 /* Tombol di Tabel */
 .btn-mini-disabled {
