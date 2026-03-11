@@ -6,6 +6,9 @@
     padding: 0 1.5rem 1.5rem 1.5rem;
     overflow-y: auto;
     flex-grow: 1;
+    pointer-events: auto; /* TAMBAHAN */
+    position: relative; /* TAMBAHAN */
+    z-index: 1; /* TAMBAHAN */
 }
 
 /* Category Cards */
@@ -18,6 +21,10 @@
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
+    pointer-events: auto; /* TAMBAHAN */
+    position: relative; /* TAMBAHAN */
+    z-index: 2; /* TAMBAHAN */
+    user-select: none; /* TAMBAHAN - biar klik lebih smooth */
 }
 
 .category-card:hover {
@@ -43,6 +50,7 @@
     color: #374151;
     text-align: center;
     line-height: 1.5;
+    pointer-events: none; /* TAMBAHAN - biar klik lewat ke card */
 }
 
 .category-card:hover .category-name {

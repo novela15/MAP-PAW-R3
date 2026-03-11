@@ -17,7 +17,9 @@ body {
     overflow: hidden;
 }
 
-/* Sidebar Styles */
+/* ==========================================
+   SIDEBAR - PERBAIKAN Z-INDEX & POINTER
+   ========================================== */
 .sidebar {
     background-color: #90C1BE;
     border-radius: 0px 16px 16px 0px;
@@ -33,6 +35,9 @@ body {
     display: flex;
     flex-direction: column;
     padding: 1rem;
+    /* PERBAIKAN: Z-index tinggi & isolation */
+    z-index: 9999;
+    isolation: isolate;
 }
 
 .sidebar-header {
@@ -40,6 +45,9 @@ body {
     gap: 1rem;
     margin-bottom: 1rem;
     margin-left: 0.5rem;
+    /* PERBAIKAN: Pastikan header bisa diklik */
+    position: relative;
+    z-index: 10000;
 }
 
 .sidebar-icon-button {
@@ -49,6 +57,10 @@ body {
     font-size: 1.25rem;
     cursor: pointer;
     padding: 0.25rem;
+    /* PERBAIKAN: Wajib ada untuk interaksi */
+    pointer-events: auto;
+    position: relative;
+    z-index: 10001;
 }
 
 .sidebar-icon-button:hover {
@@ -59,6 +71,7 @@ body {
     position: relative;
     margin-bottom: 1rem;
     padding: 0 0.5rem;
+    pointer-events: auto;
 }
 
 .sidebar-search {
@@ -69,6 +82,7 @@ body {
     padding: 0.5rem 2rem 0.5rem 1rem;
     color: #374151;
     font-size: 0.875rem;
+    pointer-events: auto;
 }
 
 .sidebar-search::placeholder {
@@ -85,6 +99,9 @@ body {
     color: black;
     cursor: pointer;
     font-size: 0.875rem;
+    /* PERBAIKAN */
+    pointer-events: auto;
+    z-index: 10;
 }
 
 .sidebar-label {
@@ -95,8 +112,13 @@ body {
     letter-spacing: 0.05em;
     margin-bottom: 0.5rem;
     margin-left: 0.5rem;
+    pointer-events: none;
+    user-select: none;
 }
 
+/* ==========================================
+   SIDEBAR BUTTON - PERBAIKAN KRITIS
+   ========================================== */
 .sidebar-button {
     background: none;
     border: none;
@@ -111,10 +133,20 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    /* PERBAIKAN KRITIS */
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 10000;
+    /* Pastikan button di atas elemen lain */
+    transform: translateZ(0);
 }
 
 .sidebar-button:hover {
     background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-button:active {
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
 .selected-sidebar-button {
@@ -123,34 +155,56 @@ body {
     font-weight: 600;
 }
 
+/* ==========================================
+   SUBMENU - PERBAIKAN
+   ========================================== */
+.has-submenu {
+    cursor: pointer;
+    /* PERBAIKAN: Pastikan bisa diklik */
+    pointer-events: auto !important;
+}
+
 .submenu {
     background-color: #a8d9d6;
     border-radius: 8px;
     margin-left: 0.5rem;
     margin-bottom: 0.5rem;
     overflow: hidden;
+    /* PERBAIKAN */
+    position: relative;
+    z-index: 10000;
+    pointer-events: auto;
 }
 
 .submenu .sidebar-button {
     padding-left: 1rem;
+    /* PERBAIKAN: Pastikan submenu item bisa diklik */
+    pointer-events: auto !important;
+    z-index: 10001;
 }
 
 .submenu-icon {
     font-size: 0.75rem;
+    transition: transform 0.3s ease;
+    pointer-events: none;
 }
 
-/* Main Container */
+/* ==========================================
+   CONTAINER - PERBAIKAN KRITIS (POSITION ABSOLUTE)
+   ========================================== */
 .container {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    position: absolute;
-    right: 0%;
-    top: 0%;
+    /* PERBAIKAN: Ganti dari absolute ke relative */
+    position: relative;
+    margin-left: 20%;
     width: 80%;
-    background-color: C1E1DE;
+    background-color: #C1E1DE;
     border-left: 1px solid #90C1BE;
     overflow: hidden;
+    /* PERBAIKAN: Z-index lebih rendah dari sidebar */
+    z-index: 1;
 }
 
 .container-header {
@@ -158,6 +212,7 @@ body {
     font-weight: 700;
     color: #1f2937;
     margin: 1rem 1.5rem 0.5rem 1.5rem;
+    pointer-events: auto;
 }
 
 .subcontainer {
@@ -169,6 +224,10 @@ body {
     display: flex;
     flex-direction: column;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    /* PERBAIKAN */
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
 }
 
 .horizontal-flex {
@@ -177,12 +236,16 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 1rem 1.5rem;
+    pointer-events: auto;
 }
 
-/* Search Components */
+/* ==========================================
+   SEARCH COMPONENTS
+   ========================================== */
 .search-container {
     position: relative;
     width: 18rem;
+    pointer-events: auto;
 }
 
 .category-search {
@@ -193,6 +256,7 @@ body {
     padding: 0.625rem 2.5rem 0.625rem 1.25rem;
     color: white;
     font-size: 0.875rem;
+    pointer-events: auto;
 }
 
 .category-search::placeholder {
@@ -208,13 +272,16 @@ body {
     border: none;
     color: rgba(255, 255, 255, 0.8);
     cursor: pointer;
+    pointer-events: auto;
 }
 
 .search-button:hover {
     color: white;
 }
 
-/* Category Grid Layout */
+/* ==========================================
+   CATEGORY GRID & CARDS
+   ========================================== */
 .category-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -222,9 +289,11 @@ body {
     padding: 0 1.5rem 1.5rem 1.5rem;
     overflow-y: auto;
     flex-grow: 1;
+    pointer-events: auto;
+    position: relative;
+    z-index: 5;
 }
 
-/* Category Cards */
 .category-card {
     border-radius: 1rem;
     padding: 2rem;
@@ -234,6 +303,10 @@ body {
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
+    pointer-events: auto;
+    position: relative;
+    z-index: 10;
+    user-select: none;
 }
 
 .category-card:hover {
@@ -259,8 +332,31 @@ body {
     color: #374151;
     text-align: center;
     line-height: 1.5;
+    pointer-events: none;
 }
 
 .category-card:hover .category-name {
     color: #111827;
+}
+
+/* ==========================================
+   ANIMATION KEYFRAMES
+   ========================================== */
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOut {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 1; }
+}
+
+@keyframes modalIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes ripple {
+    to { transform: scale(2); opacity: 0; }
 }
