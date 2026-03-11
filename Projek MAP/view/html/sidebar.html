@@ -1,16 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Sidebar Menu</title>
-    <link rel="stylesheet" href="D:\Kuliah Sem4\Prak. Aplikasi Web\Projek MAP\view\css\sidebar_style.css">
+<html lang="id">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<head>
+<meta charset="UTF-8">
+<title>Sistem Anggaran</title>
+<link rel="stylesheet" href="D:\Kuliah Sem4\Prak. Aplikasi Web\Projek MAP\view\css\sidebar_style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 
 <body>
-<div class="sidebar">
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+
     <div class="sidebar-header">
-        <button class="sidebar-icon-button">
+        <button class="sidebar-icon-button" onclick="toggleSidebar()">
             <i class="fa-solid fa-bars"></i>
         </button>
     </div>
@@ -18,31 +25,78 @@
     <div class="sidebar-label">Menu</div>
 
     <div id="nav-group">
-        <button class="sidebar-button">Buku Anggaran</button>
-        <button class="sidebar-button">Kategori Anggaran</button>
-        <button class="sidebar-button">Akun Anggaran</button>
-        <button class="sidebar-button">Catat Belanja</button>
 
-        <!-- Dropdown Laporan -->
+        <button class="sidebar-button"
+        onclick="loadPage('view\html\buku_anggaran.html')">
+        Buku Anggaran
+        </button>
+
+        <button class="sidebar-button"
+        onclick="loadPage('view\html\kategori_anggaran.html')">
+        Kategori Anggaran
+        </button>
+
+        <button class="sidebar-button"
+        onclick="loadPage('view\html\akun_anggaran.html')">
+        Akun Anggaran
+        </button>
+
+        <button class="sidebar-button"
+        onclick="loadPage('view\html\catat_belanja.html')">
+        Catat Belanja
+        </button>
+
         <div class="dropdown">
-            <button class="sidebar-button dropdown-btn" onclick="toggleDropdown()">
-                Laporan
-                <i class="fa-solid fa-chevron-down"></i>
+
+            <button class="sidebar-button dropdown-btn"
+            onclick="toggleDropdown()">
+            Laporan
+            <i class="fa-solid fa-chevron-down"></i>
             </button>
 
             <div class="dropdown-content" id="laporanMenu">
-                <button class="submenu-button">Jurnal Umum</button>
-                <button class="submenu-button">Buku Besar</button>
-                <button class="submenu-button">Laporan Realisasi</button>
+
+                <button class="submenu-button"
+                onclick="loadPage('pages/jurnal_umum.html')">
+                Jurnal Umum
+                </button>
+
+                <button class="submenu-button"
+                onclick="loadPage('pages/buku_besar.html')">
+                Buku Besar
+                </button>
+
+                <button class="submenu-button"
+                onclick="loadPage('pages/laporan_realisasi.html')">
+                Laporan Realisasi
+                </button>
+
             </div>
         </div>
 
         <button class="sidebar-button">Tutup Buku</button>
+
     </div>
 
     <button class="sidebar-button logout-btn">Keluar</button>
+
+</div>
+
+<!-- AREA CONTENT -->
+<div class="content" id="content">
+
+    <button class="open-sidebar" onclick="toggleSidebar()">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <div id="content-area">
+        <h2>Selamat Datang</h2>
+        <p>Pilih menu di sidebar untuk membuka halaman.</p> 
+    </div>
+
 </div>
 
 <script src="D:\Kuliah Sem4\Prak. Aplikasi Web\Projek MAP\view\js\sidebar_js.js"></script>
+
 </body>
 </html>
