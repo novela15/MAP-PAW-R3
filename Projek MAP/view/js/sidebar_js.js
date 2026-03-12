@@ -34,3 +34,7 @@ function loadPage(page){
     });
 
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    loadPage('buku_anggaran.html');
+});
