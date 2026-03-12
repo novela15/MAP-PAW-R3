@@ -57,17 +57,17 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
             <div class="dropdown-content" id="laporanMenu">
 
                 <button class="submenu-button"
-                onclick="loadPage('jurnal_umum.html')">
+                onclick="loadPage('pages/jurnal_umum.html')">
                 Jurnal Umum
                 </button>
 
                 <button class="submenu-button"
-                onclick="loadPage('buku_besar.html')">
+                onclick="loadPage('pages/buku_besar.html')">
                 Buku Besar
                 </button>
 
                 <button class="submenu-button"
-                onclick="loadPage('laporan_realisasi.html')">
+                onclick="loadPage('pages/laporan_realisasi.html')">
                 Laporan Realisasi
                 </button>
 
@@ -89,14 +89,17 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         <i class="fa-solid fa-bars"></i>
     </button>
 
-    <div id="content-area">
-        <h2>Selamat Datang</h2>
-        <p>Pilih menu di sidebar untuk membuka halaman.</p> 
-    </div>
+    <div id="content-area"></div>
 
 </div>
 
 <script src="../js/sidebar_js.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        loadPage('buku_anggaran.html');
+    });
+</script>
 
 </body>
 </html>
