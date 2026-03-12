@@ -124,6 +124,10 @@ body {
     font-weight: bold;
 }
 
+.filler {
+    flex: 1;
+}
+
 .selected-sidebar-button {
     background-color: white;
     color: black;
