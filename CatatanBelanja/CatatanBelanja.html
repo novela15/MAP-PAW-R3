@@ -140,13 +140,16 @@
     </div>
 
     <script>
-        const btns = document.querySelectorAll(".sidebar-button");
-        btns.forEach(b => {
-            b.addEventListener("click", () => {
-                btns.forEach(x => x.classList.remove("selected-sidebar-button"));
-                b.classList.add("selected-sidebar-button");
-            });
-        });
-    </script>
+const btns = document.querySelectorAll(".sidebar-button");
+btns.forEach(b => {
+    b.addEventListener("click", () => {
+        btns.forEach(x => x.classList.remove("selected-sidebar-button"));
+        b.classList.add("selected-sidebar-button");
+    });
+});
+</script>
+
+<script src="script.js"></script>
+
 </body>
 </html>
