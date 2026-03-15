@@ -10,24 +10,32 @@
     <body>
         <div class="registration-container">
             <p class="header">Sign Up</p>
-            <div class="input-container">
-                <p class="input-label">Username</p>
-                <input class="value" type="text" placeholder="Username" autocomplete="off">
-                <p class="input-label">Email</p>
-                <input class="value" type="email" placeholder="Email" autocomplete="off">
-                <p class="input-label">Password</p>
-                <input class="value" type="password" placeholder="Password">
-                <p class="input-label">Confirm Password</p>
-                <input class="value" type="password" placeholder="Confirm Password">
-            </div>
-            <div class="input-container button-container">
-                <button class="signup">Sign Up</button>
-                <div>or</div>
-                <button class="signup">Sign up with<img src="https://www.google.com/favicon.ico" loading="lazy"></button>
-            </div>
+
+            <!-- TODO: MVC preparation -->
+            <form action="" method="POST">
+		        <div class="input-container">
+		            <p class="input-label">Username</p>
+		            <input class="value username-value" name="username_value" type="text" placeholder="Username" autocomplete="off">
+		            <p class="input-label">Email</p>
+		            <input class="value email-value" name="email_value" type="email" placeholder="Email" autocomplete="off">
+		            <p class="input-label">Password</p>
+		            <input class="value password-value" name="password_value" type="password" placeholder="Password">
+		            <p class="input-label">Confirm Password</p>
+		            <input class="value password-value-2" name="password_confirm_value" type="password" placeholder="Confirm Password">
+		        </div>
+
+		        <div class="input-container button-container">
+		            <button class="signup-email" name="signup_email" type="submit">Sign Up</button>
+		            <div>or</div>
+		            <button class="signup-google" name="signup_google" type="submit">Sign up with<img src="https://www.google.com/favicon.ico" loading="lazy"></button>
+		        </div>
+            </form>
+
             <div class="sign-in-link">
                 <a href="login.html">Have an account? Sign in.</a>
             </div>
         </div>
+
+        <script src="registration.js"></script>
     </body>
 </html>

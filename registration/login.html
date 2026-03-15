@@ -10,21 +10,29 @@
     <body>
         <div class="registration-container">
             <p class="header">Sign In</p>
-            <div class="input-container">
-                <p class="input-label">Email</p>
-                <input class="value" type="email" placeholder="Email" autocomplete="off">
-                <p class="input-label">Password</p>
-                <input class="value" type="password" placeholder="Password">
-                <a href="" class="forgot-password">Forgot password?</a>
-            </div>
-            <div class="input-container button-container">
-                <button class="login">Sign In</button>
-                <div>or</div>
-                <button class="login">Sign in with<img src="https://www.google.com/favicon.ico" loading="lazy"></button>
-            </div>
+
+            <!-- TODO: MVC preparation -->
+            <form action="" method="POST">
+		        <div class="input-container">
+		            <p class="input-label">Email</p>
+		            <input class="value" type="email" placeholder="Email" autocomplete="off">
+		            <p class="input-label">Password</p>
+		            <input class="value" type="password" placeholder="Password">
+		            <a href="" class="forgot-password">Forgot password?</a>
+		        </div>
+
+		        <div class="input-container button-container">
+		            <button class="login">Sign In</button>
+		            <div>or</div>
+		            <button class="login">Sign in with<img src="https://www.google.com/favicon.ico" loading="lazy"></button>
+		        </div>
+            </form>
+
             <div class="sign-in-link">
                 <a href="signup.html">No account? Sign up.</a>
             </div>
         </div>
+
+        <script src="registration.js"></script>
     </body>
 </html>
