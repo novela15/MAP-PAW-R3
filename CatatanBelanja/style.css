@@ -1,0 +1,171 @@
+/* Global Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: #C1E1DE; 
+    display: flex;
+    font-family: 'Inter', sans-serif;
+    color: #1E1E1E;
+    margin: 0;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    background-color: #90C1BE; 
+    border-radius: 0px 16px 16px 0px;
+    height: 100vh;
+    width: 20%;
+    position: fixed;
+    left: 0; top: 0;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sidebar-header { display: flex; gap: 1rem; margin-bottom: 1.5rem; margin-left: 0.5rem; }
+
+.sidebar-icon-button {
+    background: none; border: none; color: #333;
+    font-size: 1.25rem; cursor: pointer; padding: 0.25rem;
+}
+
+.sidebar-search-container { position: relative; margin-bottom: 1.5rem; padding: 0 0.5rem; }
+
+.sidebar-search {
+    width: 100%; background: white; border: none; border-radius: 20px;
+    padding: 0.6rem 1rem; font-size: 0.875rem; outline: none;
+}
+
+.sidebar-search-button {
+    position: absolute; right: 1.25rem; top: 50%;
+    transform: translateY(-50%); background: none; border: none;
+    color: #1E1E1E; cursor: pointer;
+}
+
+.sidebar-label {
+    color: #757575; font-size: 0.7rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    margin: 0.5rem 0 0.75rem 0.75rem;
+}
+
+.sidebar-button {
+    background: none; border: none; color: #1E1E1E;
+    padding: 0.6rem 0.8rem; width: 100%; border-radius: 10px;
+    cursor: pointer; text-align: left; font-size: 0.9rem;
+    margin-bottom: 0.35rem; transition: 0.2s;
+    font-family: inherit; font-weight: 600;
+}
+
+.sidebar-button:hover { background-color: rgba(255, 255, 255, 0.2); }
+
+.selected-sidebar-button {
+    background-color: white !important;
+    color: #333; font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.logout-btn { margin-top: auto; padding-bottom: 1rem; }
+
+/* --- CONTENT STYLE --- */
+.main-content { margin-left: 20%; width: 80%; padding: 2rem 3rem; }
+
+.page-title {
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 700; font-size: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.table-card {
+    background-color: #E8F5F4;
+    border-radius: 16px; padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    min-height: 400px;
+}
+
+.table-header-row {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;
+}
+
+.table-title { font-size: 1.25rem; font-weight: 600; }
+
+.buat-wrapper { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+
+.icon-plus-box {
+    background-color: #668685; color: white; width: 35px; height: 35px;
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+}
+
+.text-buat { font-weight: 600; font-size: 1.1rem; color: #333; }
+
+/* --- TABEL --- */
+.custom-table {
+    width: 100%;
+    border-collapse: separate; 
+    border-spacing: 0;
+    border: 1px solid #B9B9B9;
+    border-radius: 4px;       
+    overflow: hidden;         
+}
+
+/* Radius untuk Header Kiri Atas */
+.custom-table th:first-child {
+    border-top-left-radius: 4px;
+}
+
+/* Radius untuk Header Kanan Atas */
+.custom-table th:last-child {
+    border-top-right-radius: 4px;
+}
+
+/* Radius untuk Baris Terakhir Kiri Bawah */
+.custom-table tr:last-child td:first-child {
+    border-bottom-left-radius: 4px;
+}
+
+/* Radius untuk Baris Terakhir Kanan Bawah */
+.custom-table tr:last-child td:last-child {
+    border-bottom-right-radius: 4px;
+}
+
+.custom-table th {
+    background-color: #477B79; color: white; padding: 1rem;
+    text-align: center; border: 1px solid #D1E7E5;
+}
+
+.custom-table td { /* Garis tabel */
+    padding: 1.2rem; border: 1px solid #B9B9B9; text-align: center; height: 60px;
+}
+
+.action-cell {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.action-header {
+    width: 128px;
+}
+
+/* Tombol di Tabel */
+.btn-mini-disabled {
+    border: none; width: 35px; height: 35px; border-radius: 8px;
+    color: white; 
+    cursor: default; display: flex; align-items: center; justify-content: center;
+}
+
+/* Hpus & Edit */
+.bg-red { background-color: #CF3234; }
+.bg-teal { background-color: #668685; }
+
+/* Tombol Besar di Bawah */
+.bottom-actions { display: flex; justify-content: flex-end; gap: 15px; margin-top: 2.5rem; }
+
+.btn-large {
+    border: none; width: 50px; height: 50px; border-radius: 12px;
+    color: white; 
+    font-size: 1.3rem; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
