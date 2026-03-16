@@ -9,33 +9,29 @@
 
     <body>
         <div class="registration-container">
-            <p class="header">Sign Up</p>
+            <p class="header">Sign In</p>
 
-            <!-- TODO: MVC preparation -->
-            <form action="" method="POST">
+            <form action="index.php?page=login" method="POST">
 		        <div class="input-container">
-		            <p class="input-label">Username</p>
-		            <input class="input username-input" name="username_input" type="text" placeholder="Username" autocomplete="off">
 		            <p class="input-label">Email</p>
 		            <input class="input email-input" name="email_input" type="email" placeholder="Email" autocomplete="off">
 		            <p class="input-label">Password</p>
 		            <input class="input password-input" name="password_input" type="password" placeholder="Password">
-		            <p class="input-label">Confirm Password</p>
-		            <input class="input password-confirm-input" name="password_confirm_input" type="password" placeholder="Confirm Password">
+		            <a href="" class="forgot-password">Forgot password?</a>
 		        </div>
 
 		        <div class="input-container button-container">
-		            <button class="signup-email" name="signup_email" type="submit">Sign Up</button>
+		            <button class="login-email">Sign In</button>
 		            <div>or</div>
-		            <button class="signup-google" name="signup_google" type="submit">Sign up with<img src="https://www.google.com/favicon.ico" loading="lazy"></button>
+		            <button class="login-google">Sign in with<img src="https://www.google.com/favicon.ico" loading="lazy"></button>
 		        </div>
             </form>
 
             <div class="sign-in-link">
-                <a href="login.html">Have an account? Sign in.</a>
+                <a href="signup.html">No account? Sign up.</a>
             </div>
         </div>
 
-        <script src="registration.js"></script>
+        <!--<script src="registration.js"></script>-->
     </body>
 </html>
