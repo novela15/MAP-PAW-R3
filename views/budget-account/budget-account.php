@@ -68,6 +68,6 @@
             </div>
         </div>
 
-        <script src="<?php echo VIEW_PATH; ?>skeleton.js"></script>
+        <script src="<?php echo VIEWS_PATH; ?>skeleton.js"></script>
     </body>
 <html>
