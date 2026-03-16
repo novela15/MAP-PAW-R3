@@ -31,7 +31,7 @@
             </form>
 
             <div class="sign-in-link">
-                <a href="login.html">Have an account? Sign in.</a>
+                <a href="index.php?page=login">Have an account? Sign in.</a>
             </div>
         </div>
 

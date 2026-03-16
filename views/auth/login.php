@@ -28,7 +28,7 @@
             </form>
 
             <div class="sign-in-link">
-                <a href="signup.html">No account? Sign up.</a>
+                <a href="index.php?page=signup">No account? Sign up.</a>
             </div>
         </div>
 
