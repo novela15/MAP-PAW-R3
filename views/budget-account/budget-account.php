@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../skeleton.css">
         <link rel="stylesheet" href="budget-account.css">
+        <link rel="stylesheet" href="<?php echo VIEWS_PATH; ?>skeleton.css">
+        <link rel="stylesheet" href="<?php echo VIEWS_PATH; ?>budget-account/budget-account.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     </head>
 
@@ -66,6 +68,6 @@
             </div>
         </div>
 
-        <script src="../skeleton.js"></script>
+        <script src="<?php echo VIEW_PATH; ?>skeleton.js"></script>
     </body>
 <html>
