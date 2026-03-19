@@ -11,7 +11,7 @@
         <div class="registration-container">
             <p class="header">Sign In</p>
 
-            <form action="index.php?page=login" method="POST">
+            <form action="login" method="POST">
 		        <div class="input-container">
 		            <p class="input-label">Email</p>
 		            <input class="input email-input" name="email_input" type="email" placeholder="Email" autocomplete="off">
@@ -28,7 +28,7 @@
             </form>
 
             <div class="sign-in-link">
-                <a href="index.php?page=signup">No account? Sign up.</a>
+                <a href="signup">No account? Sign up.</a>
             </div>
         </div>
 
