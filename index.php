@@ -4,23 +4,14 @@ session_start();
 
 require_once __DIR__ . "/config.php";
 require_once CONTROLLERS_PATH . "AuthController.php";
+require_once CONTROLLERS_PATH . "FrontController.php";
 
-$page = isset($_GET["page"]) ? $_GET["page"] : "signup";
-$action = isset($_GET["action"]) ? $_GET["action"] : "index";
+$script_directory = str_replace("\\", "/", dirname($_SERVER["SCRIPT_NAME"]));
+$page = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+$page = str_replace($script_directory, "", $page);
+$page = trim($page, "/");
 
-// I feel this will be a giant switch case when all features are combined, but whatever
-switch ($page) {
-    case "login":
-        $controller = new AuthController();
-        $controller->login();
-        break;
-    case "signup":
-        $controller = new AuthController();
-        $controller->signup();
-        break;
-    case "budget-account":
-        include VIEWS_PATH . "budget-account/budget-account.php";
-        break;
-}
+$front_controller = new FrontController();
+$front_controller->switch_page($page);
 
 ?>
