@@ -14,7 +14,7 @@ This web app uses the MVC architecture pattern. Please put HTML, CSS, JS, or PHP
     │   ├── html
     │   ├── css
     │   └── js
-    ├── registration-page
+    ├── budget-account
     │   ├── html
     │   ├── css
     │   └── js
