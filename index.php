@@ -4,6 +4,7 @@ session_start();
 
 // Core
 require_once __DIR__ . "/core/config.php";
+require_once __DIR__ . "/core/Database.php";
 
 // Controllers
 require_once CONTROLLERS_PATH . "FrontController.php";
@@ -18,7 +19,12 @@ $page = trim($page, "/");
 
 try {
     $front_controller = new FrontController();
-    $front_controller->switch_page($page);
+
+    if (isset($_SESSION["user_id"])) {
+        $front_controller->switchPage($page);
+    } else {
+        $front_controller->switchPage("signup");
+    }
 } catch (Exception $exception) {
     echo "Something went wrong.";
 }
