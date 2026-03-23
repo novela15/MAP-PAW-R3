@@ -1,4 +1,4 @@
-<?php require SKELETON_PATH . "skeleton-top.php"; ?>
+<?php require_once SKELETON_PATH . "skeleton-top.php"; ?>
 
 <link rel="stylesheet" href="<?php echo VIEWS_PATH; ?>budget-account/budget-account.css">
 

@@ -26,7 +26,7 @@ This web app uses the MVC architecture pattern. Please put HTML, CSS, JS, or PHP
 
 To make the UI between pages consistent, a skeleton branch is made to develop the page skeleton HTML structure, which consists of the **main style, container, and sidebar**. The skeleton is separated into a top and bottom part. To use the skeleton, make the page file as PHP and structure it like this:
 ```php
-<?php require SKELETON_PATH . "skeleton-top.php"; ?>
+<?php require_once SKELETON_PATH . "skeleton-top.php"; ?>
 
 <!--
 Your HTML here, everything between the skeleton-top and skeleton-bottom
