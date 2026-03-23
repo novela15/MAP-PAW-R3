@@ -19,12 +19,7 @@ $page = trim($page, "/");
 
 try {
     $front_controller = new FrontController();
-
-    if (isset($_SESSION["user_id"])) {
-        $front_controller->switchPage($page);
-    } else {
-        $front_controller->switchPage("signup");
-    }
+    $front_controller->switchPage($page);
 } catch (Exception $exception) {
     echo "Something went wrong.";
 }

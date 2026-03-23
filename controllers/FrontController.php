@@ -1,8 +1,15 @@
 <?php
 
 class FrontController {
+    private $publicPages = ["login", "signup"];
+
     // I feel this will be a giant switch case when all features are combined, but whatever
     public function switchPage(string $page) {
+        if (!isset($_SESSION["user_id"]) && !in_array($page, $this->publicPages)) {
+            header("Location: login"); 
+            exit();
+        }
+
         switch ($page) {
             case "login":
                 $controller = new AuthController();
