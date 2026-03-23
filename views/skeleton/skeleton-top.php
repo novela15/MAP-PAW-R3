@@ -65,9 +65,11 @@
 
             <div class="filler"></div>
 
-            <button class="sidebar-button sidebar-logout-button">
-                <i class="icon fa-solid fa-sign-out-alt"></i>
-                <span class="text">Keluar</span>
-            </button>
+            <form action="logout" method="POST">
+                <button class="sidebar-button sidebar-logout-button" name="logout_button" type="submit">
+                    <i class="icon fa-solid fa-sign-out-alt"></i>
+                    <span class="text">Keluar</span>
+                </button>
+            </form>
         </div>
         <div class="container no-transition">
