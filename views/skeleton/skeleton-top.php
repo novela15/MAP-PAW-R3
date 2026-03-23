@@ -1,5 +1,3 @@
-<?php
-
 <!DOCTYPE html>
 
 <html>
@@ -34,5 +32,3 @@
             <button class="sidebar-button sidebar-logout-button">Keluar</button>
         </div>
         <div class="container">
-
-?>
