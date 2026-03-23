@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+:root {
+    --sidebar-transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --sidebar-width-collapsed: 4rem;
+    --sidebar-width-full: 20%;
+}
+
 * {
     box-sizing: border-box;
     font-family: Inter, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -21,17 +27,19 @@ body {
     background-color: #90C1BE;
     border-radius: 0px 16px 16px 0px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
     height: 100vh;
     left: 0%;
     overflow-x: hidden;
     overflow-y: auto;
+    padding: 1rem;
     position: fixed;
     scrollbar-width: none;
     top: 0%;
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
+    transition: width var(--sidebar-transition), padding var(--sidebar-transition);
+    white-space: nowrap;
+    width: var(--sidebar-width-full);
 }
 
 .sidebar-header {
@@ -41,7 +49,7 @@ body {
     margin-left: 0.5rem;
 }
 
-.sidebar-icon-button {
+.sidebar-toggle-button {
     background: none;
     border: none;
     color: black;
@@ -50,7 +58,7 @@ body {
     padding: 0.25rem;
 }
 
-.sidebar-icon-button:hover {
+.sidebar-toggle-button:hover {
     color: black;
 }
 
@@ -160,6 +168,7 @@ body {
     position: absolute;
     right: 0%;
     top: 0%;
+    transition: width var(--sidebar-transition), padding var(--sidebar-transition);
     width: 80%;
 }
 
@@ -272,7 +281,46 @@ body {
     color: #111827;
 }
 
+/* Sidebar Transition */
+/* Transition classes are applied to documentElement, not the elements themselves! */
+.sidebar-collapsed .sidebar {
+    padding: 1rem 0.5rem;
+    width: var(--sidebar-width-collapsed);
+}
+
+.sidebar .sidebar-button .icon {
+    display: none;
+}
+
+.sidebar .sidebar-button .text {
+    display: inline;
+}
+
+.sidebar-collapsed .sidebar .sidebar-button .icon {
+    display: inline;
+}
+
+.sidebar-collapsed .sidebar .sidebar-button .text {
+    display: none;
+}
+
+.sidebar-collapsed .sidebar .sidebar-label {
+    visibility: hidden;
+}
+
+.sidebar-collapsed .sidebar + .container {
+    width: calc(100% - var(--sidebar-width-collapsed));
+}
+
 /* Overrides */
 .hidden {
     display: none;
+}
+
+.no-transition {
+    -moz-transition: none !important;
+    -ms-transition: none !important;
+    -o-transition: none !important;
+    -webkit-transition: none !important;
+    transition: none !important;
 }

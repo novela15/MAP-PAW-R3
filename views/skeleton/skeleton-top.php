@@ -2,6 +2,13 @@
 
 <html>
     <head>
+        <script>
+            // I feel this is a bit hacky, I need to set classes on the root document element to prevent the
+            // sidebar from flickering when reloaded quick enough.
+            if (localStorage.getItem("is_sidebar_collapsed") === "true") {
+                document.documentElement.classList.add("sidebar-collapsed");
+            }
+        </script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="<?php echo SKELETON_PATH; ?>skeleton.css">
@@ -9,26 +16,58 @@
     </head>
 
     <body>
-        <div class="sidebar">
+        <div class="sidebar no-transition">
             <div class="sidebar-header">
-                <button class="sidebar-icon-button"><i class="fas fa-bars"></i></button>
+                <button class="sidebar-toggle-button" title="Sembunyikan/munculkan sidebar"><i class="fas fa-bars"></i></button>
             </div>
+
             <div class="sidebar-label">Menu</div>
-            <button class="sidebar-button selected-sidebar-button">Buku Anggaran</button>
-            <button class="sidebar-button">Kategori Anggaran</button>
-            <button class="sidebar-button">Akun Anggaran</button>
-            <button class="sidebar-button">Catat Belanja</button>
+
+            <button class="sidebar-button">
+                <i class="icon fa-solid fa-book"></i>
+                <span class="text">Buku Anggaran</span>
+            </button>
+            <button class="sidebar-button budget-category">
+                <i class="icon fa-solid fa-tag"></i>
+                <span class="text">Kategori Anggaran</span>
+            </button>
+            <button class="sidebar-button budget-account">
+                <i class="icon fa-solid fa-university"></i>
+                <span class="text">Akun Anggaran</span>
+            </button>
+            <button class="sidebar-button">
+                <i class="icon fa-solid fa-file-invoice-dollar"></i>
+                <span class="text">Catat Belanja</span>
+            </button>
             <button class="sidebar-button has-submenu">
-                Laporan
+                <i class="icon fa-solid fa-chart-bar"></i>
+                <span class="text">Laporan</span>
                 <i class="fas fa-chevron-right submenu-icon"></i>
             </button>
             <div class="submenu hidden">
-                <button class="sidebar-button">Jurnal Umum</button>
-                <button class="sidebar-button selected-sidebar-button">Buku Besar</button>
-                <button class="sidebar-button">Realisasi Anggaran</button>
+                <button class="sidebar-button">
+                    <i class="icon fa-solid fa-journal-whills"></i>
+                    <span class="text">Jurnal Umum</span>
+                </button>
+                <button class="sidebar-button selected-sidebar-button">
+                    <i class="icon fa-solid fa-columns"></i>
+                    <span class="text">Buku Besar</span>
+                </button>
+                <button class="sidebar-button">
+                    <i class="icon fa-solid fa-chart-line"></i>
+                    <span class="text">Realisasi Anggaran</span>
+                </button>
             </div>
-            <button class="sidebar-button">Tutup Buku</button>
+            <button class="sidebar-button">
+                <i class="icon fa-solid fa-lock"></i>
+                <span class="text">Tutup Buku</span>
+            </button>
+
             <div class="filler"></div>
-            <button class="sidebar-button sidebar-logout-button">Keluar</button>
+
+            <button class="sidebar-button sidebar-logout-button">
+                <i class="icon fa-solid fa-sign-out-alt"></i>
+                <span class="text">Keluar</span>
+            </button>
         </div>
-        <div class="container">
+        <div class="container no-transition">
