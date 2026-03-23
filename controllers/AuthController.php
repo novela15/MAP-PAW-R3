@@ -2,8 +2,7 @@
 
 class AuthController {
     public function login() {
-//  && isset($_POST["login_email"])
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["login_email"])) {
             $email = filter_var(trim($_POST["email_input"], FILTER_SANITIZE_EMAIL));
             $password = $_POST["password_input"] ?? "";
 
@@ -18,7 +17,7 @@ class AuthController {
 
             if ($user && password_verify($password, $user["password"])) {
                 $_SESSION["user_id"] = $user["id"];
-                header("Location: budget-account");
+                header("Location: " . DEFAULT_PAGE);
                 exit;
             } else {
                 include_once VIEWS_PATH . "auth/login.php";
@@ -77,7 +76,8 @@ class AuthController {
 
                 $_SESSION["user_id"] = $db->getConnection()->lastInsertId();
 
-                include_once VIEWS_PATH . "auth/signup.php";
+                header("Location: " . DEFAULT_PAGE);
+                exit;
             } catch (PDOException $exception) {
                 die("Database Connection Error: "  . $exception->getMessage());
             }
