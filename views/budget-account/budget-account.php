@@ -1,5 +1,7 @@
 <?php require SKELETON_PATH . "skeleton-top.php"; ?>
 
+<link rel="stylesheet" href="<?php echo VIEWS_PATH; ?>budget-account/budget-account.css">
+
             <p class="container-header">Akun Anggaran [namabuku]</p>
             <div class="subcontainer">
                 <div class="horizontal-flex">
@@ -20,12 +22,12 @@
                         <th>Action</th>
                     </tr>
                     <tr>
-                        <td></th>
-                        <td></th>
-                        <td></th>
-                        <td></th>
-                        <td></th>
-                        <td></th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                         <td><div class="table-action"><button class="delete-button trash-can-button"><i class="fa-regular fa-trash-can"></i></button><button class="write-button pen-button"><i class="fa-solid fa-pen"></i></i></button></div></th>
                     </tr>
                 </table>
