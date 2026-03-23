@@ -12,6 +12,10 @@ class FrontController {
                 $controller = new AuthController();
                 $controller->signup();
                 break;
+            case "logout":
+                $controller = new AuthController();
+                $controller->logout();
+                break;
             case "budget-account":
                 include_once VIEWS_PATH . "budget-account/budget-account.php";
                 break;
