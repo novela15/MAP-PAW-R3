@@ -69,7 +69,7 @@ body {
 .logout-btn { margin-top: auto; padding-bottom: 1rem; }
 
 /* --- CONTENT STYLE --- */
-.main-content { margin-left: 20%; width: 80%; padding: 2rem 3rem; }
+.main-content { margin-left: 20%; width: 100%; padding: 2rem 3rem;transition: 0.3s; }
 
 .page-title {
     font-family: 'Instrument Sans', sans-serif;
