@@ -17,6 +17,7 @@ class AuthController {
 
             if ($user && password_verify($password, $user["password"])) {
                 $_SESSION["user_id"] = $user["id"];
+                $_SESSION["user_name"] = $user["username"];
                 header("Location: " . DEFAULT_PAGE);
                 exit;
             } else {
@@ -70,11 +71,12 @@ class AuthController {
                 }
 
                 $db->query(
-                    "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
+                    "INSERT INTO users (username, email, password) VALUES (?, ?, ?)",
                     [$username, $email, password_hash($password, PASSWORD_DEFAULT)]
                 );
 
                 $_SESSION["user_id"] = $db->getConnection()->lastInsertId();
+                $_SESSION["user_name"] = $username;
 
                 header("Location: " . DEFAULT_PAGE);
                 exit;
