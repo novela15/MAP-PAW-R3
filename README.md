@@ -24,6 +24,7 @@ This web app uses the MVC architecture pattern. Please put HTML, CSS, JS, or PHP
         └── js
 ```
 
+### Page Skeleton
 To make the UI between pages consistent, a `skeleton` branch is made to develop the page skeleton HTML structure, which consists of the **main style, container, and sidebar**. The skeleton is separated into a top and bottom part. To use the skeleton, simply write every HTML elements that must go into the `container` div. [For a real example, look at this file](https://github.com/novela15/MAP-PAW-R3/blob/skeleton/views/budget-account/budget-account.php), it only contains the HTML elements for the `budget-account` feature and will automatically wrapped between the skeleton parts by the `FrontController`.
 
 ---

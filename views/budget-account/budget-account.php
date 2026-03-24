@@ -1,6 +1,4 @@
-<?php require_once SKELETON_PATH . "skeleton-top.php"; ?>
-
-<link rel="stylesheet" href="<?php echo VIEWS_PATH; ?>budget-account/budget-account.css">
+            <link rel="stylesheet" href="<?php echo VIEWS_PATH; ?>budget-account/budget-account.css">
 
             <p class="container-header">Akun Anggaran [namabuku]</p>
             <div class="subcontainer">
@@ -33,5 +31,3 @@
                 </table>
                 <div class="bottom-action"><button class="delete-button trash-can-button"><i class="fa-regular fa-trash-can"></i></button><button class="write-button pen-button"><i class="fa-solid fa-pen"></i></i></button></div>
             </div>
-
-<?php require_once SKELETON_PATH . "skeleton-bottom.php"; ?>
