@@ -1,0 +1,21 @@
+<?php
+
+define("SERVER_ROOT_PATH", dirname(__DIR__));
+
+define("CONFIG_PATH", SERVER_ROOT_PATH . DIRECTORY_SEPARATOR . "config" . DIRECTORY_SEPARATOR);
+define("CORE_PATH", SERVER_ROOT_PATH . DIRECTORY_SEPARATOR. "core" . DIRECTORY_SEPARATOR);
+define("MODELS_PATH", SERVER_ROOT_PATH . DIRECTORY_SEPARATOR. "models" . DIRECTORY_SEPARATOR);
+define("VIEWS_PATH", SERVER_ROOT_PATH . DIRECTORY_SEPARATOR. "views" . DIRECTORY_SEPARATOR);
+define("CONTROLLERS_PATH", SERVER_ROOT_PATH . DIRECTORY_SEPARATOR. "controllers" . DIRECTORY_SEPARATOR);
+
+define("SKELETON_PATH", VIEWS_PATH . "skeleton" . DIRECTORY_SEPARATOR);
+
+define("DB_HOST", "localhost");
+define("DB_USER", "root");
+define("DB_PASS", "");
+define("DB_NAME", "map");
+define("DB_CHARSET", "utf8mb4");
+
+define("DEFAULT_PAGE", "budget-account");
+
+?>
