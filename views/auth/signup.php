@@ -28,13 +28,13 @@
 
 		        <div class="input-container button-container">
 		            <button class="signup-email" name="signup_email" type="submit">Sign Up</button>
-		            <div>or</div>
+		            <div>atau</div>
 		            <button class="signup-google" name="signup_google" type="submit">Sign up dengan<img src="https://www.google.com/favicon.ico" loading="lazy"></button>
 		        </div>
             </form>
 
             <div class="sign-in-link">
-                <a href="login">Sudah punya akun? Masuk.</a>
+                <a href="login">Sudah punya akun? Login.</a>
             </div>
         </div>
     </body>

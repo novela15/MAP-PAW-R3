@@ -24,14 +24,14 @@
 		        </div>
 
 		        <div class="input-container button-container">
-		            <button class="login-email" name="login_email">Sign In</button>
-		            <div>or</div>
-		            <button class="login-google" name="login_google">Sign in with<img src="https://www.google.com/favicon.ico" loading="lazy"></button>
+		            <button class="login-email" name="login_email">Login</button>
+		            <div>atau</div>
+		            <button class="login-google" name="login_google">Login dengan<img src="https://www.google.com/favicon.ico" loading="lazy"></button>
 		        </div>
             </form>
 
             <div class="sign-in-link">
-                <a href="signup">Belum punya akun? Daftar.</a>
+                <a href="signup">Belum punya akun? Sign up.</a>
             </div>
         </div>
     </body>
