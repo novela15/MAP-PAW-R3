@@ -29,8 +29,29 @@ class FrontController {
                 $controller = new AuthController();
                 $controller->logout();
                 break;
+            case "budget-book": // Still doesn't exist yet
+                $this->renderFeature(VIEWS_PATH . "budget-book/budget-book.php");
+                break;
+            case "budget-category": // Still doesn't exist yet
+                $this->renderFeature(VIEWS_PATH . "budget-category/budget-category.php");
+                break;
             case "budget-account":
                 $this->renderFeature(VIEWS_PATH . "budget-account/budget-account.php");
+                break;
+            case "record-expense": // Still doesn't exist yet
+                $this->renderFeature(VIEWS_PATH . "record-expense/record-expense.php");
+                break;
+            case "general-journal": // Still doesn't exist yet
+                $this->renderFeature(VIEWS_PATH . "general-journal/general-journal.php");
+                break;
+            case "general-ledger": // Still doesn't exist yet
+                $this->renderFeature(VIEWS_PATH . "general-ledger/general-ledger.php");
+                break;
+            case "budget-realization": // Still doesn't exist yet
+                $this->renderFeature(VIEWS_PATH . "budget-realization/budget-realization.php");
+                break;
+            case "close-book": // Still doesn't exist yet
+                $this->renderFeature(VIEWS_PATH . "close-book/close-book.php");
                 break;
             default:
                 echo "<h1>404</h1>";
