@@ -21,47 +21,47 @@
                 <button class="sidebar-toggle-button" title="Sembunyikan/munculkan sidebar"><i class="fas fa-bars"></i></button>
             </div>
 
-            <div class="sidebar-label">Menu</div>
+            <div class="sidebar-label">MENU</div>
 
-            <button class="sidebar-button budget-book">
+            <a style="text-decoration: none;" class="sidebar-button" href="budget-book">
                 <i class="icon fa-solid fa-book"></i>
                 <span class="text">Buku Anggaran</span>
-            </button>
-            <button class="sidebar-button budget-category">
+            </a>
+            <a style="text-decoration: none;" class="sidebar-button" href="budget-category">
                 <i class="icon fa-solid fa-tag"></i>
                 <span class="text">Kategori Anggaran</span>
-            </button>
-            <button class="sidebar-button budget-account">
+            </a>
+            <a style="text-decoration: none;" class="sidebar-button" href="budget-account">
                 <i class="icon fa-solid fa-university"></i>
                 <span class="text">Akun Anggaran</span>
-            </button>
-            <button class="sidebar-button record-expense">
+            </a>
+            <a style="text-decoration: none;" class="sidebar-button" href="record-expense">
                 <i class="icon fa-solid fa-file-invoice-dollar"></i>
                 <span class="text">Catat Belanja</span>
-            </button>
+            </a>
             <button class="sidebar-button has-submenu">
                 <i class="icon fa-solid fa-chart-bar"></i>
                 <span class="text">Laporan</span>
                 <i class="fas fa-chevron-right submenu-icon"></i>
             </button>
             <div class="submenu hidden">
-                <button class="sidebar-button general-journal">
+                <a style="text-decoration: none;" class="sidebar-button" href="general-journal">
                     <i class="icon fa-solid fa-journal-whills"></i>
                     <span class="text">Jurnal Umum</span>
-                </button>
-                <button class="sidebar-button general-ledger">
+                </a>
+                <a style="text-decoration: none;" class="sidebar-button" href="general-ledger">
                     <i class="icon fa-solid fa-columns"></i>
                     <span class="text">Buku Besar</span>
-                </button>
-                <button class="sidebar-button budget-realization">
+                </a>
+                <a style="text-decoration: none;" class="sidebar-button" href="budget-realization">
                     <i class="icon fa-solid fa-chart-line"></i>
                     <span class="text">Realisasi Anggaran</span>
-                </button>
+                </a>
             </div>
-            <button class="sidebar-button close-book">
+            <a style="text-decoration: none;" class="sidebar-button" href="close-book">
                 <i class="icon fa-solid fa-lock"></i>
                 <span class="text">Tutup Buku</span>
-            </button>
+            </a>
 
             <!--
             This element serves no functional purpose,
