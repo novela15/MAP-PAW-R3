@@ -2,6 +2,14 @@ document.addEventListener("DOMContentLoaded", function(){
 
 const tableBody = document.querySelector(".custom-table tbody");
 const buatButton = document.querySelector(".buat-wrapper");
+const sidebar = document.querySelector(".sidebar");
+const toggleBtn = document.querySelector(".sidebar-toggle");
+const mainContent = document.querySelector(".main-content");
+
+toggleBtn.addEventListener("click", function(){
+    sidebar.classList.toggle("collapsed");
+    mainContent.classList.toggle("full");
+});
 
 // tambah data
 buatButton.addEventListener("click", function(){
@@ -12,7 +20,7 @@ buatButton.addEventListener("click", function(){
     const satuan = prompt("Satuan:");
     const total = prompt("Jumlah Total:");
     const keterangan = prompt("Keterangan:");
-
+    
     if(!tanggal) return;
 
     const row = document.createElement("tr");

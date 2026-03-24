@@ -3,7 +3,6 @@
 
 body {
     background-color: #C1E1DE; 
-    display: flex;
     font-family: 'Inter', sans-serif;
     color: #1E1E1E;
     margin: 0;
@@ -14,7 +13,7 @@ body {
     background-color: #90C1BE; 
     border-radius: 0px 16px 16px 0px;
     height: 100vh;
-    width: 20%;
+    width: 250px;
     position: fixed;
     left: 0; top: 0;
     padding: 1.5rem 1rem;
@@ -69,7 +68,11 @@ body {
 .logout-btn { margin-top: auto; padding-bottom: 1rem; }
 
 /* --- CONTENT STYLE --- */
-.main-content { margin-left: 20%; width: 100%; padding: 2rem 3rem;transition: 0.3s; }
+.main-content {
+    margin-left: 250px;
+    padding: 2rem 3rem;
+    transition: 0.3s;
+}
 
 .page-title {
     font-family: 'Instrument Sans', sans-serif;
@@ -168,4 +171,35 @@ body {
     font-size: 1.3rem; display: flex; align-items: center; justify-content: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     cursor: pointer;
+}
+
+/* === SIDEBAR TOGGLE === */
+.sidebar {
+    transition: transform 0.3s ease;
+}
+
+.sidebar.collapsed {
+    transform: translateX(-100%);
+}
+
+.main-content {
+    transition: 0.3s;
+}
+
+.main-content.full {
+    margin-left: 0;
+}
+
+.sidebar-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 200;
+    background-color: #668685;
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
 }
