@@ -61,5 +61,5 @@ podman run --name myXampp -p 41061:22 -p 41062:80 -d -v ~/server_dir:/www tomsik
 ---
 
 ### Setting Up the Database
-If you just started the server for the first time, the database need t be set up first or the app won't even be functional. To initialize the entire database, open phpMyAdmin, go to the SQL tab, copy [the entire SQL script file content](https://github.com/novela15/MAP-PAW-R3/blob/main/core/database_setup.sql), then click "Go".
+If you just started the server for the first time, the database need to be set up first or the app won't even be functional. To initialize the entire database, open phpMyAdmin, go to the SQL tab, copy [the entire SQL script file content](https://github.com/novela15/MAP-PAW-R3/blob/main/core/database_setup.sql), then click "Go".
 
