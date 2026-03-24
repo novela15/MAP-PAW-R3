@@ -1,6 +1,6 @@
             <link rel="stylesheet" href="<?php echo VIEWS_PATH; ?>budget-account/budget-account.css">
 
-            <p class="container-header">Akun Anggaran [namabuku]</p>
+            <p class="container-header">Akun Anggaran <?php echo $_SESSION["user_name"] ?? "[Unknown]"; ?></p>
             <div class="subcontainer">
                 <div class="horizontal-flex">
                     <p class="container-header">Daftar Akun Anggaran</p>
