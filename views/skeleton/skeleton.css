@@ -2,7 +2,7 @@
 
 :root {
     --sidebar-transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    --sidebar-width-collapsed: 4rem;
+    --sidebar-width-collapsed: 6rem;
     --sidebar-width-full: 20%;
 }
 
@@ -53,8 +53,8 @@ body {
     background: none;
     border: none;
     color: black;
-    font-size: 1.25rem;
     cursor: pointer;
+    font-size: 1.25rem;
     padding: 0.25rem;
 }
 
@@ -62,62 +62,30 @@ body {
     color: black;
 }
 
-.sidebar-search-container {
-    position: relative;
-    margin-bottom: 1rem;
-    padding: 0 0.5rem;
-}
-
-.sidebar-search {
-    width: 100%;
-    background-color: white;
-    border: none;
-    border-radius: 20px;
-    padding: 0.5rem 2rem 0.5rem 1rem;
-    color: #374151;
-    font-size: 0.875rem;
-}
-
-.sidebar-search::placeholder {
-    color: #6b7280;
-}
-
-.sidebar-search-button {
-    position: absolute;
-    right: 1.25rem;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: black;
-    cursor: pointer;
-    font-size: 0.875rem;
-}
-
 .sidebar-label {
     color: black;
     font-size: 0.75rem;
     font-weight: 600;
-    text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 0.5rem;
     margin-left: 0.5rem;
 }
 
 .sidebar-button {
+    align-items: center;
     background: none;
     border: none;
+    border-radius: 8px;
     color: black;
+    cursor: pointer;
+    display: flex;
+    font-size: 0.875rem;
+    height: 2.5rem;
+    justify-content: space-between;
     margin-bottom: 0.25rem;
     padding: 0.5rem 0.75rem;
     text-align: left;
     width: 100%;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.875rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
 
 .sidebar-button:hover {
@@ -160,7 +128,6 @@ body {
 
 .container {
     background-color: #C1E1DE;
-    border-left: 1px solid #90C1BE;
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -169,122 +136,30 @@ body {
     right: 0%;
     top: 0%;
     transition: width var(--sidebar-transition), padding var(--sidebar-transition);
-    width: 80%;
+    width: calc(100% - var(--sidebar-width-full));
 }
 
 .container-header {
+    color: #1f2937;
     font-size: 1.5rem;
     font-weight: 700;
-    color: #1f2937;
     margin: 1rem 1.5rem 0.5rem 1.5rem;
 }
 
 .subcontainer {
     background-color: #E8F5F4;
     border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
     flex-grow: 1;
     margin: 0.5rem 1.5rem 1.5rem 1.5rem;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
-.horizontal-flex {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 1.5rem;
-}
-
-.search-container {
-    position: relative;
-    width: 18rem;
-}
-
-.category-search {
-    width: 100%;
-    background-color: #668685;
-    border: none;
-    border-radius: 20px;
-    padding: 0.625rem 2.5rem 0.625rem 1.25rem;
-    color: white;
-    font-size: 0.875rem;
-}
-
-.category-search::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.search-button {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: rgba(255, 255, 255, 0.8);
-    cursor: pointer;
-}
-
-.search-button:hover {
-    color: white;
-}
-
-.category-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1rem;
-    padding: 0 1.5rem 1.5rem 1.5rem;
-    overflow-y: auto;
-    flex-grow: 1;
-}
-
-.category-card {
-    border-radius: 1rem;
-    padding: 2rem;
-    min-height: 160px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.category-card:hover {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    transform: scale(1.02);
-}
-
-.card-gradient-1 {
-    background-color: #A8C8C7;
-}
-
-.card-gradient-2 {
-    background-color: #C8E2DF;
-}
-
-.card-gradient-3 {
-    background-color: #E7F6F3;
-}
-
-.category-name {
-    font-size: 1.125rem;
-    font-weight: 500;
-    color: #374151;
-    text-align: center;
-    line-height: 1.5;
-}
-
-.category-card:hover .category-name {
-    color: #111827;
 }
 
 /* Sidebar Transition */
 /* Transition classes are applied to documentElement, not the elements themselves! */
 .sidebar-collapsed .sidebar {
-    padding: 1rem 0.5rem;
     width: var(--sidebar-width-collapsed);
 }
 

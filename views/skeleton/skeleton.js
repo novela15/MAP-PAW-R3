@@ -4,12 +4,13 @@ let pathname = window.location.pathname;
 
 // Single elements
 let container = document.querySelector(".container");
-let current_page_button = document.querySelector("." + pathname.substring(pathname.lastIndexOf("/") + 1));
+let current_page_anchor = document.querySelector('a.sidebar-button[href="' + pathname.substring(pathname.lastIndexOf("/") + 1) + '"]');
 let sidebar = document.querySelector(".sidebar");
 let sidebar_toggle_button = document.querySelector(".sidebar-toggle-button");
 
 // Elements list
-let sidebar_buttons = document.querySelectorAll(".sidebar-button");
+let sidebar_anchors = document.querySelectorAll("a.sidebar-button");
+let sidebar_buttons = document.querySelectorAll("button.sidebar-button");
 
 
 function replace_chevron(button, chevron) {
@@ -64,5 +65,8 @@ requestAnimationFrame(() => {
     sidebar.classList.remove("no-transition");
 });
 
+current_page_anchor.classList.add("selected-sidebar-button");
 
-current_page_button.classList.add("selected-sidebar-button");
+if (current_page_anchor.parentElement.classList.contains("submenu")) {
+    current_page_anchor.parentElement.previousElementSibling.click();
+}
