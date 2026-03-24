@@ -3,13 +3,6 @@
 class FrontController {
     private $publicPages = ["login", "signup"];
 
-    private function renderFeature(string $path) {
-        require_once SKELETON_PATH . "skeleton-top.php";
-        include_once $path;
-        require_once SKELETON_PATH . "skeleton-bottom.php";
-    }
-
-    // I feel this will be a giant switch case when all features are combined, but whatever
     public function switchPage(string $page) {
         if (!isset($_SESSION["user_id"]) && !in_array($page, $this->publicPages)) {
             header("Location: login"); 
@@ -30,28 +23,36 @@ class FrontController {
                 $controller->logout();
                 break;
             case "budget-book": // Still doesn't exist yet
-                $this->renderFeature(VIEWS_PATH . "budget-book/budget-book.php");
+                $page_content = VIEWS_PATH . "budget-book/budget-book.php";
+                require_once SKELETON_PATH . "skeleton.php";
                 break;
             case "budget-category": // Still doesn't exist yet
-                $this->renderFeature(VIEWS_PATH . "budget-category/budget-category.php");
+                $page_content = VIEWS_PATH . "budget-category/budget-category.php";
+                require_once SKELETON_PATH . "skeleton.php";
                 break;
             case "budget-account":
-                $this->renderFeature(VIEWS_PATH . "budget-account/budget-account.php");
+                $page_content = VIEWS_PATH . "budget-account/budget-account.php";
+                require_once SKELETON_PATH . "skeleton.php";
                 break;
             case "record-expense": // Still doesn't exist yet
-                $this->renderFeature(VIEWS_PATH . "record-expense/record-expense.php");
+                $page_content = VIEWS_PATH . "record-expense/record-expense.php";
+                require_once SKELETON_PATH . "skeleton.php";
                 break;
             case "general-journal": // Still doesn't exist yet
-                $this->renderFeature(VIEWS_PATH . "general-journal/general-journal.php");
+                $page_content = VIEWS_PATH . "general-journal/general-journal.php";
+                require_once SKELETON_PATH . "skeleton.php";
                 break;
             case "general-ledger": // Still doesn't exist yet
-                $this->renderFeature(VIEWS_PATH . "general-ledger/general-ledger.php");
+                $page_content = VIEWS_PATH . "general-ledger/general-ledger.php";
+                require_once SKELETON_PATH . "skeleton.php";
                 break;
             case "budget-realization": // Still doesn't exist yet
-                $this->renderFeature(VIEWS_PATH . "budget-realization/budget-realization.php");
+                $page_content = VIEWS_PATH . "budget-realization/budget-realization.php";
+                require_once SKELETON_PATH . "skeleton.php";
                 break;
             case "close-book": // Still doesn't exist yet
-                $this->renderFeature(VIEWS_PATH . "close-book/close-book.php");
+                $page_content = VIEWS_PATH . "close-book/close-book.php";
+                require_once SKELETON_PATH . "skeleton.php";
                 break;
             default:
                 echo "<h1>404</h1>";
