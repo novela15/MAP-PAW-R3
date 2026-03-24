@@ -23,7 +23,7 @@
 
             <div class="sidebar-label">Menu</div>
 
-            <button class="sidebar-button">
+            <button class="sidebar-button budget-book">
                 <i class="icon fa-solid fa-book"></i>
                 <span class="text">Buku Anggaran</span>
             </button>
@@ -35,7 +35,7 @@
                 <i class="icon fa-solid fa-university"></i>
                 <span class="text">Akun Anggaran</span>
             </button>
-            <button class="sidebar-button">
+            <button class="sidebar-button record-expense">
                 <i class="icon fa-solid fa-file-invoice-dollar"></i>
                 <span class="text">Catat Belanja</span>
             </button>
@@ -45,24 +45,28 @@
                 <i class="fas fa-chevron-right submenu-icon"></i>
             </button>
             <div class="submenu hidden">
-                <button class="sidebar-button">
+                <button class="sidebar-button general-journal">
                     <i class="icon fa-solid fa-journal-whills"></i>
                     <span class="text">Jurnal Umum</span>
                 </button>
-                <button class="sidebar-button selected-sidebar-button">
+                <button class="sidebar-button general-ledger">
                     <i class="icon fa-solid fa-columns"></i>
                     <span class="text">Buku Besar</span>
                 </button>
-                <button class="sidebar-button">
+                <button class="sidebar-button budget-realization">
                     <i class="icon fa-solid fa-chart-line"></i>
                     <span class="text">Realisasi Anggaran</span>
                 </button>
             </div>
-            <button class="sidebar-button">
+            <button class="sidebar-button close-book">
                 <i class="icon fa-solid fa-lock"></i>
                 <span class="text">Tutup Buku</span>
             </button>
 
+            <!--
+            This element serves no functional purpose,
+            it's only used to push the logout button all the way down.
+            -->
             <div class="filler"></div>
 
             <form action="logout" method="POST">
