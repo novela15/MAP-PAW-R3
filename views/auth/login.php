@@ -16,7 +16,7 @@
 
     <body>
         <div class="registration-container">
-            <p class="header">Sign In</p>
+            <p class="header">Login</p>
 
             <form action="login" method="POST">
 		        <div class="input-container">
