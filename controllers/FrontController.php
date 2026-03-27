@@ -1,25 +1,37 @@
 <?php
 
-class FrontController {
-    private $publicPages = ["login", "signup"];
+require_once CONTROLLERS_PATH . "AuthController.php";
+require_once UTILITIES_PATH . "AuthHelper.php";
 
-    public function switchPage(string $page) {
-        if (!isset($_SESSION["user_id"]) && !in_array($page, $this->publicPages)) {
+class FrontController {
+    private AuthHelper $authHelper;
+
+    public function __construct() {
+        $this->authHelper = new AuthHelper();
+    }
+
+    public function render(string $page) {
+        if (!$this->authHelper->isLoggedIn() && !in_array($page, PUBLIC_PAGES)) {
             header("Location: login"); 
+            exit();
+        }
+
+        if ($this->authHelper->isLoggedIn() && in_array($page, NO_SESSION_PAGES)) {
+            header("Location: " . DEFAULT_PAGE); 
             exit();
         }
 
         switch ($page) {
             case "login":
-                $controller = new AuthController();
+                $controller = new AuthController($this->authHelper);
                 $controller->login();
                 break;
             case "signup":
-                $controller = new AuthController();
+                $controller = new AuthController($this->authHelper);
                 $controller->signup();
                 break;
             case "logout":
-                $controller = new AuthController();
+                $controller = new AuthController($this->authHelper);
                 $controller->logout();
                 break;
             case "budget-book": // Still doesn't exist yet
@@ -63,7 +75,7 @@ class FrontController {
                 require_once SKELETON_PATH . "skeleton.php";
                 break;
             default:
-                echo "<h1>404</h1>";
+                echo "<h1>404 Page not found.</h1>";
                 break;
         }
     }
