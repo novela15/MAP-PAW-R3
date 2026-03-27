@@ -1,28 +1,38 @@
 <?php
 
+require_once MODELS_PATH . "UserModel.php";
+
 class AuthController {
+    private AuthHelper $authHelper;
+    private UserModel $userModel;
+
+    public function __construct($authHelper) {
+        $this->authHelper = $authHelper;
+        $this->userModel = new UserModel();
+    }
+
     public function login() {
-        if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["login_email"])) {
-            $email = filter_var(trim($_POST["email_input"], FILTER_SANITIZE_EMAIL));
-            $password = $_POST["password_input"] ?? "";
+        if ($_SERVER["REQUEST_METHOD"] !== "POST" || !isset($_POST["login_email"])) {
+            include_once VIEWS_PATH . "auth/login.php";
+            exit;
+        }
 
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $email_error = "Email tidak valid.";
-                include_once VIEWS_PATH . "auth/login.php";
-                exit;
-            }
+        $email = filter_var(trim($_POST["email_input"], FILTER_SANITIZE_EMAIL));
+        $password = $_POST["password_input"] ?? "";
 
-            $db = Database::getInstance();
-            $user = $db->query("SELECT * FROM users WHERE email = ?", [$email])->fetch();
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $email_error = "Email tidak valid.";
+            include_once VIEWS_PATH . "auth/login.php";
+            exit;
+        }
 
-            if ($user && password_verify($password, $user["password"])) {
-                $_SESSION["user_id"] = $user["id"];
-                $_SESSION["user_name"] = $user["username"];
-                header("Location: " . DEFAULT_PAGE);
-                exit;
-            } else {
-                include_once VIEWS_PATH . "auth/login.php";
-            }
+        $user = $this->userModel->authenticate($email, $password);
+
+        if ($user) {
+            $this->authHelper->updateSession($user["id"], $user["username"]);
+
+            header("Location: " . DEFAULT_PAGE);
+            exit;
         } else {
             include_once VIEWS_PATH . "auth/login.php";
         }
@@ -59,24 +69,20 @@ class AuthController {
                 exit;
             }
 
-            $db = Database::getInstance();
-
             try {
-                $email_check = $db->query("SELECT id FROM users WHERE email = ?", [$email])->fetch();
-
-                if ($email_check) {
+                if ($this->userModel->findUserByEmail($email)) {
                     $email_error = "Email sudah terdaftar.";
                     include_once VIEWS_PATH . "auth/signup.php";
                     exit;
                 }
 
-                $db->query(
-                    "INSERT INTO users (username, email, password) VALUES (?, ?, ?)",
-                    [$username, $email, password_hash($password, PASSWORD_DEFAULT)]
-                );
+                $newUser = $this->userModel->create([
+                    "username" => $username,
+                    "email" => $email,
+                    "password" => $password,
+                ]);
 
-                $_SESSION["user_id"] = $db->getConnection()->lastInsertId();
-                $_SESSION["user_name"] = $username;
+                $this->authHelper->updateSession($newUser["id"], $username);
 
                 header("Location: " . DEFAULT_PAGE);
                 exit;
