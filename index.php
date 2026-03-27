@@ -1,14 +1,11 @@
 <?php
 
-session_start();
-
 // Core
 require_once __DIR__ . "/core/config.php";
 require_once __DIR__ . "/core/Database.php";
 
 // Controllers
 require_once CONTROLLERS_PATH . "FrontController.php";
-require_once CONTROLLERS_PATH . "AuthController.php";
 
 // Replace backslash with slash (if the server runs on Windows)
 $script_directory = str_replace("\\", "/", dirname($_SERVER["SCRIPT_NAME"]));
@@ -19,14 +16,9 @@ $page = trim($page, "/");
 
 try {
     $front_controller = new FrontController();
-
-    if (isset($_SESSION["user_id"]) && ($page === "login" || $page === "signup")) {
-        header("Location: " . DEFAULT_PAGE);
-    } else {
-        $front_controller->switchPage($page);
-    }
+    $front_controller->render($page);
 } catch (Exception $exception) {
-    echo "Something went wrong.";
+    echo "<h1>500 Something went wrong.</h1>";
 }
 
 ?>
