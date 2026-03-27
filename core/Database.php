@@ -37,10 +37,14 @@ class Database {
         return self::$instance;
     }
 
-    public function query(string $sql, array $parameters = []) {
-        $statement = $this->connection->prepare($sql);
-        $statement->execute($parameters);
-        return $statement;
+    public function query(string $sql, array $parameters = []): PDOStatement|bool {
+        try {
+            $statement = $this->connection->prepare($sql);
+            $statement->execute($parameters);
+            return $statement;
+        } catch (PDOException $exception) {
+            return false;
+        }
     }
 }
 
