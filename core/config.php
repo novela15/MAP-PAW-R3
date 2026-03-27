@@ -5,6 +5,7 @@ define("SERVER_ROOT_PATH", dirname(__DIR__));
 define("CONFIG_PATH", SERVER_ROOT_PATH . DIRECTORY_SEPARATOR . "config" . DIRECTORY_SEPARATOR);
 define("CORE_PATH", SERVER_ROOT_PATH . DIRECTORY_SEPARATOR. "core" . DIRECTORY_SEPARATOR);
 define("MODELS_PATH", SERVER_ROOT_PATH . DIRECTORY_SEPARATOR. "models" . DIRECTORY_SEPARATOR);
+define("UTILITIES_PATH", SERVER_ROOT_PATH . DIRECTORY_SEPARATOR. "utilities" . DIRECTORY_SEPARATOR);
 define("VIEWS_PATH", SERVER_ROOT_PATH . DIRECTORY_SEPARATOR. "views" . DIRECTORY_SEPARATOR);
 define("CONTROLLERS_PATH", SERVER_ROOT_PATH . DIRECTORY_SEPARATOR. "controllers" . DIRECTORY_SEPARATOR);
 
@@ -17,5 +18,7 @@ define("DB_NAME", "map");
 define("DB_CHARSET", "utf8mb4");
 
 define("DEFAULT_PAGE", "budget-account");
+define("NO_SESSION_PAGES", ["login", "signup"]); // Pages forbidden to access while being logged in
+define("PUBLIC_PAGES", ["login", "signup"]); // Pages accessible without being logged in
 
 ?>
