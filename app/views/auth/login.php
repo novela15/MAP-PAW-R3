@@ -11,6 +11,7 @@
 
         <title>MAP - Login</title>
 
+        <link rel="icon" type="image/x-icon" href="<?php echo ASSETS_PATH; ?>favicon.ico">
         <link rel="stylesheet" href="<?php echo FRONTEND_PATH; ?>auth/auth.css">
     </head>
 
