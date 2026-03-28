@@ -26,7 +26,7 @@ class AuthController {
             exit;
         }
 
-        if (!$this->userModel->getUserByEmail($user[$email])) {
+        if (!$this->userModel->getUserByEmail($email)) {
             $email_error = "Email tidak ditemukan.";
             include_once VIEWS_PATH . "auth/login.php";
             exit;

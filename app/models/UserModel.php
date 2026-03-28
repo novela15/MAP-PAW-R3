@@ -8,7 +8,7 @@ class UserModel {
     }
 
     public function authenticate(string $email, string $password): array|bool {
-        $user = $this->findUserByEmail($email);
+        $user = $this->getUserByEmail($email);
 
         if ($user && password_verify($password, $user["password"])) {
             return $user;
@@ -23,7 +23,7 @@ class UserModel {
             [$data["username"], $data["email"], password_hash($data["password"], PASSWORD_DEFAULT)]
         );
 
-        return $this->findUserById($this->db->getConnection()->lastInsertId());
+        return $this->getUserById($this->db->getConnection()->lastInsertId());
     }
 
     public function getUserByEmail(string $email): array|bool {
