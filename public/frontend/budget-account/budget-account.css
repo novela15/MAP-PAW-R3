@@ -1,0 +1,123 @@
+.horizontal-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.add-container {
+    box-sizing: border-box;
+    height: 4rem;
+    margin-left: auto;
+    width: fit-content;
+}
+
+.add-container div {
+    font-size: 1.25rem;
+    line-height: 0.75rem;
+    margin-left: 0.5rem;
+    margin-right: 1rem;
+    margin-top: 1.5rem;
+    width: fit-content;
+}
+
+.add-button {
+    background-color: #668685;
+    border: none;
+    border-radius: 8px;
+    color: whitesmoke;
+    font-size: 1.5rem;
+    line-height: 0.75rem;
+    height: 2rem;
+    margin-top: 1rem;
+    width: 2rem;
+}
+
+.add-button:hover {
+    background-color: #324444;
+}
+
+.add-button:active {
+    background-color: #192222;
+}
+
+.budget-account-table {
+    border-collapse: collapse;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    table-layout: auto;
+    width: calc(100% - 2rem);
+}
+
+.budget-account-table th {
+    background-color: #477B79;
+    color: whitesmoke;
+    text-align: center;
+}
+
+.budget-account-table td {
+    background-color: white;
+}
+
+.budget-account-table, th, td {
+    border: 1px solid #B9B9B9;
+    height: 1rem;
+    padding: 0.5rem;
+}
+
+.table-action {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 1fr 1fr;
+    margin: auto;
+    place-items: center;
+    width: fit-content;
+}
+
+.bottom-action {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 1fr 1fr;
+    margin-left: auto;
+    margin-right: 1rem;
+    margin-top: 2rem;
+    place-items: center;
+    width: fit-content;
+}
+
+.pen-button {
+    background-color: #668685;
+    border: none;
+    border-radius: 8px;
+    color: whitesmoke;
+    font-size: 1.5rem;
+    line-height: 0.75rem;
+    height: 2rem;
+    width: 2rem;
+}
+
+.pen-button:hover {
+    background-color: #324444;
+}
+
+.pen-button:active {
+    background-color: #192222;
+}
+
+.trash-can-button {
+    background-color: #CF3234;
+    border: none;
+    border-radius: 8px;
+    color: whitesmoke;
+    font-size: 1.5rem;
+    line-height: 0.75rem;
+    height: 2rem;
+    width: 2rem;
+}
+
+.trash-can-button:hover {
+    background-color: #641919;
+}
+
+.trash-can-button:active {
+    background-color: #320c0c;
+}

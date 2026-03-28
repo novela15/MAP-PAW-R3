@@ -11,7 +11,7 @@
 
         <title>MAP - Sign Up</title>
 
-        <link rel="stylesheet" href="<?php echo VIEWS_PATH; ?>auth/auth.css">
+        <link rel="stylesheet" href="<?php echo FRONTEND_PATH; ?>auth/auth.css">
     </head>
 
     <body>
