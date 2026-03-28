@@ -14,7 +14,7 @@
 
         <title>MAP - <?php echo $page_title ?? "Unknown"; ?></title>
 
-        <link rel="stylesheet" href="<?php echo SKELETON_PATH; ?>skeleton.css">
+        <link rel="stylesheet" href="<?php echo FRONTEND_PATH; ?>skeleton/skeleton.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     </head>
 
@@ -91,7 +91,7 @@
             ?>
         </div>
 
-        <script src="<?php echo SKELETON_PATH; ?>skeleton.js"></script>
+        <script src="<?php echo FRONTEND_PATH; ?>skeleton/skeleton.js"></script>
     </body>
 </html>
 
