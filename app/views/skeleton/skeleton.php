@@ -14,7 +14,8 @@
 
         <title>MAP - <?php echo $page_title ?? "Unknown"; ?></title>
 
-        <link rel="stylesheet" href="<?php echo FRONTEND_PATH; ?>skeleton/skeleton.css">
+        <link rel="icon" type="image/x-icon" href="<?php echo ASSETS_PATH; ?>favicon.ico">
+        <link rel="stylesheet" href="<?php echo FRONTEND_PATH; ?>skeleton/skeleton.css?v=<?php echo time();?>">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     </head>
 
@@ -22,23 +23,25 @@
         <div class="sidebar no-transition">
             <div class="sidebar-header">
                 <button class="sidebar-toggle-button" title="Sembunyikan/munculkan sidebar"><i class="fas fa-bars"></i></button>
+                <div class="filler"></div>
+                <img class="sidebar-icon" src="<?php echo ASSETS_PATH; ?>map_icon_256.png">
             </div>
 
             <div class="sidebar-label">MENU</div>
 
-            <a style="text-decoration: none;" class="sidebar-button" href="budget-book">
+            <a class="sidebar-button" href="budget-book">
                 <i class="icon fa-solid fa-book"></i>
                 <span class="text">Buku Anggaran</span>
             </a>
-            <a style="text-decoration: none;" class="sidebar-button" href="budget-category">
+            <a class="sidebar-button" href="budget-category">
                 <i class="icon fa-solid fa-tag"></i>
                 <span class="text">Kategori Anggaran</span>
             </a>
-            <a style="text-decoration: none;" class="sidebar-button" href="budget-account">
+            <a class="sidebar-button" href="budget-account">
                 <i class="icon fa-solid fa-university"></i>
                 <span class="text">Akun Anggaran</span>
             </a>
-            <a style="text-decoration: none;" class="sidebar-button" href="record-expense">
+            <a class="sidebar-button" href="record-expense">
                 <i class="icon fa-solid fa-file-invoice-dollar"></i>
                 <span class="text">Catat Belanja</span>
             </a>
@@ -48,20 +51,20 @@
                 <i class="fas fa-chevron-right submenu-icon"></i>
             </button>
             <div class="submenu hidden">
-                <a style="text-decoration: none;" class="sidebar-button" href="general-journal">
+                <a class="sidebar-button" href="general-journal">
                     <i class="icon fa-solid fa-journal-whills"></i>
                     <span class="text">Jurnal Umum</span>
                 </a>
-                <a style="text-decoration: none;" class="sidebar-button" href="general-ledger">
+                <a class="sidebar-button" href="general-ledger">
                     <i class="icon fa-solid fa-columns"></i>
                     <span class="text">Buku Besar</span>
                 </a>
-                <a style="text-decoration: none;" class="sidebar-button" href="budget-realization">
+                <a class="sidebar-button" href="budget-realization">
                     <i class="icon fa-solid fa-chart-line"></i>
                     <span class="text">Realisasi Anggaran</span>
                 </a>
             </div>
-            <a style="text-decoration: none;" class="sidebar-button" href="close-book">
+            <a class="sidebar-button" href="close-book">
                 <i class="icon fa-solid fa-lock"></i>
                 <span class="text">Tutup Buku</span>
             </a>
