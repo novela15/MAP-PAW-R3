@@ -20,7 +20,7 @@ class AuthController {
         }
 
         if (!$this->validator->validateArray($_POST)) {
-            $errors = $validator->getErrors();
+            $errors = $this->validator->getErrors();
             include_once VIEWS_PATH . "auth/login.php";
             exit;
         }
@@ -46,7 +46,7 @@ class AuthController {
         }
 
         if (!$this->validator->validateArray($_POST)) {
-            $errors = $validator->getErrors();
+            $errors = $this->validator->getErrors();
             include_once VIEWS_PATH . "auth/signup.php";
             exit;
         }
