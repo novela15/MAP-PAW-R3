@@ -1,8 +1,5 @@
 <?php
 
-require_once CONTROLLERS_PATH . "AuthController.php";
-require_once UTILITIES_PATH . "AuthHelper.php";
-
 class FrontController {
     private AuthHelper $authHelper;
 

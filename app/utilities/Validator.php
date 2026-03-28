@@ -1,7 +1,5 @@
 <?php
 
-require_once MODELS_PATH . "UserModel.php";
-
 class Validator {
     private array $errors = [];
 
@@ -12,11 +10,13 @@ class Validator {
     }
 
     private function password(string $password, array $data) {
-        if (strlen($password) < 6 || strlen($data["confirm_password_input"]) < 6) {
+        if (!isset($data["password_confirm_input"])) { return; }
+
+        if (strlen($password) < 6 || strlen($data["password_confirm_input"]) < 6) {
             $this->errors["password"] = "Password minimal 6 karakter.";
         }
 
-        if ($password !== $data["confirm_password_input"]) {
+        if ($password !== $data["password_confirm_input"]) {
             $this->errors["password"] = "Password tidak cocok.";
         }
     }

@@ -1,12 +1,9 @@
 <?php
 
 require_once "../app/core/config.php";
+require_once UTILITIES_PATH . "Autoloader.php";
 
-// Core
-require_once CORE_PATH . "Database.php";
-
-// Controllers
-require_once CONTROLLERS_PATH . "FrontController.php";
+Autoloader::register();
 
 // Replace backslash with slash (if the server runs on Windows)
 $script_directory = str_replace("\\", "/", dirname($_SERVER["SCRIPT_NAME"], 2));
