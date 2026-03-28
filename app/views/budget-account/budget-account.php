@@ -1,4 +1,4 @@
-            <link rel="stylesheet" href="<?php echo VIEWS_PATH; ?>budget-account/budget-account.css">
+            <link rel="stylesheet" href="<?php echo FRONTEND_PATH; ?>budget-account/budget-account.css">
 
             <p class="container-header">Akun Anggaran <?php echo $_SESSION["user_name"] ?? "[Unknown]"; ?></p>
             <div class="subcontainer">
