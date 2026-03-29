@@ -187,6 +187,10 @@ body {
     display: none;
 }
 
+.sidebar-collapsed .sidebar .sidebar-header .sidebar-icon {
+    display: none;
+}
+
 .sidebar-collapsed .sidebar .sidebar-label {
     visibility: hidden;
 }
