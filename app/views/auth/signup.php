@@ -12,35 +12,34 @@
         <title>MAP - Sign Up</title>
 
         <link rel="icon" type="image/x-icon" href="<?php echo ASSETS_PATH; ?>favicon.ico">
-        <link rel="stylesheet" href="<?php echo FRONTEND_PATH; ?>auth/auth.css">
+        <link rel="stylesheet" href="<?php echo FRONTEND_PATH; ?>auth/auth.css?v=<?php echo time();?>">
     </head>
 
     <body>
         <div class="registration-container">
-            <p class="header">Sign Up</p>
+            <img class="logo" src="<?php echo ASSETS_PATH; ?>map_icon_256.png">
+            <p class="header">Daftar</p>
 
             <form action="signup" method="POST">
 		        <div class="input-container">
 		            <p class="input-label">Username</p>
-		            <input class="input username-input" name="username_input" type="text" placeholder="<?php echo $error["username"] ?? "Username"; ?>">
+		            <input class="input username-input" name="username_input" type="text" placeholder="<?php echo $errors["username"] ?? "Username"; ?>">
 		            <p class="input-label">Email</p>
-		            <input class="input email-input" name="email_input" type="email" placeholder="<?php echo $error["email"] ?? "Email"; ?>">
+		            <input class="input email-input" name="email_input" type="email" placeholder="<?php echo $errors["email"] ?? "Email"; ?>">
 		            <p class="input-label">Password</p>
-		            <input class="input password-input" name="password_input" type="password" placeholder="<?php echo $error["password"] ?? "Password (minimal 6 karakter)"; ?>">
+		            <input class="input password-input" name="password_input" type="password" placeholder="<?php echo $errors["password"] ?? "Password (minimal 6 karakter)"; ?>">
 		            <p class="input-label">Konfirmasi Password</p>
-		            <input class="input password-confirm-input" name="password_confirm_input" type="password" placeholder="<?php echo $error["password"] ?? "Konfirmasi Password"; ?>">
+		            <input class="input password-confirm-input" name="password_confirm_input" type="password" placeholder="<?php echo $errors["password"] ?? "Konfirmasi Password"; ?>">
 		        </div>
 
 		        <div class="input-container button-container">
-		            <button class="signup-email" name="signup_email" type="submit">Sign Up</button>
+		            <button class="signup-email" name="signup_email" type="submit">Daftar</button>
 		            <div>atau</div>
-		            <button class="signup-google" name="signup_google" type="submit">Sign up dengan<img src="https://www.google.com/favicon.ico" loading="lazy"></button>
+		            <button class="signup-google" name="signup_google" type="submit">Daftar dengan<img src="https://www.google.com/favicon.ico" loading="lazy"></button>
 		        </div>
             </form>
 
-            <div class="sign-in-link">
-                <a href="login">Sudah punya akun? Login.</a>
-            </div>
+            <div class="link">Sudah punya akun? <a href="login">Masuk</a></div>
         </div>
     </body>
 </html>

@@ -12,32 +12,31 @@
         <title>MAP - Login</title>
 
         <link rel="icon" type="image/x-icon" href="<?php echo ASSETS_PATH; ?>favicon.ico">
-        <link rel="stylesheet" href="<?php echo FRONTEND_PATH; ?>auth/auth.css">
+        <link rel="stylesheet" href="<?php echo FRONTEND_PATH; ?>auth/auth.css?v=<?php echo time();?>">
     </head>
 
     <body>
         <div class="registration-container">
-            <p class="header">Login</p>
+            <img class="logo" src="<?php echo ASSETS_PATH; ?>map_icon_256.png">
+            <p class="header">Masuk</p>
 
             <form action="login" method="POST">
 		        <div class="input-container">
 		            <p class="input-label">Email</p>
-		            <input class="input email-input" name="email_input" type="email" placeholder="<?php echo $error["email"] ?? "Email"; ?>">
+		            <input class="input email-input" name="email_input" type="email" placeholder="<?php echo $errors["email"] ?? "Email"; ?>">
 		            <p class="input-label">Password</p>
-		            <input class="input password-input" name="password_input" type="password" placeholder="<?php echo $error["password"] ?? "Password"; ?>">
+		            <input class="input password-input" name="password_input" type="password" placeholder="<?php echo $errors["password"] ?? "Password"; ?>">
 		            <a href="" class="forgot-password">Lupa password?</a>
 		        </div>
 
 		        <div class="input-container button-container">
-		            <button class="login-email" name="login_email">Login</button>
+		            <button class="login-email" name="login_email">Masuk</button>
 		            <div>atau</div>
-		            <button class="login-google" name="login_google">Login dengan<img src="https://www.google.com/favicon.ico" loading="lazy"></button>
+		            <button class="login-google" name="login_google">Masuk dengan<img src="https://www.google.com/favicon.ico" loading="lazy"></button>
 		        </div>
             </form>
 
-            <div class="sign-in-link">
-                <a href="signup">Belum punya akun? Sign up.</a>
-            </div>
+            <div class="link">Belum punya akun? <a href="signup">Daftar</a></div>
         </div>
     </body>
 </html>
