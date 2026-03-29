@@ -94,7 +94,7 @@
             ?>
         </div>
 
-        <script src="<?php echo FRONTEND_PATH; ?>skeleton/skeleton.js"></script>
+        <script src="<?php echo FRONTEND_PATH; ?>skeleton/skeleton.js?v=<?php echo time();?>"></script>
     </body>
 </html>
 
