@@ -22,11 +22,13 @@ function replace_chevron(button, chevron) {
 
 
 function set_tooltips(current_state) {
-    for (const button of sidebar_buttons) {
-        if (current_state === "true") {
-            button.title = button.querySelector(".text").textContent;
-        } else {
-            button.removeAttribute("title");
+    for (const array of [sidebar_anchors, sidebar_buttons]) {
+        for (const button of array) {
+            if (current_state === "true") {
+                button.title = button.querySelector(".text").textContent;
+            } else {
+                button.removeAttribute("title");
+            }
         }
     }
 }
@@ -70,3 +72,5 @@ current_page_anchor.classList.add("selected-sidebar-button");
 if (current_page_anchor.parentElement.classList.contains("submenu")) {
     current_page_anchor.parentElement.previousElementSibling.click();
 }
+
+set_tooltips(document.documentElement.classList.contains("sidebar-collapsed").toString());
