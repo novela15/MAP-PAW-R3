@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 
-<?php
-// TODO: Add a blurred MAP logo as the background.
-?>
-
 <html>
     <head>
         <meta charset="UTF-8">
