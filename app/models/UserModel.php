@@ -26,18 +26,14 @@ class UserModel {
         return $this->getUserById($this->db->getConnection()->lastInsertId());
     }
 
-    public function getUserByEmail(string $email): array|bool {
+    public function getUserByEmail(string $email): array {
         $statement = $this->db->query("SELECT * FROM users WHERE email = ?", [$email]);
-        if (!$statement) { return false; }
-
-        return $statement->fetch();
+        return $statement->fetch() ?: [];
     }
 
-    public function getUserById(string $id): array|bool {
+    public function getUserById(string $id): array {
         $statement = $this->db->query("SELECT * FROM users WHERE id = ?", [$id]);
-        if (!$statement) { return false; }
-
-        return $statement->fetch();
+        return $statement->fetch() ?: [];
     }
 }
 
