@@ -1,5 +1,7 @@
 # MAP-PAW-R3
 
+![Overview screenshots of the web app](overview.png)
+
 ### Attention to Group Members
 
 This web app uses the MVC architecture pattern. The files are separated into `/app` which is used to contain **backend-only** files that are inaccessible to users and `/public` which is used to contain user accessible (frontend) files.
