@@ -27,7 +27,7 @@ class AuthController {
 
         $user = $this->userModel->authenticate($_POST["email_input"], $_POST["password_input"]);
 
-        if ($user) {
+        if (!empty($user)) {
             $this->authHelper->updateSession($user["id"], $user["username"]);
             header("Location: " . DEFAULT_PAGE);
             exit;
@@ -52,7 +52,7 @@ class AuthController {
         }
 
         try {
-            if ($this->userModel->getUserByEmail($_POST["email_input"])) {
+            if (!empty($this->userModel->getUserByEmail($_POST["email_input"]))) {
                 $errors["email"] = "Email tidak valid.";
                 include_once VIEWS_PATH . "auth/signup.php";
                 exit;
