@@ -6,19 +6,15 @@ class Database {
     private $connection;
 
     private function __construct() {
-        try {
-            $this->connection = new PDO(
-                "mysql:host=" . DB_HOST . ";dbname=". DB_NAME .";charset=" . DB_CHARSET,
-                DB_USER,
-                DB_PASS,
-                [
-                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-                ]
-            );
-        } catch (PDOException $exception) {
-            echo "Database Connection Error: " . $exception->getMessage();
-        }
+        $this->connection = new PDO(
+            "mysql:host=" . DB_HOST . ";dbname=". DB_NAME .";charset=" . DB_CHARSET,
+            DB_USER,
+            DB_PASS,
+            [
+             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+            ]
+        );
     }
 
     private function __clone() {}
@@ -37,14 +33,10 @@ class Database {
         return self::$instance;
     }
 
-    public function query(string $sql, array $parameters = []): PDOStatement|bool {
-        try {
-            $statement = $this->connection->prepare($sql);
-            $statement->execute($parameters);
-            return $statement;
-        } catch (PDOException $exception) {
-            return false;
-        }
+    public function query(string $sql, array $parameters = []): PDOStatement {
+        $statement = $this->connection->prepare($sql);
+        $statement->execute($parameters);
+        return $statement;
     }
 }
 
