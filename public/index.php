@@ -16,7 +16,17 @@ try {
     $front_controller = new FrontController();
     $front_controller->render($page);
 } catch (Exception $exception) {
+    if (ob_get_level() > 0) {
+        ob_end_clean();
+    }
+
+    http_response_code(500);
+
     echo "<h1>500 Something went wrong.</h1>";
+
+    if (ENVIRONMENT === "dev") {
+        echo $exception->getMessage();
+    }
 }
 
 ?>
