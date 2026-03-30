@@ -21,6 +21,8 @@ define("DB_PASS", "");
 define("DB_NAME", "map");
 define("DB_CHARSET", "utf8mb4");
 
+define("ENVIRONMENT", "dev");
+
 define("DEFAULT_PAGE", "budget-account");
 define("NO_SESSION_PAGES", ["login", "signup"]); // Pages forbidden to access while being logged in
 define("PUBLIC_PAGES", ["login", "signup"]); // Pages accessible without being logged in
