@@ -26,7 +26,7 @@ class BudgetAccountModel {
 
     public function getAllByUserId(int $id): array {
         $statement = $this->db->query("SELECT * FROM budget_accounts WHERE user_id = ?", [$id]);
-        return $statement->fetch() ?: [];
+        return $statement->fetchAll() ?: [];
     }
 }
 
