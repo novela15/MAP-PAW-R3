@@ -44,6 +44,10 @@ class FrontController {
             case "budget-account":
                 $page_content = VIEWS_PATH . "budget-account/budget-account.php";
                 $page_title = "Budget Account";
+
+                $budgetAccountModel = new BudgetAccountModel();
+                $budgetAccountTables = $budgetAccountModel->getAllByUserId(1);
+
                 require_once SKELETON_PATH . "skeleton.php";
                 break;
             case "record-expense": // Still doesn't exist yet
