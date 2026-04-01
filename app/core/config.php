@@ -18,7 +18,7 @@ define("SKELETON_PATH", VIEWS_PATH . "skeleton" . DIRECTORY_SEPARATOR);
 define("DB_HOST", "localhost");
 define("DB_USER", "root");
 define("DB_PASS", "");
-define("DB_NAME", "map");
+define("DB_NAME", "map_paw_r3");
 define("DB_CHARSET", "utf8mb4");
 
 define("ENVIRONMENT", "dev");
