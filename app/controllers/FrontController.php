@@ -46,7 +46,7 @@ class FrontController {
                 $page_title = "Budget Account";
 
                 $budgetAccountModel = new BudgetAccountModel();
-                $budgetAccountTables = $budgetAccountModel->getAllByUserId(1);
+                $budgetAccountTables = $budgetAccountModel->getAllByUserId($_SESSION["user_id"]);
 
                 require_once SKELETON_PATH . "skeleton.php";
                 break;
