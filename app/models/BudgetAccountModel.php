@@ -37,7 +37,6 @@ class BudgetAccountModel {
         );
 
         $data = $statement->fetch();
-
         if (!$data) return false;
 
         $pengeluaranBaru = $data["pengeluaran"] + $tambahan;
@@ -45,13 +44,14 @@ class BudgetAccountModel {
         $hasil = $this->hitungAnggaran($data["amount"], $pengeluaranBaru);
 
         // Update
-        $this->db->query(
-            "UPDATE budget_accounts SET 
+        $this->db->query("
+            UPDATE budget_accounts SET 
                 pengeluaran = ?, 
                 sisa = ?, 
                 realisasi = ?, 
                 status = ?
-            WHERE id = ?",
+            WHERE id = ?
+            ",
             [
                 $pengeluaranBaru,
                 $hasil["sisa"],
