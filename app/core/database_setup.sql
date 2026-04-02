@@ -6,19 +6,38 @@ CREATE TABLE map_paw_r3.users (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(100) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
-    password VARCHAR(255) DEFAULT NULL, -- Actually this is the password hash
+    password_hash VARCHAR(255) DEFAULT NULL,
     registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- TODO: volume, unit, and amount should be joined from budget_category
+CREATE TABLE map_paw_r3.budget_category (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id INT UNSIGNED NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    CONSTRAINT fk_category_user_id FOREIGN KEY (user_id) REFERENCES map_paw_r3.users(id) ON DELETE CASCADE
+);
+
+-- TODO: volume and amount should be joined from budget_expenses
 CREATE TABLE map_paw_r3.budget_accounts (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user_id INT UNSIGNED NOT NULL,
     name VARCHAR(100) NOT NULL,
-    category_id INT UNSIGNED NOT NULL, -- Foreign key
+    category_id INT UNSIGNED NOT NULL,
     description TEXT,
-    volume DECIMAL(15, 2) DEFAULT 0 CHECK (volume >= 0),
     unit VARCHAR(100) NOT NULL DEFAULT 'pcs',
+    CONSTRAINT fk_account_user_id FOREIGN KEY (user_id) REFERENCES map_paw_r3.users(id) ON DELETE CASCADE,
+    CONSTRAINT fk_account_category_id FOREIGN KEY (category_id) REFERENCES map_paw_r3.budget_category(id) ON DELETE CASCADE
+);
+
+CREATE TABLE map_paw_r3.budget_expenses (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id INT UNSIGNED NOT NULL,
+    datetime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    budget_account_id INT UNSIGNED NOT NULL,
+    volume DECIMAL(15, 2) DEFAULT 0 CHECK (volume >= 0),
     amount DECIMAL(15, 2) DEFAULT 0 CHECK (amount >= 0),
-    CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES map_paw_r3.users(id) ON DELETE CASCADE
+    description TEXT,
+    CONSTRAINT fk_expense_user_id FOREIGN KEY (user_id) REFERENCES map_paw_r3.users(id) ON DELETE CASCADE,
+    CONSTRAINT fk_expense_budget_account_id FOREIGN KEY (budget_account_id) REFERENCES map_paw_r3.budget_accounts(id) ON DELETE CASCADE
 );
