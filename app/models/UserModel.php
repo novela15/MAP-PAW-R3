@@ -10,7 +10,7 @@ class UserModel {
     public function authenticate(string $email, string $password): array|bool {
         $user = $this->getUserByEmail($email);
 
-        if ($user && password_verify($password, $user["password"])) {
+        if ($user && password_verify($password, $user["password_hash"])) {
             return $user;
         }
 
