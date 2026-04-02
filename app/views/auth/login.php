@@ -7,13 +7,13 @@
 
         <title>MAP - Login</title>
 
-        <link rel="icon" type="image/x-icon" href="<?php echo ASSETS_PATH; ?>favicon.ico">
-        <link rel="stylesheet" href="<?php echo FRONTEND_PATH; ?>auth/auth.css?v=<?php echo time();?>">
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+        <link rel="stylesheet" href="frontend/auth/auth.css?v=<?php echo time();?>">
     </head>
 
     <body>
         <div class="registration-container">
-            <img class="logo" src="<?php echo ASSETS_PATH; ?>map_icon_256.png">
+            <img class="logo" src="assets/map_icon_256.png">
             <p class="header">Masuk</p>
 
             <form action="login" method="POST">

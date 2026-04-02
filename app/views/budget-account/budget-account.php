@@ -1,4 +1,4 @@
-            <link rel="stylesheet" href="<?php echo FRONTEND_PATH; ?>budget-account/budget-account.css">
+            <link rel="stylesheet" href="frontend/budget-account/budget-account.css">
 
             <p class="container-header">Akun Anggaran <?php echo $_SESSION["budgetBookName"] ?? "[Unknown]"; ?></p>
             <div class="subcontainer">
