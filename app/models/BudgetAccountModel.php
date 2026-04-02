@@ -72,15 +72,13 @@ class BudgetAccountModel {
         // $hasil = $this->hitungAnggaran($data["amount"], $pengeluaran);
         
         $this->db->query(
-            "INSERT INTO budget_accounts (user_id, name, category_id, description, volume, unit, amount) VALUES (?, ?, ?, ?, ?, ?, ?)",
+            "INSERT INTO budget_accounts (user_id, name, category_id, description, unit) VALUES (?, ?, ?, ?, ?)",
             [
                 $data["user_id"],
                 $data["name"],
                 $data["category_id"],
                 $data["description"],
-                $data["volume"],
                 $data["unit"],
-                $data["amount"]
                 // $pengeluaran,
                 // $hasil["sisa"],
                 // $hasil["realisasi"],
@@ -92,7 +90,20 @@ class BudgetAccountModel {
     }
 
     public function getAllByUserId(int $id): array {
-        $statement = $this->db->query("SELECT * FROM budget_accounts WHERE user_id = ?", [$id]);
+        $query = "
+            SELECT
+                budget_accounts.*,
+                budget_category.name AS category,
+                COALESCE(SUM(budget_expenses.amount), 0) AS amount,
+                COALESCE(SUM(budget_expenses.volume), 0) AS volume
+            FROM budget_accounts
+            INNER JOIN budget_category ON budget_accounts.category_id = budget_category.id
+            LEFT JOIN budget_expenses ON budget_accounts.id = budget_expenses.budget_account_id
+            WHERE budget_accounts.user_id = ?
+            GROUP BY budget_accounts.id
+        ";
+
+        $statement = $this->db->query($query, [$id]);
         return $statement->fetchAll() ?: [];
     }
 }

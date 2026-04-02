@@ -22,7 +22,7 @@
                     <?php foreach ($budgetAccountTables as $row): ?>
                         <tr>
                             <td><?= htmlspecialchars($row["name"]) ?></td>
-                            <td><?= htmlspecialchars($row["category_id"]) ?></td>
+                            <td><?= htmlspecialchars($row["category"]) ?></td>
                             <td><?= htmlspecialchars($row["description"]) ?></td>
                             <td><?= htmlspecialchars($row["volume"]) ?></td>
                             <td><?= htmlspecialchars($row["unit"]) ?></td>
