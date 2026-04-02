@@ -18,7 +18,8 @@ CREATE TABLE map_paw_r3.budget_category (
     CONSTRAINT fk_category_user_id FOREIGN KEY (user_id) REFERENCES map_paw_r3.users(id) ON DELETE CASCADE
 );
 
--- TODO: volume and amount should be joined from budget_expenses
+-- There are volume and amount columns in the frontend,
+-- they're aggregated from volume and amount columns in budget_expenses table.
 CREATE TABLE map_paw_r3.budget_accounts (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user_id INT UNSIGNED NOT NULL,
