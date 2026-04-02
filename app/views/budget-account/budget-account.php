@@ -1,6 +1,6 @@
             <link rel="stylesheet" href="frontend/budget-account/budget-account.css">
 
-            <p class="container-header">Akun Anggaran <?php echo $_SESSION["budgetBookName"] ?? "[Unknown]"; ?></p>
+            <p class="container-header">Akun Anggaran</p>
             <div class="subcontainer">
                 <div class="horizontal-flex">
                     <p class="container-header">Daftar Akun Anggaran</p>
