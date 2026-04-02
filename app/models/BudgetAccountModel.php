@@ -7,64 +7,62 @@ class BudgetAccountModel {
         $this->db = Database::getInstance();
     }
 
-/*
     private function hitungAnggaran($amount, $pengeluaran): array {
-    $sisa = $amount - $pengeluaran;
+        $sisa = $amount - $pengeluaran;
 
-    $realisasi = ($amount > 0)
-        ? ($pengeluaran / $amount) * 100
-        : 0;
+        $realisasi = ($amount > 0)
+            ? ($pengeluaran / $amount) * 100
+            : 0;
 
-    if ($realisasi < 80) {
-        $status = "Aman";
-    } elseif ($realisasi <= 100) {
-        $status = "Waspada";
-    } else {
-        $status = "Bahaya";
+        if ($realisasi < 80) {
+            $status = "Aman";
+        } elseif ($realisasi <= 100) {
+            $status = "Waspada";
+        } else {
+            $status = "Bahaya";
+        }
+
+        return [
+            "sisa" => $sisa,
+            "realisasi" => $realisasi,
+            "status" => $status
+        ];
     }
 
-    return [
-        "sisa" => $sisa,
-        "realisasi" => $realisasi,
-        "status" => $status
-    ];
-}
-
     public function updatePengeluaran(int $id, float $tambahan): bool {
-    // Ambil data lama
-    $statement = $this->db->query(
-        "SELECT amount, pengeluaran FROM budget_accounts WHERE id = ?",
-        [$id]
-    );
+        // Ambil data lama
+        $statement = $this->db->query(
+            "SELECT amount, pengeluaran FROM budget_accounts WHERE id = ?",
+            [$id]
+        );
 
-    $data = $statement->fetch();
+        $data = $statement->fetch();
 
-    if (!$data) return false;
+        if (!$data) return false;
 
-    $pengeluaranBaru = $data["pengeluaran"] + $tambahan;
+        $pengeluaranBaru = $data["pengeluaran"] + $tambahan;
 
-    $hasil = $this->hitungAnggaran($data["amount"], $pengeluaranBaru);
+        $hasil = $this->hitungAnggaran($data["amount"], $pengeluaranBaru);
 
-    // Update
-    $this->db->query(
-        "UPDATE budget_accounts SET 
-            pengeluaran = ?, 
-            sisa = ?, 
-            realisasi = ?, 
-            status = ?
-        WHERE id = ?",
-        [
-            $pengeluaranBaru,
-            $hasil["sisa"],
-            $hasil["realisasi"],
-            $hasil["status"],
-            $id
-        ]
-    );
+        // Update
+        $this->db->query(
+            "UPDATE budget_accounts SET 
+                pengeluaran = ?, 
+                sisa = ?, 
+                realisasi = ?, 
+                status = ?
+            WHERE id = ?",
+            [
+                $pengeluaranBaru,
+                $hasil["sisa"],
+                $hasil["realisasi"],
+                $hasil["status"],
+                $id
+            ]
+        );
 
-    return true;
-}
-*/
+        return true;
+    }
 
     public function create(array $data): array {
         // $pengeluaran = $data["pengeluaran"] ?? 0;
