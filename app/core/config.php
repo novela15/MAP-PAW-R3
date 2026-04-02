@@ -1,5 +1,6 @@
 <?php
 
+// File Paths //
 define("SERVER_ROOT_PATH", dirname(__FILE__, 3) . DIRECTORY_SEPARATOR);
 define("APP_PATH", dirname(__FILE__, 2) . DIRECTORY_SEPARATOR);
 define("PUBLIC_PATH", SERVER_ROOT_PATH . "public" . DIRECTORY_SEPARATOR);
@@ -15,16 +16,22 @@ define("VIEWS_PATH", APP_PATH. "views" . DIRECTORY_SEPARATOR);
 
 define("SKELETON_PATH", VIEWS_PATH . "skeleton" . DIRECTORY_SEPARATOR);
 
+// Database Config //
 define("DB_HOST", "localhost");
 define("DB_USER", "root");
 define("DB_PASS", "");
 define("DB_NAME", "map_paw_r3");
 define("DB_CHARSET", "utf8mb4");
 
-define("ENVIRONMENT", "dev");
-
+// Pages Access Config //
 define("DEFAULT_PAGE", "budget-book");
 define("NO_SESSION_PAGES", ["login", "signup"]); // Pages forbidden to access while being logged in
 define("PUBLIC_PAGES", ["login", "signup"]); // Pages accessible without being logged in
+
+// Environment Config //
+// dev: Development environment, display error messages from the server.
+// prod: Production environment, disables error messages from the server.
+// Remember to change to 'prod' before hosting.
+define("ENVIRONMENT", "dev");
 
 ?>
