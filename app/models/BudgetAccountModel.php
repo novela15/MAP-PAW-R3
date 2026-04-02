@@ -7,6 +7,7 @@ class BudgetAccountModel {
         $this->db = Database::getInstance();
     }
 
+/*
     private function hitungAnggaran($amount, $pengeluaran): array {
     $sisa = $amount - $pengeluaran;
 
@@ -63,12 +64,12 @@ class BudgetAccountModel {
 
     return true;
 }
+*/
 
-    
     public function create(array $data): array {
-        $pengeluaran = $data["pengeluaran"] ?? 0;
+        // $pengeluaran = $data["pengeluaran"] ?? 0;
 
-        $hasil = $this->hitungAnggaran($data["amount"], $pengeluaran);
+        // $hasil = $this->hitungAnggaran($data["amount"], $pengeluaran);
         
         $this->db->query(
             "INSERT INTO budget_accounts (user_id, name, category_id, description, volume, unit, amount) VALUES (?, ?, ?, ?, ?, ?, ?)",
@@ -80,10 +81,10 @@ class BudgetAccountModel {
                 $data["volume"],
                 $data["unit"],
                 $data["amount"]
-                $pengeluaran,
-                $hasil["sisa"],
-                $hasil["realisasi"],
-                $hasil["status"]
+                // $pengeluaran,
+                // $hasil["sisa"],
+                // $hasil["realisasi"],
+                // $hasil["status"]
             ]
         );
 
