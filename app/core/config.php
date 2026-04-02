@@ -14,6 +14,7 @@ define("MODELS_PATH", APP_PATH. "models" . DIRECTORY_SEPARATOR);
 define("UTILITIES_PATH", APP_PATH. "utilities" . DIRECTORY_SEPARATOR);
 define("VIEWS_PATH", APP_PATH. "views" . DIRECTORY_SEPARATOR);
 
+define("ERROR_PAGES_PATH", VIEWS_PATH . "error-pages" . DIRECTORY_SEPARATOR);
 define("SKELETON_PATH", VIEWS_PATH . "skeleton" . DIRECTORY_SEPARATOR);
 
 // Database Config //

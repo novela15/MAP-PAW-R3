@@ -31,7 +31,7 @@ class FrontController {
                 $controller = new AuthController($this->authHelper);
                 $controller->logout();
                 break;
-            case "budget-book": // Still doesn't exist yet
+            case "budget-book":
                 $page_content = VIEWS_PATH . "budget-book/budget-book.php";
                 $page_title = "Budget Book";
                 require_once SKELETON_PATH . "skeleton.php";
@@ -75,8 +75,13 @@ class FrontController {
                 $page_title = "Close Book";
                 require_once SKELETON_PATH . "skeleton.php";
                 break;
+            case "error-test":
+                if (ENVIRONMENT === "dev") {
+                    throw new Exception("Error page.");
+                }
+                break;
             default:
-                echo "<h1>404 Page not found.</h1>";
+                require_once ERROR_PAGES_PATH . "404.php";
                 break;
         }
     }
