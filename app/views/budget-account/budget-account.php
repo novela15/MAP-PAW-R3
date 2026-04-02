@@ -26,7 +26,7 @@
                             <td><?= htmlspecialchars($row["description"]) ?></td>
                             <td><?= htmlspecialchars($row["volume"]) ?></td>
                             <td><?= htmlspecialchars($row["unit"]) ?></td>
-                            <td><?= htmlspecialchars($row["amount"]) ?></td>
+                            <td>Rp<?= number_format($row["amount"], 2, ',', '.') ?></td>
                             <td><div class="table-action"><button class="delete-button trash-can-button"><i class="fa-regular fa-trash-can"></i></button><button class="write-button pen-button"><i class="fa-solid fa-pen"></i></i></button></div></th>
                         </tr>
                     <?php endforeach; ?>
