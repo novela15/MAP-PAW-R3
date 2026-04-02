@@ -14,8 +14,8 @@
 
         <title>MAP - <?php echo $page_title ?? "Unknown"; ?></title>
 
-        <link rel="icon" type="image/x-icon" href="<?php echo ASSETS_PATH; ?>favicon.ico">
-        <link rel="stylesheet" href="<?php echo FRONTEND_PATH; ?>skeleton/skeleton.css?v=<?php echo time();?>">
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+        <link rel="stylesheet" href="frontend/skeleton/skeleton.css?v=<?php echo time();?>">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     </head>
 
@@ -24,7 +24,7 @@
             <div class="sidebar-header">
                 <button class="sidebar-toggle-button" title="Sembunyikan/munculkan sidebar"><i class="fas fa-bars"></i></button>
                 <div class="filler"></div>
-                <img class="sidebar-icon" src="<?php echo ASSETS_PATH; ?>map_icon_256.png">
+                <img class="sidebar-icon" src="assets/map_icon_256.png">
             </div>
 
             <div class="sidebar-label">MENU</div>
@@ -94,7 +94,7 @@
             ?>
         </div>
 
-        <script src="<?php echo FRONTEND_PATH; ?>skeleton/skeleton.js?v=<?php echo time();?>"></script>
+        <script src="frontend/skeleton/skeleton.js?v=<?php echo time();?>"></script>
     </body>
 </html>
 
