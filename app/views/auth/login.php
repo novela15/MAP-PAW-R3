@@ -19,9 +19,19 @@
             <form action="login" method="POST">
 		        <div class="input-container">
 		            <p class="input-label">Email</p>
-		            <input class="input email-input" name="email_input" type="email" placeholder="<?php echo $errors["email"] ?? "Email"; ?>">
+		            <input
+                        class="input email-input"
+                        name="email_input"
+                        type="email"
+                        placeholder="<?php echo $messages["email_error"] ?? "Email"; ?>"
+                    >
 		            <p class="input-label">Password</p>
-		            <input class="input password-input" name="password_input" type="password" placeholder="<?php echo $errors["password"] ?? "Password"; ?>">
+		            <input
+                        class="input password-input"
+                        name="password_input"
+                        type="password"
+                        placeholder="<?php echo $messages["password_error"] ?? "Password"; ?>"
+                    >
 		            <a href="" class="forgot-password">Lupa password?</a>
 		        </div>
 
