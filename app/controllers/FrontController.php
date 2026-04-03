@@ -75,6 +75,11 @@ class FrontController {
                 $page_title = "Close Book";
                 require_once SKELETON_PATH . "skeleton.php";
                 break;
+            case "settings":
+                $page_content = VIEWS_PATH . "settings/settings.php";
+                $page_title = "Settings";
+                require_once SKELETON_PATH . "skeleton.php";
+                break;
             case "error-test": // Debug page for developers
                 if (ENVIRONMENT === "dev") {
                     throw new Exception("Error page.");
