@@ -26,10 +26,10 @@ try {
         http_response_code(500);
     }
 
-    if (file_exists(ERROR_PAGES_PATH . http_response_code() . ".php")) {
-        require_once ERROR_PAGES_PATH . http_response_code() .".php";
+    if (file_exists(ERROR_PAGES_PATH ."error.php")) {
+        require_once ERROR_PAGES_PATH . "error.php";
     } else {
-        echo "<h1>Error " . http_response_code() . ".</h1>";
+        echo "<h1>Error " . http_response_code() . "</h1>";
     }
 }
 
