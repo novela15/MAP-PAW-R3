@@ -26,6 +26,15 @@ class UserModel {
         return $this->getUserById($this->db->getConnection()->lastInsertId());
     }
 
+    public function update(array $data): array {
+        $this->db->query(
+            "UPDATE users SET username = ?, email = ?, password_hash = ? WHERE id = ?",
+            [$data["username"], $data["email"], password_hash($data["password_hash"], PASSWORD_DEFAULT), $_SESSION["user_id"]]
+        );
+
+        return $this->getUserById($_SESSION["user_id"]);
+    }
+
     public function getUserByEmail(string $email): array {
         $statement = $this->db->query("SELECT * FROM users WHERE email = ?", [$email]);
         return $statement->fetch() ?: [];
