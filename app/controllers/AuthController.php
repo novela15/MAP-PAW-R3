@@ -61,7 +61,7 @@ class AuthController {
             $newUser = $this->userModel->create([
                 "username" => $_POST["username_input"],
                 "email" => $_POST["email_input"],
-                "password" => $_POST["password_input"],
+                "password_hash" => $_POST["password_input"],
             ]);
 
             $this->authHelper->updateSession($newUser["id"], $_POST["username_input"]);
