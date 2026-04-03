@@ -18,18 +18,30 @@ class FrontController {
             exit();
         }
 
+        $messages = $this->authHelper->getAllMessages();
+
         switch ($page) {
             case "login":
-                $controller = new AuthController($this->authHelper);
-                $controller->login();
+                if ($_SERVER["REQUEST_METHOD"] === "POST") {
+                    $controller = new AuthController($this->authHelper);
+                    $controller->login();
+                } else {
+                    include_once VIEWS_PATH . "auth/login.php";
+                }
                 break;
             case "signup":
-                $controller = new AuthController($this->authHelper);
-                $controller->signup();
+                if ($_SERVER["REQUEST_METHOD"] === "POST") {
+                    $controller = new AuthController($this->authHelper);
+                    $controller->signup();
+                } else {
+                    include_once VIEWS_PATH . "auth/signup.php";
+                }
                 break;
             case "logout":
-                $controller = new AuthController($this->authHelper);
-                $controller->logout();
+                if ($_SERVER["REQUEST_METHOD"] === "POST") {
+                    $controller = new AuthController($this->authHelper);
+                    $controller->logout();
+                }
                 break;
             case "budget-book":
                 $page_content = VIEWS_PATH . "budget-book/budget-book.php";
@@ -78,6 +90,15 @@ class FrontController {
             case "settings":
                 $page_content = VIEWS_PATH . "settings/settings.php";
                 $page_title = "Settings";
+
+                if ($_SERVER["REQUEST_METHOD"] === "POST") {
+                    $controller = new AuthController($this->authHelper);
+                    $controller->update();
+                } else {
+                    $model = new UserModel();
+                    $userData = $model->getUserById($_SESSION["user_id"]);
+                }
+
                 require_once SKELETON_PATH . "skeleton.php";
                 break;
             case "error-test": // Debug page for developers
