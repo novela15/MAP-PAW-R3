@@ -75,13 +75,13 @@ class FrontController {
                 $page_title = "Close Book";
                 require_once SKELETON_PATH . "skeleton.php";
                 break;
-            case "error-test":
+            case "error-test": // Debug page for developers
                 if (ENVIRONMENT === "dev") {
                     throw new Exception("Error page.");
                 }
                 break;
             default:
-                require_once ERROR_PAGES_PATH . "404.php";
+                throw new PageNotFoundException();
                 break;
         }
     }

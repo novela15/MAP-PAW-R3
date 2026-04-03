@@ -20,7 +20,11 @@ try {
         ob_end_clean();
     }
 
-    http_response_code(500);
+    if ($exception instanceof PageNotFoundException) {
+        http_response_code(404);
+    } else {
+        http_response_code(500);
+    }
 
     if (file_exists(ERROR_PAGES_PATH . http_response_code() . ".php")) {
         require_once ERROR_PAGES_PATH . http_response_code() .".php";
