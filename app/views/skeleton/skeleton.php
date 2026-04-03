@@ -75,8 +75,13 @@
             -->
             <div class="filler"></div>
 
+            <a class="sidebar-button bold-text" href="settings">
+                <i class="icon fa-solid fa-gear"></i>
+                <span class="text">Setelan</span>
+            </a>
+
             <form action="logout" method="POST">
-                <button class="sidebar-button sidebar-logout-button" name="logout_button" type="submit">
+                <button class="sidebar-button sidebar-logout-button bold-text" name="logout_button" type="submit">
                     <i class="icon fa-solid fa-sign-out-alt"></i>
                     <span class="text">Keluar</span>
                 </button>

@@ -104,8 +104,14 @@ body {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
-.sidebar-logout-button {
-    font-weight: bold;
+.sidebar-button .icon {
+    display: inline;
+    margin-right: 0.5rem;
+}
+
+.sidebar-button .text {
+    display: inline;
+    flex: 1;
 }
 
 .filler {
@@ -162,25 +168,14 @@ body {
     flex-direction: column;
     flex-grow: 1;
     margin: 0.5rem 1.5rem 1.5rem 1.5rem;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 /* Sidebar Transition */
 /* Transition classes are applied to documentElement, not the elements themselves! */
 .sidebar-collapsed .sidebar {
     width: var(--sidebar-width-collapsed);
-}
-
-.sidebar .sidebar-button .icon {
-    display: none;
-}
-
-.sidebar .sidebar-button .text {
-    display: inline;
-}
-
-.sidebar-collapsed .sidebar .sidebar-button .icon {
-    display: inline;
 }
 
 .sidebar-collapsed .sidebar .sidebar-button .text {
@@ -200,6 +195,10 @@ body {
 }
 
 /* Overrides */
+.bold-text {
+    font-weight: bold;
+}
+
 .hidden {
     display: none;
 }
