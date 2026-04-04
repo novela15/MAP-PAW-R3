@@ -12,14 +12,20 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>MAP - <?php echo $page_title ?? "Unknown"; ?></title>
+        <title>MAP - <?php echo $pageTitle ?? "Unknown"; ?></title>
 
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
         <link rel="stylesheet" href="frontend/skeleton/skeleton.css?v=<?php echo time();?>">
+        <link rel="stylesheet" href="frontend/modal/modal.css?v=<?php echo time();?>">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     </head>
 
     <body>
+        <div class="modal-overlay hidden">
+            <?php include_once VIEWS_PATH . "modal/modal-account.php"; ?>
+            <?php include_once VIEWS_PATH . "modal/modal-logout.php"; ?>
+        </div>
+
         <div class="sidebar no-transition">
             <div class="sidebar-header">
                 <button class="sidebar-toggle-button" title="Sembunyikan/munculkan sidebar"><i class="fas fa-bars"></i></button>
@@ -80,26 +86,23 @@
                 <span class="text">Setelan</span>
             </a>
 
-            <form action="logout" method="POST">
-                <button class="sidebar-button sidebar-logout-button bold-text" name="logout_button" type="submit">
-                    <i class="icon fa-solid fa-sign-out-alt"></i>
-                    <span class="text">Keluar</span>
-                </button>
-            </form>
+            <button class="sidebar-button sidebar-logout-button bold-text">
+                <i class="icon fa-solid fa-sign-out-alt"></i>
+                <span class="text">Keluar</span>
+            </button>
         </div>
-
 
         <div class="container no-transition">
             <?php
-            if (isset($page_content) && file_exists($page_content)) {
-                include_once $page_content;
+            if (isset($pageContent) && file_exists($pageContent)) {
+                include_once $pageContent;
             } else {
                 echo "<h1>Error: Page not found.</h1>";
             }
             ?>
         </div>
 
-        <script src="frontend/skeleton/skeleton.js?v=<?php echo time();?>"></script>
+        <script src="frontend/skeleton/skeleton.js?v=<?php echo time();?>" type="module"></script>
     </body>
 </html>
 

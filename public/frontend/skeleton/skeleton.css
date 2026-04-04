@@ -172,6 +172,14 @@ body {
     overflow-y: auto;
 }
 
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    position: absolute;
+    width: 100vw;
+    z-index: 2;
+}
+
 /* Sidebar Transition */
 /* Transition classes are applied to documentElement, not the elements themselves! */
 .sidebar-collapsed .sidebar {
