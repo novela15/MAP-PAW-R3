@@ -32,5 +32,3 @@ try {
         echo "<h1>Error " . http_response_code() . "</h1>";
     }
 }
-
-?>

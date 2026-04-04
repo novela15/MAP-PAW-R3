@@ -50,5 +50,3 @@ class AuthHelper {
         $_SESSION["messages"][$key] = $value;
     }
 }
-
-?>

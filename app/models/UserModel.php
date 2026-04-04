@@ -45,5 +45,3 @@ class UserModel {
         return $statement->fetch() ?: [];
     }
 }
-
-?>

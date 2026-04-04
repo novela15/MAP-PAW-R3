@@ -34,5 +34,3 @@ define("PUBLIC_PAGES", ["login", "signup"]); // Pages accessible without being l
 // prod: Production environment, disables error messages from the server.
 // Remember to change to 'prod' before hosting.
 define("ENVIRONMENT", "dev");
-
-?>
