@@ -84,7 +84,11 @@ class BudgetAccountModel {
             ]
         );
 
-        return $this->getByUserId($this->db->getConnection()->lastInsertId());
+        return $this->getAllByUserId($this->db->getConnection()->lastInsertId());
+    }
+
+    public function deleteById(int $id): void {
+        $this->db->query("DELETE FROM budget_accounts WHERE id = ?", [$id]);
     }
 
     public function getAllByUserId(int $id): array {
@@ -103,5 +107,21 @@ class BudgetAccountModel {
 
         $statement = $this->db->query($query, [$id]);
         return $statement->fetchAll() ?: [];
+    }
+
+    public function update(array $data): array {
+        $this->db->query(
+            "UPDATE budget_accounts SET user_id = ?, name = ?, category_id = 1, description = ?, unit = ? WHERE id = ?",
+            [
+                $data["user_id"],
+                $data["name"],
+                //$data["category_id"],
+                $data["description"],
+                $data["unit"],
+                $data["id"],
+            ]
+        );
+
+        return $this->getAllByUserId($this->db->getConnection()->lastInsertId());
     }
 }

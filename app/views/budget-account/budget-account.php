@@ -30,7 +30,16 @@
                     <td><?= htmlspecialchars($row["volume"]) ?></td>
                     <td><?= htmlspecialchars($row["unit"]) ?></td>
                     <td>Rp<?= htmlspecialchars(number_format($row["amount"], 2, ',', '.')) ?></td>
-                    <td><div class="table-action"><button class="delete-button trash-can-button"><i class="fa-regular fa-trash-can"></i></button><button class="write-button pen-button"><i class="fa-solid fa-pen"></i></i></button></div></th>
+                    <td>
+                        <div class="table-action">
+                            <button class="delete-button trash-can-button" item-id=<?php echo $row["id"]; ?>>
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
+                            <button class="write-button pen-button" item-id=<?php echo $row["id"]; ?>>
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+                        </div>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         <?php else: ?>

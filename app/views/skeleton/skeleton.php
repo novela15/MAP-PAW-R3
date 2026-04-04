@@ -21,10 +21,7 @@
     </head>
 
     <body>
-        <div class="modal-overlay hidden">
-            <?php include_once VIEWS_PATH . "modal/modal-account.php"; ?>
-            <?php include_once VIEWS_PATH . "modal/modal-logout.php"; ?>
-        </div>
+        <div class="modal-overlay hidden"></div>
 
         <div class="sidebar no-transition">
             <div class="sidebar-header">
@@ -102,6 +99,7 @@
             ?>
         </div>
 
+        <script src="frontend/skeleton/modalUtils.js?v=<?php echo time();?>" type="module"></script>
         <script src="frontend/skeleton/skeleton.js?v=<?php echo time();?>" type="module"></script>
     </body>
 </html>
