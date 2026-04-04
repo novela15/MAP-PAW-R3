@@ -2,7 +2,7 @@
 
 ![Overview screenshots of the web app](overview.png)
 
-### Attention to Group Members
+## Attention to Group Members
 
 This web app uses the MVC architecture pattern. The files are separated into `/app` which is used to contain **backend-only** files that are inaccessible to users and `/public` which is used to contain user accessible (frontend) files.
 
@@ -60,11 +60,24 @@ The entire project structure roughly look like this:
             └── page.js
 ```
 
-### Page Skeleton
-To make the UI between pages consistent, a `skeleton` branch is made to develop the page skeleton HTML structure along with the CSS and JS, which consists of the **page layout, container, and sidebar**. To use the skeleton, simply write every HTML elements, CSS, or JS that must go into the `container` div. [For a real example, take a look at this file](https://github.com/novela15/MAP-PAW-R3/blob/main/app/views/budget-account/budget-account.php), it only contains the HTML elements for the `budget-account` feature and will automatically wrapped between the skeleton parts by the `FrontController`.
+## Page Skeleton
+To make the UI between pages consistent, a `skeleton` branch is made to develop the page skeleton HTML structure along with the CSS and JS, which consists of the **page layout, container, sidebar, and modal window handler**. To use the skeleton, simply write every HTML elements, CSS, or JS that must go into the `container` div. [For a real example, take a look at this file](https://github.com/novela15/MAP-PAW-R3/blob/main/app/views/budget-account/budget-account.php), it only contains the HTML elements for the `budget-account` feature and will automatically wrapped between the skeleton parts by the `FrontController`.
 
----
+To open a modal window from your feature page, [a modalUtils script](https://github.com/novela15/MAP-PAW-R3/blob/main/public/frontend/skeleton/modalUtils.js) is made to make handling modal windows feel consistent across pages. The script is loaded by the skeleton and to use it, simply call either `openModal()` or `closeModal()` in your script. Below is the documentation:
 
+#### Opening a modal window:
+```js
+openModal(modal_file_name, item_id);
+```
+`modal_file_name`: The file name of the modal window (located in app/views/modal).<br>
+`item_id`: The database primary key (ID) of the selected item that will be operated using the modal window. Only used for **read, update, and delete** operations.
+
+#### Closing a modal window:
+```js
+closeModal();
+```
+
+## Running the Server
 Run the project in a server, it's possible to use either XAMPP or Docker/Podman with an XAMPP image. Docker and Podman should be very similar to use.
 
 **Note:** This web app is primarily developed using Podman.
@@ -98,7 +111,7 @@ podman run --name myXampp -p 41061:22 -p 41062:80 -d -v ~/server_dir:/www tomsik
 
 ---
 
-### Setting Up the Database
+## Setting Up the Database
 
 ![Database schema as seen from phpMyAdmin](db_schema.png)
 
