@@ -1,28 +1,26 @@
-<div class="modal hidden modal-account">
+<!--
+TODO: Make this fetch the previous budget account values
+-->
+
+<div class="modal modal-account">
     <div class="modal-content">
         <div class="modal-header">Akun Anggaran</div>
 
-        <form class="input-container" method="POST" action="budget-account/add">
+        <form class="input-container" method="POST" action="budget-account?action=edit&item_id=<?php echo $_GET["item_id"] ?>">
             <p>Kategori</p>
             <select name="category_id"></select>
 
             <p>Nama Akun</p>
-            <input type="text" name="name" required>
-
-            <p>Volume</p>
-            <input type="number" name="volume">
+            <input type="text" name="name" value="" required>
 
             <p>Satuan</p>
-            <input type="text" name="unit" value="Rp">
-
-            <p>Jumlah</p>
-            <input type="number" name="amount" required>
+            <input type="text" name="unit" value="">
 
             <p>Deskripsi</p>
             <textarea name="description"></textarea>
 
             <div class="horizontal-buttons">
-                <button class="cancel modal-closer" type="button">Batal</button>
+                <button class="cancel modal-closer" onclick="closeModal();" type="button">Batal</button>
                 <div class="filler"></div>
                 <button class="ok" type="submit">Simpan</button>
             </div>
