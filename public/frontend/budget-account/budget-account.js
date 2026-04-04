@@ -1,18 +1,14 @@
-const MODAL =  document.querySelector(".modal-account");
-const MODAL_OVERLAY =  document.querySelector(".modal-overlay");
-const MODAL_BUTTONS = document.querySelectorAll(".table-action button");
-const MODAL_CLOSER_BUTTONS = document.querySelectorAll("button.modal-closer");
+const DELETE_BUTTONS = document.querySelectorAll(".table-action .delete-button");
+const WRITE_BUTTONS = document.querySelectorAll(".table-action .write-button");
 
-for (const BUTTON of MODAL_BUTTONS) {
+for (const BUTTON of DELETE_BUTTONS) {
     BUTTON.addEventListener("click", function() {
-        MODAL.classList.remove("hidden");
-        MODAL_OVERLAY.classList.remove("hidden");
+        openModal("modal-delete", BUTTON.getAttribute("item-id"));
     });
 }
 
-for (const BUTTON of MODAL_CLOSER_BUTTONS) {
+for (const BUTTON of WRITE_BUTTONS) {
     BUTTON.addEventListener("click", function() {
-        MODAL.classList.add("hidden");
-        MODAL_OVERLAY.classList.add("hidden");
+        openModal("modal-account", BUTTON.getAttribute("item-id"));
     });
 }

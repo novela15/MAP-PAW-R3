@@ -6,8 +6,6 @@ let pathname = window.location.pathname;
 let container = document.querySelector(".container");
 let current_page_anchor = document.querySelector('a.sidebar-button[href="' + pathname.substring(pathname.lastIndexOf("/") + 1) + '"]');
 const LOGOUT_BUTTON = document.querySelector(".sidebar-logout-button");
-const LOGOUT_MODAL = document.querySelector(".modal-logout");
-const MODAL = document.querySelector(".modal-overlay");
 let sidebar = document.querySelector(".sidebar");
 let sidebar_toggle_button = document.querySelector(".sidebar-toggle-button");
 
@@ -55,8 +53,7 @@ for (const button of sidebar_buttons) {
 
 
 LOGOUT_BUTTON.addEventListener("click", function() {
-    MODAL.classList.remove("hidden");
-    LOGOUT_MODAL.classList.remove("hidden");
+    openModal("modal-logout");
 });
 
 
