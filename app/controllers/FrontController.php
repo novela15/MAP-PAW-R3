@@ -58,7 +58,23 @@ class FrontController {
                 $pageTitle = "Budget Account";
 
                 $budgetAccountModel = new BudgetAccountModel();
-                $budgetAccountTables = $budgetAccountModel->getAllByUserId($_SESSION["user_id"]);
+
+                if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_GET["action"]) && isset($_GET["item_id"])) {
+                    switch ($_GET["action"]) {
+                        case "delete":
+                            $budgetAccountModel->deleteById((int)$_GET["item_id"]);
+                            break;
+                        case "edit":
+                            $_POST["id"] = $_GET["item_id"];
+                            $_POST["user_id"] = $_SESSION["user_id"];
+                            $budgetAccountModel->update($_POST);
+                            break;
+                    }
+                    header("Location: budget-account");
+                    exit();
+                } else {
+                    $budgetAccountTables = $budgetAccountModel->getAllByUserId($_SESSION["user_id"]);
+                }
 
                 require_once SKELETON_PATH . "skeleton.php";
                 break;
@@ -100,6 +116,11 @@ class FrontController {
                 }
 
                 require_once SKELETON_PATH . "skeleton.php";
+                break;
+            case "modal": // GET only "page" for fetching modal elements
+                if ($_SERVER["REQUEST_METHOD"] === "GET") {
+                    require_once VIEWS_PATH . "modal/" . $_GET["type"] . ".php";
+                }
                 break;
             case "error-test": // Debug page for developers
                 if (ENVIRONMENT === "dev") {
