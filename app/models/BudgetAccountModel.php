@@ -111,11 +111,10 @@ class BudgetAccountModel {
 
     public function update(array $data): array {
         $this->db->query(
-            "UPDATE budget_accounts SET user_id = ?, name = ?, category_id = 1, description = ?, unit = ? WHERE id = ?",
+            "UPDATE budget_accounts SET name = ?, category_id = ?, description = ?, unit = ? WHERE id = ?",
             [
-                $data["user_id"],
                 $data["name"],
-                //$data["category_id"],
+                $data["category_id"],
                 $data["description"],
                 $data["unit"],
                 $data["id"],

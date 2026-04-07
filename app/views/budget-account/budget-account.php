@@ -52,4 +52,4 @@
     ALWAYS put JS files at the end,
     and ALWAYS make JS files as modules so they don't pollute the global namespace
 -->
-<script src="frontend/budget-account/budget-account.js?v=<?php echo time();?>" type="module"></script>
+<script defer src="frontend/budget-account/budget-account.js?v=<?php echo time();?>" type="module"></script>

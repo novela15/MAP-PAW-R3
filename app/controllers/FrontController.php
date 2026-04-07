@@ -60,9 +60,10 @@ class FrontController {
                 $budgetAccountModel = new BudgetAccountModel();
 
                 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_GET["action"]) && isset($_GET["item_id"])) {
+                    $_POST["user_id"] = $_SESSION["user_id"];
+
                     switch ($_GET["action"]) {
                         case "add":
-                            $_POST["user_id"] = $_SESSION["user_id"];
                             $budgetAccountModel->create($_POST);
                             break;
                         case "delete":
@@ -70,7 +71,6 @@ class FrontController {
                             break;
                         case "edit":
                             $_POST["id"] = $_GET["item_id"];
-                            $_POST["user_id"] = $_SESSION["user_id"];
                             $budgetAccountModel->update($_POST);
                             break;
                     }
@@ -123,6 +123,8 @@ class FrontController {
                 break;
             case "modal": // GET only "page" for fetching modal elements
                 if ($_SERVER["REQUEST_METHOD"] === "GET") {
+                    $budgetCategoryModel = new BudgetCategoryModel();
+                    $budgetCategories = $budgetCategoryModel->getAllByUserId($_SESSION["user_id"]);
                     require_once VIEWS_PATH . "modal/" . $_GET["type"] . ".php";
                 }
                 break;
