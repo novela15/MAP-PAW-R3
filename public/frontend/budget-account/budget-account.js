@@ -1,5 +1,7 @@
+const ADD_BUTTON = document.querySelector(".add-button");
+
 const DELETE_BUTTONS = document.querySelectorAll(".table-action .delete-button");
-const WRITE_BUTTONS = document.querySelectorAll(".table-action .write-button");
+const EDIT_BUTTONS = document.querySelectorAll(".table-action .write-button");
 
 for (const BUTTON of DELETE_BUTTONS) {
     BUTTON.addEventListener("click", function() {
@@ -7,8 +9,12 @@ for (const BUTTON of DELETE_BUTTONS) {
     });
 }
 
-for (const BUTTON of WRITE_BUTTONS) {
+for (const BUTTON of EDIT_BUTTONS) {
     BUTTON.addEventListener("click", function() {
-        openModal("modal-account", BUTTON.getAttribute("item-id"));
+        openModal("modal-account-edit", BUTTON.getAttribute("item-id"));
     });
 }
+
+ADD_BUTTON.addEventListener("click", function() {
+    openModal("modal-account-add");
+});

@@ -61,6 +61,10 @@ class FrontController {
 
                 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_GET["action"]) && isset($_GET["item_id"])) {
                     switch ($_GET["action"]) {
+                        case "add":
+                            $_POST["user_id"] = $_SESSION["user_id"];
+                            $budgetAccountModel->create($_POST);
+                            break;
                         case "delete":
                             $budgetAccountModel->deleteById((int)$_GET["item_id"]);
                             break;
