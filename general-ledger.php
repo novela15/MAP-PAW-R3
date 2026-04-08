@@ -1,0 +1,29 @@
+    <link rel="stylesheet" href="buku-besar.css">
+
+    <div class="app-container">
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <h1 class="page-title">Laporan</h1>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Buku Besar</h2>
+                        <div class="search-category">
+                            <input type="text" placeholder="Cari Kategori" class="category-search-input" id="categorySearch">
+                            <svg class="category-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="category-grid" id="categoryGrid">
+                        <!-- Default: 12 kotak placeholder -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="buku-besar.js"></script>
