@@ -29,6 +29,7 @@
                     <td><?= htmlspecialchars($row["name"]) ?></td>
                     <td><?= htmlspecialchars($row["volume"]) ?></td>
                     <td><?= htmlspecialchars($row["unit"]) ?></td>
+                    <td>Rp<?= htmlspecialchars(number_format($row["amount"], 2, ',', '.')) ?></td>
                     <td><?= htmlspecialchars($row["description"]) ?></td>
                     <td><?= htmlspecialchars($row["Bukti Pengeluaran"]) ?></td>
                     <td>

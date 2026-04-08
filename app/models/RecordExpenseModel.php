@@ -1,6 +1,6 @@
 <?php
 
-class BudgetExpenseModel {
+class RecordExpenseModel {
     private $db;
 
     public function __construct() {

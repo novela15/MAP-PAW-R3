@@ -109,6 +109,11 @@ class BudgetAccountModel {
         return $statement->fetchAll() ?: [];
     }
 
+    public function getAllNamesFromUserId(int $id): array {
+        $statement = $this->db->query("SELECT id, name FROM budget_accounts WHERE budget_accounts.user_id = ?", [$id]);
+        return $statement->fetchAll() ?: [];
+    }
+
     public function update(array $data): array {
         $this->db->query(
             "UPDATE budget_accounts SET name = ?, category_id = ?, description = ?, unit = ? WHERE id = ?",

@@ -2,21 +2,21 @@
 
 class RecordExpenseController extends FeaturePageController {
     private function add() {
-        $recordExpenseModel = new BudgetExpenseModel();
+        $recordExpenseModel = new RecordExpenseModel();
 
         $_POST["user_id"] = $_SESSION["user_id"];
         $recordExpenseModel->create($_POST);
     }
 
     private function delete() {
-        $recordExpenseModel = new BudgetExpenseModel();
+        $recordExpenseModel = new RecordExpenseModel();
 
         $_POST["user_id"] = $_SESSION["user_id"];
         $recordExpenseModel->deleteById((int)$_POST["item_id"]);
     }
 
     private function edit() {
-        $recordExpenseModel = new BudgetExpenseModel();
+        $recordExpenseModel = new RecordExpenseModel();
 
         $_POST["user_id"] = $_SESSION["user_id"];
         $_POST["id"] = $_POST["item_id"];
@@ -24,7 +24,7 @@ class RecordExpenseController extends FeaturePageController {
     }
 
     public function index() {
-        $recordExpenseModel = new BudgetExpenseModel();
+        $recordExpenseModel = new RecordExpenseModel();
 
         $this->renderView(
             "record-expense/record-expense",
