@@ -22,14 +22,14 @@
             <th>Bukti Pengeluaran</th>
             <th>Action</th>
         </tr>
-        <?php if (!empty($recordexpenseTables)): ?>
-            <?php foreach ($recordexpenseTables as $row): ?>
+        <?php if (!empty($table)): ?>
+            <?php foreach ($table as $row): ?>
                 <tr>
-                    <td><?= htmlspecialchars($row["Tanggal"]) ?></td>
-                    <td><?= htmlspecialchars($row["Akun Anggaran"]) ?></td>
-                    <td><?= htmlspecialchars($row["Volume"]) ?></td>
-                    <td><?= htmlspecialchars($row["Satuan"]) ?></td>
-                    <td><?= htmlspecialchars($row["Keterangan"]) ?></td>
+                    <td><?= htmlspecialchars($row["datetime"]) ?></td>
+                    <td><?= htmlspecialchars($row["name"]) ?></td>
+                    <td><?= htmlspecialchars($row["volume"]) ?></td>
+                    <td><?= htmlspecialchars($row["unit"]) ?></td>
+                    <td><?= htmlspecialchars($row["description"]) ?></td>
                     <td><?= htmlspecialchars($row["Bukti Pengeluaran"]) ?></td>
                     <td>
                         <div class="table-action">

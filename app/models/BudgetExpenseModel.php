@@ -27,7 +27,12 @@ class BudgetExpenseModel {
     }
 
     public function getAllByUserId(int $id): array {
-        $statement = $this->db->query("SELECT * FROM budget_expenses WHERE budget_expenses.user_id = ?", [$id]);
+        $statement = $this->db->query("
+            SELECT budget_expenses.*, budget_accounts.name AS name, budget_accounts.unit AS unit
+            FROM budget_expenses
+            INNER JOIN budget_accounts ON budget_expenses.budget_account_id = budget_accounts.id
+            WHERE budget_expenses.user_id = ?", [$id]
+        );
         return $statement->fetchAll() ?: [];
     }
 
