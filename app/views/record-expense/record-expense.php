@@ -1,11 +1,11 @@
 <!-- ALWAYS put CSS files at the top -->
 <link rel="stylesheet" href="frontend/record-expense/record-expense.css?v=<?php echo time();?>">
 
-<p class="container-header">Akun Anggaran</p>
+<p class="container-header">Catatan Belanja</p>
 
 <div class="subcontainer">
     <div class="horizontal-flex">
-        <p class="container-header">Daftar Akun Anggaran</p>
+        <p class="container-header">Daftar Catatan Belanja</p>
         <div class="add-container horizontal-flex">
             <button class="add-button">+</button>
             <div>Buat</div>
@@ -22,8 +22,8 @@
             <th>Bukti Pengeluaran</th>
             <th>Action</th>
         </tr>
-        <?php if (!empty($record-expenseTables)): ?>
-            <?php foreach ($record-expenseTables as $row): ?>
+        <?php if (!empty($recordexpenseTables)): ?>
+            <?php foreach ($recordexpenseTables as $row): ?>
                 <tr>
                     <td><?= htmlspecialchars($row["Tanggal"]) ?></td>
                     <td><?= htmlspecialchars($row["Akun Anggaran"]) ?></td>
