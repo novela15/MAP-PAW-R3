@@ -5,8 +5,8 @@ class AuthController {
     private UserModel $userModel;
     private Validator $validator;
 
-    public function __construct($authHelper) {
-        $this->authHelper = $authHelper;
+    public function __construct() {
+        $this->authHelper = new AuthHelper();
         $this->userModel = new UserModel();
         $this->validator = new Validator();
     }

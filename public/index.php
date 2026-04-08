@@ -13,8 +13,11 @@ $page = str_replace($script_directory, "", $page);
 $page = trim($page, "/");
 
 try {
-    $front_controller = new FrontController();
-    $front_controller->render($page);
+    $router = new Router();
+
+    require_once CORE_PATH . "routes.php";
+
+    $router->resolve($page, $_SERVER["REQUEST_METHOD"]);
 } catch (Exception $exception) {
     if (ob_get_level() > 0) {
         ob_end_clean();

@@ -2,7 +2,7 @@
     <div class="modal-content">
         <div class="modal-header">Tambah Akun Anggaran</div>
 
-        <form class="input-container" method="POST" action="budget-account?action=add&item_id=<?php echo $_GET["item_id"] ?>">
+        <form class="input-container" method="POST" action="budget-account">
             <p>Kategori</p>
             <select name="category_id" required>
             <?php foreach ($budgetCategories as $category): ?>
@@ -18,6 +18,9 @@
 
             <p>Deskripsi</p>
             <textarea name="description"></textarea>
+
+            <input type="hidden" name="item_id" value="<?php echo $_GET["item_id"] ?>">
+            <input type="hidden" name="type" value="add">
 
             <div class="horizontal-buttons">
                 <button class="cancel modal-closer" onclick="closeModal();" type="button">Batal</button>
