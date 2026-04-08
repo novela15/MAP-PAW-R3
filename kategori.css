@@ -1,0 +1,97 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: #C1E1DE; 
+    display: flex;
+    justify-content: center; /* Konten di tengah secara horizontal */
+    font-family: 'Inter', sans-serif;
+    color: #1E1E1E;
+    min-height: 100vh;
+}
+
+.main-content { 
+    width: 90%; 
+    max-width: 1200px; 
+    padding: 2rem 0; 
+}
+
+.page-title {
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 700; font-size: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.table-card {
+    color: rgba(0, 0, 0, 0, 1);
+    padding: 24px 28px;
+}
+
+.table-header-row {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;
+}
+
+.table-title { font-size: 1.25rem; font-weight: 600; }
+
+.buat-wrapper { 
+    display: flex; align-items: center; gap: 12px; cursor: pointer; 
+    transition: opacity 0.2s;
+}
+.buat-wrapper:hover { opacity: 0.8; }
+
+.icon-plus-box {
+    background-color: #668685; color: white; width: 35px; height: 35px;
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+}
+
+.text-buat { font-weight: 600; font-size: 1.1rem; color: #333; }
+
+/* --- TABEL --- */
+.custom-table {
+    width: 100%;
+    border-collapse: separate; 
+    border-spacing: 0;
+    border: 1px solid #B9B9B9;
+    border-radius: 4px;      
+    overflow: hidden;         
+}
+
+.custom-table th {
+    background-color: #477B79; color: white; padding: 1rem;
+    text-align: center; border: 1px solid #D1E7E5;
+}
+
+.custom-table td { 
+    padding: 1.2rem; border: 1px solid #B9B9B9; text-align: center; height: 60px;
+}
+
+.action-cell {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+
+.action-header { width: 128px; }
+
+/* Tombol di Tabel */
+.btn-mini-action {
+    border: none; width: 35px; height: 35px; border-radius: 8px;
+    color: white; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.2s;
+}
+.btn-mini-action:hover { transform: scale(1.1); }
+
+.bg-red { background-color: #CF3234; }
+.bg-teal { background-color: #668685; }
+
+/* Tombol Besar di Bawah */
+.bottom-actions { display: flex; justify-content: flex-end; gap: 15px; margin-top: 2.5rem; }
+
+.btn-large {
+    border: none; width: 50px; height: 50px; border-radius: 12px;
+    color: white; cursor: pointer;
+    font-size: 1.3rem; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: background 0.2s;
+}
+.btn-large:hover { background-color: #a3282a; }
