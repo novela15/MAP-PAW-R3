@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kategori Anggaran</title>
-    
-    <link rel="stylesheet" href="kategori.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@600;700&family=Inter:wght@600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
+<link rel="stylesheet" href="frontend/kategori/kategori.css?v=<?php echo time();?>">
 
-    <div class="main-content">
-        <h2 class="page-title">Kategori Anggaran</h2>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@600;700&family=Inter:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<p class="container-header">Kategori Anggaran</p>
+
+<div class="subcontainer">
 
         <div class="table-card">
             <div class="table-header-row">
@@ -33,23 +25,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if (!empty($data_anggaran)): ?>
-                        <?php foreach ($data_anggaran as $row): ?>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td class="action-cell">
-                                    <div class="btn-mini-action bg-red btn-hapus"><i class="fa-solid fa-trash"></i></div>
-                                    <div class="btn-mini-action bg-teal btn-edit"><i class="fa-solid fa-pencil"></i></div>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-
-                    <?php else: ?>
-                        <tr>
-                           <td class="empty-table-placeholder" colspan="3">Tidak ada kategori anggaran yang ditemukan.</td>
-                        </tr>
-                    <?php endif; ?>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td class="action-cell">
+                            <div class="btn-mini-action bg-red btn-hapus"><i class="fa-solid fa-trash"></i></div>
+                            <div class="btn-mini-action bg-teal btn-edit"><i class="fa-solid fa-pencil"></i></div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
 
@@ -57,8 +40,7 @@
                 <div class="btn-large bg-red" id="btn-hapus-massal"><i class="fa-solid fa-trash"></i></div>
             </div>
         </div>
-    </div>
 
-    <script src="kategori.js"></script>
+    <script src="frontend/kategori/kategori.js?v=<?php echo time();?>"></script>
 </body>
-</html>
+</div>
