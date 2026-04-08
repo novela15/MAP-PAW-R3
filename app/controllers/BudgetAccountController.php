@@ -1,17 +1,6 @@
 <?php
 
 class BudgetAccountController extends FeaturePageController {
-    private function renderView(string $viewName, string $title, array $data = []) {
-        extract($data);
-
-        $pageContent = VIEWS_PATH . $viewName . ".php";
-        $pageTitle = $title;
-
-        $messages = $this->authHelper->getAllMessages();
-
-        require_once SKELETON_PATH . "skeleton.php";
-    }
-
     private function add() {
         $budgetAccountModel = new BudgetAccountModel();
 
@@ -55,8 +44,8 @@ class BudgetAccountController extends FeaturePageController {
         $budgetAccountTables = $model->getAllByUserId($_SESSION["user_id"]);
 
         $this->renderView(
-            "budget-account/budget-account", 
-            "Budget Account", 
+            "budget-account/budget-account",
+            "Budget Account",
             ['budgetAccountTables' => $budgetAccountTables]
         );
     }

@@ -1,19 +1,20 @@
 <?php
 
-class SettingsController {
-    private AuthHelper $authHelper;
-    private UserModel $userModel;
-    private Validator $validator;
-
-    public function __construct($authHelper) {
-        $this->authHelper = $authHelper;
-        $this->userModel = new UserModel();
-        $this->validator = new Validator();
+class SettingsController extends FeaturePageController {
+    public function update() {
+        $controller = new AuthController($this->authHelper);
+        $controller->update();
+        header("Location: settings");
     }
 
-    public function start() {
-        if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["confirm_button"])) {
-            
-        }
+    public function index() {
+        $model = new UserModel();
+        $userData = $model->getUserById($_SESSION["user_id"]);
+
+        $this->renderView(
+            "settings/settings",
+            "Settings",
+            ["userData" => $userData]
+        );
     }
 }
