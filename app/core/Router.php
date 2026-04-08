@@ -24,10 +24,15 @@ class Router {
             exit();
         }
 
+        if (!$this->authHelper->isLoggedIn() && !in_array($url, PUBLIC_PAGES)) {
+            header("Location: login"); 
+            exit();
+        }
+
         $handler = $this->routes[$method][$url] ?? null;
 
         if (!$handler) {
-            throw new PageNotFoundException();
+            throw new RequestException(404, "Halaman tidak ditemukan.");
         }
 
         $requestData = [];
