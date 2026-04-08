@@ -1,0 +1,114 @@
+body{
+    font-family: Arial, sans-serif;
+}
+
+/* OVERLAY */
+.popup-overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.25);
+
+    display:none;
+    justify-content:center;
+    align-items:center;
+}
+
+/* CARD */
+.confirm-card{
+    width:300px;
+    background:#d9d9d9;
+    border-radius:20px;
+    text-align:center;
+    padding-bottom:20px;
+
+    animation:popup 0.25s ease;
+}
+
+/* HEADER */
+.confirm-header{
+    background:#4e7d79;
+    color:white;
+    font-weight:bold;
+    padding:12px;
+    border-top-left-radius:20px;
+    border-top-right-radius:20px;
+}
+
+/* BODY */
+.confirm-body{
+    padding:25px 20px;
+}
+
+.icon{
+    width:55px;
+    height:55px;
+    background:#4e7d79;
+    border-radius:50%;
+    margin:auto;
+    margin-bottom:10px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:24px;
+    color:black;
+}
+
+/* BUTTON GROUP */
+.button-group{
+    display:flex;
+    justify-content:space-around;
+    margin-top:15px;
+}
+
+/* STYLE DASAR BUTTON */
+.btn-cancel,
+.btn-yes{
+    border:none;
+    padding:10px 32px;
+    border-radius:25px;
+    cursor:pointer;
+    color:white;
+    font-weight:bold;
+
+    transition: all 0.2s ease;
+}
+
+/* WARNA */
+.btn-cancel{
+    background:#d53333;
+}
+
+.btn-yes{
+    background:#6c8a8a;
+}
+
+/* HOVER EFFECT */
+.btn-cancel:hover,
+.btn-yes:hover{
+    transform:scale(1.08);
+    box-shadow:0 5px 12px rgba(0,0,0,0.25);
+}
+
+/* CLICK EFFECT */
+.btn-cancel:active,
+.btn-yes:active{
+    transform:scale(0.92);
+    box-shadow:0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* ANIMATION */
+@keyframes popup{
+    from{
+        transform:scale(0.8);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}

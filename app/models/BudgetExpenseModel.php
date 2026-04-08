@@ -1,0 +1,50 @@
+<?php
+
+class BudgetExpenseModel {
+    private $db;
+
+    public function __construct() {
+        $this->db = Database::getInstance();
+    }
+
+    public function create(array $data): array {
+        $this->db->query(
+            "INSERT INTO budget_expenses (user_id, budget_account_id, volume, amount, description) VALUES (?, ?, ?, ?, ?)",
+            [
+                $data["user_id"],
+                $data["budget_account_id"],
+                $data["volume"],
+                $data["amount"],
+                $data["description"]
+            ]
+        );
+
+        return $this->getAllByUserId($this->db->getConnection()->lastInsertId());
+    }
+
+    public function deleteById(int $id): void {
+        $this->db->query("DELETE FROM budget_expenses WHERE id = ?", [$id]);
+    }
+
+    public function getAllByUserId(int $id): array {
+        $statement = $this->db->query("SELECT * FROM budget_expenses WHERE budget_expenses.user_id = ?", [$id]);
+        return $statement->fetchAll() ?: [];
+    }
+
+    public function update(array $data): array {
+        $this->db->query(
+            "UPDATE budget_expenses SET user_id = ?, budget_account_id = ?, volume = ?, amount = ?, description = ? WHERE user_id = ? AND id = ?",
+            [
+                $data["user_id"],
+                $data["budget_account_id"],
+                $data["volume"],
+                $data["amount"],
+                $data["description"],
+                $data["user_id"],
+                $data["id"]
+            ]
+        );
+
+        return $this->getAllByUserId($this->db->getConnection()->lastInsertId());
+    }
+}

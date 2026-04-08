@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Popup Konfirmasi</title>
+
+<link rel="stylesheet" href="\Projek MAP\view\css\konfirmasi_style.css">
+</head>
+
+<body>
+
+<h2>Contoh Tombol</h2>
+
+<button onclick="showConfirm('logout')">Logout</button>
+<button onclick="showConfirm('delete')">Hapus Data</button>
+<button onclick="showConfirm('edit')">Ubah Data</button>
+
+
+<!-- POPUP -->
+<div class="popup-overlay" id="confirmPopup">
+
+    <div class="confirm-card">
+
+        <div class="confirm-header">
+            KONFIRMASI
+        </div>
+
+        <div class="confirm-body">
+            <div class="icon">!</div>
+            <p id="confirmMessage"></p>
+        </div>
+
+        <div class="button-group">
+            <button class="btn-cancel" onclick="closeConfirm()">BATAL</button>
+            <button class="btn-yes" onclick="confirmAction()">IYA</button>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="\Projek MAP\view\js\konfirmasi_js.js"></script>
+
+</body>
+</html>

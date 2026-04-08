@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Catat Belanja</title>
+    <link rel="stylesheet" href="..\css\form_input_style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">Catat Belanja</div>
+
+            <div class="card-body">
+                <form>
+                    <label>Tanggal</label>
+                    <input type="date" name="tanggal">
+
+                    <label>Nama Akun</label>
+                    <input type="text" name="nama_akun_belanja">
+
+                    <label>Volume</label>
+                    <input type="number" name="volume_belanja">
+
+                    <label>Satuan</label>
+                    <div class="input-group">
+                        <span>Rp</span>
+                        <input type="number" name="satuan_belanja">
+                    </div>
+
+                    <label>Struk</label>
+                    <div class="input-group">
+                        <span class="upload-label">Upload</span>
+                        <input type="file" name="struk">
+                    </div>
+
+                    <label>Deskripsi</label>
+                    <textarea name="deskripsi_belanja"></textarea>
+
+                    <div class="button-group">
+                        <button type="reset" class="btn-cancel" onclick="closeForm('belanjaForm')">BATAL</button>
+                        <button type="submit" class="btn-save">SIMPAN</button>
+                    </div>
+                </form>
+            </div> 
+        </div> 
+    </div> 
+
+</body>
+</html>
