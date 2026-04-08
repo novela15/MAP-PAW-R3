@@ -1,0 +1,58 @@
+/* Category Grid Layout */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    overflow-y: auto;
+    flex-grow: 1;
+    pointer-events: auto; /* TAMBAHAN */
+    position: relative; /* TAMBAHAN */
+    z-index: 1; /* TAMBAHAN */
+}
+
+/* Category Cards */
+.category-card {
+    border-radius: 1rem;
+    padding: 2rem;
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    pointer-events: auto; /* TAMBAHAN */
+    position: relative; /* TAMBAHAN */
+    z-index: 2; /* TAMBAHAN */
+    user-select: none; /* TAMBAHAN - biar klik lebih smooth */
+}
+
+.category-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transform: scale(1.02);
+}
+
+.card-gradient-1 {
+    background: linear-gradient(135deg, #a8c8c8 0%, #A8C8C7 100%);
+}
+
+.card-gradient-2 {
+    background: linear-gradient(135deg, #c8d8d8 0%, #C8E2DF 100%);
+}
+
+.card-gradient-3 {
+    background: linear-gradient(135deg, #e8f4f4 0%, #E7F6F3 100%);
+}
+
+.category-name {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #374151;
+    text-align: center;
+    line-height: 1.5;
+    pointer-events: none; /* TAMBAHAN - biar klik lewat ke card */
+}
+
+.category-card:hover .category-name {
+    color: #111827;
+}
