@@ -4,78 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laporan - Buku Besar</title>
-    <link rel="stylesheet" href="../skeleton.css">
-    <link rel="stylesheet" href="style-buku-besar.css">
-    <script src="../js/buku-besar.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="buku-besar.css">
 </head>
 <body>
-    <div class="sidebar">
-    <div class="sidebar-header">
-        <button class="sidebar-icon-button"><i class="fas fa-bars"></i></button>
-        <button class="sidebar-icon-button"><i class="fas fa-plus-circle"></i></button>
-    </div>
-    
-    <div class="sidebar-search-container">
-        <input type="text" placeholder="Search" class="sidebar-search">
-        <button class="sidebar-search-button"><i class="fas fa-search"></i></button>
-    </div>
-    
-    <div class="sidebar-label">Menu</div>
-    
-    <!-- Menu biasa -->
-    <button class="sidebar-button">Buku Anggaran</button>
-    <button class="sidebar-button">Kategori Anggaran</button>
-    <button class="sidebar-button">Akun Anggaran</button>
-    <button class="sidebar-button">Catat Belanja</button>
-    
-    <!-- Menu dengan submenu -->
-    <button class="sidebar-button selected-sidebar-button has-submenu">
-        Laporan
-        <i class="fas fa-chevron-right submenu-icon"></i>
-    </button>
-    
-    <!-- Submenu -->
-    <div class="submenu">
-        <button class="sidebar-button">Jurnal Umum</button>
-        <button class="sidebar-button selected-sidebar-button">Buku Besar</button>
-        <button class="sidebar-button">Realisasi Anggaran</button>
-    </div>
-    
-    <button class="sidebar-button">Tutup Buku</button>
-    <button class="sidebar-button">Keluar</button>
-</div>
-    
-    <div class="container">
-        <p class="container-header">Laporan</p>
-        <div class="subcontainer">
-            <div class="horizontal-flex">
-                <p class="container-header">Buku Besar</p>
-                <div class="search-container">
-                    <input type="text" placeholder="Cari Kategori" class="category-search">
-                    <button class="search-button"><i class="fas fa-search"></i></button>
+    <div class="app-container">
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <h1 class="page-title">Laporan</h1>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Buku Besar</h2>
+                        <div class="search-category">
+                            <input type="text" placeholder="Cari Kategori" class="category-search-input" id="categorySearch">
+                            <svg class="category-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="category-grid" id="categoryGrid">
+                        <!-- Default: 12 kotak placeholder -->
+                    </div>
                 </div>
             </div>
-            
-            <div class="category-grid">
-                <div class="category-card card-gradient-1">
-                    <span class="category-name">Nama<br>Kategori</span>
-                </div>
-                <div class="category-card card-gradient-2">
-                    <span class="category-name">Nama<br>Kategori</span>
-                </div>
-                <div class="category-card card-gradient-3">
-                    <span class="category-name">Nama<br>Kategori</span>
-                </div>
-                <div class="category-card card-gradient-3">
-                    <span class="category-name">Nama<br>Kategori</span>
-                </div>
-                <div class="category-card card-gradient-1">
-                    <span class="category-name">Nama<br>Kategori</span>
-                </div>
-                <div class="category-card card-gradient-2">
-                    <span class="category-name">Nama<br>Kategori</span>
-            </div>
-        </div>
+        </main>
     </div>
-    
+
+    <script src="buku-besar.js"></script>
+</body>
+</html>

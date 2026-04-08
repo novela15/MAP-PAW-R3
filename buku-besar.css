@@ -1,0 +1,199 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #C1E1DE;
+    overflow-x: hidden;
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    margin-left: 260px;
+    background-color: #C1E1DE;
+    min-height: 100vh;
+    padding: 24px 32px;
+}
+
+.content-wrapper {
+    max-width: 1200px;
+}
+
+.page-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+}
+
+/* Card */
+.card {
+    background: #E8F5F4;
+    border-radius: 16px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    min-height: calc(100vh - 120px);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.card-title {
+    font-size: 25px;
+    font-weight: 600;
+    color: #1a1a1a;
+    letter-spacing: -0.3px;
+}
+
+/* Category Search */
+.search-category {
+    position: relative;
+    width: 280px;
+}
+
+.category-search-input {
+    width: 100%;
+    padding: 10px 40px 10px 18px;
+    border: none;
+    border-radius: 24px;
+    background: #668685;
+    color: #ffffff;
+    font-size: 14px;
+    outline: none;
+    transition: background 0.2s;
+}
+
+.category-search-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.category-search-input:focus {
+    background: #4A6A64;
+}
+
+.category-search-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.9);
+    pointer-events: none;
+}
+
+/* Category Grid - 3 kolom */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 4px;
+}
+
+/* Category Box */
+.category-box {
+    height: 90px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+/* Warna pattern */
+.category-box.color-1 { background-color: #A8C8C7; }
+.category-box.color-2 { background-color: #C8E2DF; }
+.category-box.color-3 { background-color: #E7F6F3; }
+
+/* Efek ngambang */
+.category-box:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+.category-box:active {
+    transform: translateY(-2px) scale(0.98);
+    transition-duration: 0.1s;
+}
+
+/* Hidden untuk search */
+.category-box.hidden {
+    display: none !important;
+}
+
+/* Text "Nama Kategori" */
+.category-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: #2C4A44;
+    font-style: italic;
+    letter-spacing: 0.3px;
+    text-align: center;
+    padding: 0 20px;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .search-category {
+        width: 220px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        padding: 16px;
+    }
+    
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s;
+    }
+    
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .search-category {
+        width: 100%;
+    }
+    
+    .category-box {
+        height: 80px;
+    }
+}
