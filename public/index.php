@@ -23,8 +23,8 @@ try {
         ob_end_clean();
     }
 
-    if ($exception instanceof PageNotFoundException) {
-        http_response_code(404);
+    if ($exception instanceof RequestException) {
+        http_response_code($exception->getResponseCode());
     } else {
         http_response_code(500);
     }
