@@ -1,65 +1,59 @@
-<link rel="stylesheet" href="frontend/budget-book/budget-book.css">
+<link rel="stylesheet" href="frontend/budget-book/budget-book.css?v=<?php echo time();?>">
 
-<p class="container header">Buku Anggaran <?php echo $_SESSION["budgetBookName"] ?? "[Unknown]"; ?></p>
-<div class="subcontainer"> 
-    <div class="horizontal-flex">
-        <p class="container-header">Daftar Anggaran</p>
+<p class="container-header">Buku Anggaran</p>
+
+<div class="horizontal-flex">
     <div class="card">
-        Total Anggaran <br>
-        <b>IDR <?= number_format($total_anggaran,2,',','.') ?></b>
+        <div class="bold">Jumlah Anggaran</div>
+        <div class="bold currency">Rp<?= number_format($total_budget, 2, ',', '.') ?></div>
     </div>
 
     <div class="card">
-        Sisa <br>
-        <b>IDR <?= number_format($sisa_total,2,',','.') ?></b>
+        <div class="bold">Sisa Anggaran</div>
+        <div class="bold currency">Rp0,00</div>
     </div>
+</div>
 
-    <br><br>
+<div class="subcontainer">
+    <p class="container-header">Daftar Anggaran</p>
 
-    <div class="horizontal-flex">
-        <p class="container-header">Daftar Akun Anggaran</p>
-        <div class="add-container horizontal-flex">
-            <button class="add-button">+</button>
-            <div>Buat</div>
-        </div>
-    </div>
+    <table class="budget-book-table">
+        <tr>
+            <th>Nama Akun</th>
+            <th>Anggaran</th>
+            <th>Pengeluaran</th>
+            <th>Sisa</th>
+            <th>Realisasi</th>
+            <th>Status</th>
+        </tr>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Nama Akun</th>
-                <th>Anggaran</th>
-                <th>Pengeluaran</th>
-                <th>Sisa</th>
-                <th>Realisasi</th>
-                <th>Status</th>
-            </tr>
-        </thead>
+        <?php if (!empty($budgetBook)): ?>
+            <?php foreach ($budgetBook as $row): ?>
+                <tr>
+                    <td><?= $row['name'] ?></td>
+                    <td>Rp<?= number_format($row['budget'], 2, ',', '.') ?></td>
+                    <td>Rp<?= number_format($row['amount'], 2, ',', '.') ?></td>
+                    <td>Rp<?= number_format($row['surplus'], 2, ',', '.') ?></td>
+                    <td><?= number_format($row['realization'], 2, ',', '.') ?>%</td>
 
-        <tbody>
-            <?php foreach ($data as $row): ?>
-            <tr>
-                <td><?= $row['nama_akun'] ?></td>
-                <td>IDR <?= number_format($row['anggaran'],2,',','.') ?></td>
-                <td>IDR <?= number_format($row['pengeluaran'],2,',','.') ?></td>
-                <td>IDR <?= number_format($row['sisa'],2,',','.') ?></td>
-                <td><?= number_format($row['realisasi'],2) ?>%</td>
-
-                <td class="
-                    <?=
-                        ($row['status'] == 'Aman') ? 'status-hijau' :
-                        (($row['status'] == 'Waspada') ? 'status-kuning' : 'status-merah')
-                    ?>
-                ">
-                    <?= $row['status'] ?>
-                </td>
-            </tr>
+                    <td class="
+                        <?php if ($row["status"] === "Waspada"): ?>
+                            <?php echo "status-yellow"; ?>
+                        <?php endif; ?>
+                    ">
+                        <?php echo $row["status"]; ?>
+                    </td>
+                </tr>
             <?php endforeach; ?>
-        </tbody>
+        <?php else: ?>
+            <td class="empty-table-placeholder" colspan="6">Data anggaran tidak ditemukan.</td>
+        <?php endif; ?>
     </table>
+
+    <div class="filler"></div>
+
     <div class="horizontal-flex">
-        <div class="catat-belanja-container horizontal-flex">
-            <button class="catat-belanja-btn">Catat Belanja</button></b>
-        </div>
-
-
+        <div class="filler"></div>
+        <a class="container-button" href="record-expense">Catat Belanja</a>
+    </div>
+</div>
