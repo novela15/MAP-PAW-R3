@@ -33,4 +33,4 @@ $router->get("close-book", "CloseBookController::index");
 $router->get("settings", "SettingsController::index");
 $router->post("settings", "SettingsController::update");
 
-$router->get("modal", "ModalAccountController::index");
+$router->get("modal", "ModalController::index");
