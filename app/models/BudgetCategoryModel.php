@@ -34,8 +34,8 @@ class BudgetCategoryModel {
             "UPDATE budget_category SET name = ?, description = ? WHERE user_id = ? AND id = ?",
             [
                 $data["name"],
-                $data["user_id"],
                 $data["description"],
+                $data["user_id"],
                 $data["id"],
             ]
         );
