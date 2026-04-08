@@ -12,7 +12,7 @@ $router->get("signup", function() {
 $router->post("signup", "AuthController::signup");
 
 $router->get("budget-account", "BudgetAccountController::index");
-$router->post("budget-account", "BudgetAccountController::index");
+$router->post("budget-account", "BudgetAccountController::post");
 
 $router->get("settings", "SettingsController::index");
 $router->post("settings", "SettingsController::update");

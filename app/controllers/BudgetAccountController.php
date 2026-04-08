@@ -19,27 +19,11 @@ class BudgetAccountController extends FeaturePageController {
         $budgetAccountModel = new BudgetAccountModel();
 
         $_POST["user_id"] = $_SESSION["user_id"];
+        $_POST["id"] = $_POST["item_id"];
         $budgetAccountModel->update($_POST);
     }
 
     public function index() {
-        if (isset($_POST) && isset($_POST["type"])) {
-            switch ($_POST["type"]) {
-                case "add":
-                    $this->add();
-                    break;
-                case "delete":
-                    $this->delete();
-                    break;
-                case "edit":
-                    $this->edit();
-                    break;
-            }
-
-            header("Location: budget-account");
-            exit;
-        }
-
         $model = new BudgetAccountModel();
         $budgetAccountTables = $model->getAllByUserId($_SESSION["user_id"]);
 
@@ -48,5 +32,24 @@ class BudgetAccountController extends FeaturePageController {
             "Budget Account",
             ['budgetAccountTables' => $budgetAccountTables]
         );
+    }
+
+    public function post() {
+        if (!isset($_POST) || !isset($_POST["type"])) { return; }
+
+        switch ($_POST["type"]) {
+            case "add":
+                $this->add();
+                break;
+            case "delete":
+                $this->delete();
+                break;
+            case "edit":
+                $this->edit();
+                break;
+        }
+
+        header("Location: budget-account");
+        exit;
     }
 }
