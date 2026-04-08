@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Anggaran</title>
+    <link rel="stylesheet" href="D:\Kuliah Sem4\Prak. Aplikasi Web\Projek MAP\view\css\form_input_style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    
+    <div class="container">
+
+        <!--Akun Anggaran-->
+        <div class="card">
+            <div class="card-header">Anggaran</div>
+            <div class="card-body">
+                <form>
+                <label>Nama Kategori</label>
+                <input type="text" name="kategori_akun">
+
+                <label>Nama Akun</label>
+                <input type="text" name="nama_akun">
+
+                <label>Volume</label>
+                <input type="number" name="volume">
+
+                <label>Satuan</label>
+                <div class="input-group">
+                    <span>Rp</span>
+                    <input type="number" name="satuan">
+                </div>
+
+                <label>Deskripsi</label>
+                <textarea name="deskripsi_akun"></textarea>
+
+                <div class="button-group">
+                    <button type="reset" class="btn-cancel" onclick="closeForm('akunForm')">BATAL</button>
+                    <button type="submit" class="btn-save">SIMPAN</button>
+                </div>  
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

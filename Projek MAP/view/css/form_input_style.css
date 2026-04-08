@@ -1,0 +1,151 @@
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+/* BODY */
+body{
+background:#9fbcbc;
+}
+
+/* CONTAINER */
+.container{
+width:100%;
+min-height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:flex-start;
+
+padding-top:50px;
+}
+
+/* CARD */
+.card{
+width:420px;
+background:#c7d4d4;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* HEADER */
+.card-header{
+background:#7fa5a2;
+padding:20px;
+font-size:28px;
+font-weight:bold;
+text-align:center;
+}
+
+/* BODY */
+.card-body{
+padding:25px 30px;
+}
+
+/* LABEL */
+label{
+display:block;
+margin-top:15px;
+margin-bottom:5px;
+font-size:18px;
+}
+
+/* INPUT */
+input, textarea{
+width:100%;
+padding:10px 12px;
+border-radius:7px;
+border:1px solid #888;
+font-size:16px;
+background:#e9eeee;
+}
+
+/* TEXTAREA */
+textarea{
+height:120px;
+resize:none;
+}
+
+/* INPUT GROUP */
+.input-group{
+display:flex;
+align-items:center;
+margin-top:5px;
+}
+
+.input-group span{
+background:#7fa5a2;
+padding:10px 14px;
+font-weight:bold;
+border-radius:7px 0 0 7px;
+}
+
+.input-group input{
+border-radius:0 7px 7px 0;
+flex:1;
+}
+
+/* FILE INPUT */
+.file-group{
+display:flex;
+align-items:center;
+margin-top:5px;
+}
+
+.file-group span{
+background:#7fa5a2;
+padding:10px 14px;
+font-weight:bold;
+border-radius:7px 0 0 7px;
+}
+
+.file-group input{
+border-radius:0 7px 7px 0;
+background:white;
+padding:8px;
+}
+
+/* BUTTON GROUP */
+.button-group{
+display:flex;
+justify-content:space-between;
+margin-top:30px;
+}
+
+/* BUTTON */
+button{
+border:none;
+padding:12px 28px;
+border-radius:25px;
+font-size:16px;
+cursor:pointer;
+}
+
+/* CANCEL */
+.btn-cancel{
+background:#e22d2d;
+color:white;
+}
+
+/* SAVE */
+.btn-save{
+background:#6f8585;
+color:white;
+}
+
+/* HOVER */
+.btn-cancel:hover,
+.btn-save:hover{
+    transform:scale(1.08);
+    box-shadow:0 5px 12px rgba(0,0,0,0.25);
+}
+
+/* CLICK EFFECT */
+.btn-cancel:active,
+.btn-save:active{
+    transform:scale(0.92);
+    box-shadow:0 2px 5px rgba(0,0,0,0.2);
+}
