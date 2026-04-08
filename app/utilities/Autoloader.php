@@ -3,6 +3,7 @@
 class Autoloader {
     private static array $directories = [
         CONTROLLERS_PATH,
+        PAGE_CONTROLLERS_PATH,
         CORE_PATH,
         MODELS_PATH,
         UTILITIES_PATH
