@@ -1,5 +1,4 @@
-
-<link rel="stylesheet" href="frontend/kategori/kategori.css?v=<?php echo time();?>">
+<link rel="stylesheet" href="frontend/budget-category/kategori.css?v=<?php echo time();?>">
 
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@600;700&family=Inter:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -7,7 +6,6 @@
 <p class="container-header">Kategori Anggaran</p>
 
 <div class="subcontainer">
-
         <div class="table-card">
             <div class="table-header-row">
                 <h3 class="table-title">Daftar Kategori Anggaran</h3>
@@ -42,6 +40,6 @@
             </div>
         </div>
 
-    <script src="frontend/kategori/kategori.js?v=<?php echo time();?>"></script>
+    <script src="frontend/budget-category/kategori.js?v=<?php echo time();?>"></script>
 </body>
 </div>
