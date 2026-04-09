@@ -30,18 +30,20 @@
         <?php if (!empty($budgetBook)): ?>
             <?php foreach ($budgetBook as $row): ?>
                 <tr>
-                    <td><?= $row['name'] ?></td>
+                    <td><?= htmlspecialchars($row['name']) ?></td>
                     <td>Rp<?= number_format($row['budget'], 2, ',', '.') ?></td>
-                    <td>Rp<?= number_format($row['amount'], 2, ',', '.') ?></td>
+                    <td>Rp<?= number_format($row['used'], 2, ',', '.') ?></td>
                     <td>Rp<?= number_format($row['surplus'], 2, ',', '.') ?></td>
                     <td><?= number_format($row['realization'], 2, ',', '.') ?>%</td>
 
                     <td class="
-                        <?php if ($row["status"] === "Waspada"): ?>
-                            <?php echo "status-yellow"; ?>
-                        <?php endif; ?>
+                        <?php 
+                            if ($row['status'] === 'Aman') echo 'status-green';
+                            elseif ($row['status'] === 'Waspada') echo 'status-yellow';
+                            else echo 'status-red';
+                        ?>
                     ">
-                        <?php echo $row["status"]; ?>
+                        <?= htmlspecialchars($row['status']) ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
