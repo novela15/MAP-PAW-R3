@@ -28,7 +28,7 @@
                     <td><?= htmlspecialchars($row["category"]) ?></td>
                     <td><?= htmlspecialchars($row["description"]) ?></td>
                     <td><?= htmlspecialchars($row["volume"]) ?></td>
-                    <td><?= htmlspecialchars($row["unit"]) ?></td>
+                    <td>Rp<?= htmlspecialchars(number_format($row["unit_price"], 2, ',', '.')) ?></td>
                     <td>Rp<?= htmlspecialchars(number_format($row["amount"], 2, ',', '.')) ?></td>
                     <td>
                         <div class="table-action">
