@@ -15,16 +15,24 @@ class BudgetBookModel {
         // budget, surplus, realization, and status is currently a dummy data
         $query = "
             SELECT
-                budget_accounts.name AS name,
-                COALESCE(SUM(budget_expenses.amount), 0) AS amount,
-                0 AS budget,
-                0 AS surplus,
-                0 AS realization,
-                'Aman' AS status
-            FROM budget_accounts
-            LEFT JOIN budget_expenses ON budget_accounts.id = budget_expenses.budget_account_id
-            WHERE budget_accounts.user_id = ?
-            GROUP BY budget_accounts.id
+                ba.name,
+                ba.amount AS budget,
+                COALESCE(SUM(be.amount), 0) AS used,
+                (ba.amount - COALESCE(SUM(be.amount), 0)) AS surplus,
+                CASE 
+                    WHEN ba.amount > 0 THEN 
+                        (COALESCE(SUM(be.amount), 0) / ba.amount) * 100
+                    ELSE 0
+                END AS realization,
+                CASE 
+                    WHEN COALESCE(SUM(be.amount), 0) < ba.amount * 0.8 THEN 'Aman'
+                    WHEN COALESCE(SUM(be.amount), 0) <= ba.amount THEN 'Waspada'
+                    ELSE 'Bahaya'
+                END AS status
+            FROM budget_accounts ba
+            LEFT JOIN budget_expenses be ON ba.id = be.budget_account_id
+            WHERE ba.user_id = ?
+            GROUP BY ba.id
         ";
 
         $statement = $this->db->query($query, [$id]);
