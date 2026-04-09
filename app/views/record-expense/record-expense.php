@@ -28,10 +28,18 @@
                     <td><?= htmlspecialchars($row["datetime"]) ?></td>
                     <td><?= htmlspecialchars($row["name"]) ?></td>
                     <td><?= htmlspecialchars($row["volume"]) ?></td>
-                    <td><?= htmlspecialchars($row["unit"]) ?></td>
+                    <td>Rp<?= htmlspecialchars($row["unit_price"], 2, ',', ',') ?></td>
                     <td>Rp<?= htmlspecialchars(number_format($row["amount"], 2, ',', '.')) ?></td>
                     <td><?= htmlspecialchars($row["description"]) ?></td>
-                    <td><?= htmlspecialchars($row["Bukti Pengeluaran"]) ?></td>
+                    <td>
+                        <?php if (!empty($row["proof"])): ?>
+                            <a href="uploads/<?= htmlspecialchars($row["proof"]) ?>" target="_blank">
+                                Lihat Bukti
+                            </a>
+                        <?php else: ?>
+                            -
+                        <?php endif; ?>
+                    </td>
                     <td>
                         <div class="table-action">
                             <button class="delete-button trash-can-button" item-id=<?php echo $row["id"]; ?>>
