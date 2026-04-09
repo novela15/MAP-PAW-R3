@@ -9,8 +9,9 @@
     </div>
 
     <div class="card">
-        <div class="bold">Sisa Anggaran</div>
-        <div class="bold currency">Rp0,00</div>
+        <div class="bold currency">
+            Rp<?= number_format(($total_budget ?? 0) - ($total_used ?? 0), 2, ',', '.') ?>
+        </div>
     </div>
 </div>
 
