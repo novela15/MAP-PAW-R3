@@ -1,29 +1,20 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const btnTambah = document.getElementById('btn-tambah');
-    const tableBody = document.querySelector('#table-kategori tbody');
+const ADD_BUTTON = document.querySelector(".add-button");
 
-    // Fungsi Tambah Baris
-    btnTambah.addEventListener('click', () => {
-        openModal("modal-category-add");
+const DELETE_BUTTONS = document.querySelectorAll(".table-action .delete-button");
+const EDIT_BUTTONS = document.querySelectorAll(".table-action .write-button");
+
+for (const BUTTON of DELETE_BUTTONS) {
+    BUTTON.addEventListener("click", function() {
+        openModal("modal-category-delete", BUTTON.getAttribute("item-id"));
     });
+}
 
-    // Event Delegation untuk tombol Hapus & Edit
-    tableBody.addEventListener('click', (e) => {
-        // Logika Hapus
-        if (e.target.closest('.btn-hapus')) {
-            openModal("modal-category-delete");
-        }
-
-        // Logika Edit (Bisa diarahkan ke fungsi lain)
-        if (e.target.closest('.btn-edit')) {
-            openModal("modal-category-edit");
-        }
+for (const BUTTON of EDIT_BUTTONS) {
+    BUTTON.addEventListener("click", function() {
+        openModal("modal-category-edit", BUTTON.getAttribute("item-id"));
     });
+}
 
-    // Tombol Hapus Massal (Contoh)
-    document.getElementById('btn-hapus-massal').addEventListener('click', () => {
-        if (confirm('Hapus semua data di tabel?')) {
-            openModal("modal-category-delete");
-        }
-    });
+ADD_BUTTON.addEventListener("click", function() {
+    openModal("modal-category-add");
 });

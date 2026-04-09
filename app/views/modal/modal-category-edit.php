@@ -1,6 +1,6 @@
 <div class="modal modal-account">
     <div class="modal-content">
-        <div class="modal-header">Tambah Kategori Anggaran</div>
+        <div class="modal-header">Edit Kategori Anggaran</div>
 
         <form class="input-container" method="POST" action="budget-category">
             <p>Nama Kategori</p>

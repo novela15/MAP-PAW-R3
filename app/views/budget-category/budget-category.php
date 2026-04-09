@@ -9,35 +9,39 @@
         <div class="table-card">
             <div class="table-header-row">
                 <h3 class="table-title">Daftar Kategori Anggaran</h3>
-                <div class="buat-wrapper" id="btn-tambah">
-                    <div class="icon-plus-box"><i class="fa-solid fa-plus"></i></div>
-                    <span class="text-buat">Buat</span>
-                </div>
+        <div class="add-container horizontal-flex">
+            <button class="add-button">+</button>
+            <div>Buat</div>
+        </div>
             </div>
 
             <table class="custom-table" id="table-kategori">
-                <thead>
-                    <tr>
-                        <th>Nama Kategori Akun</th>
-                        <th>Keterangan</th>
-                        <th class="action-header">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td class="action-cell">
-                            <div class="btn-mini-action bg-red btn-hapus"><i class="fa-solid fa-trash"></i></div>
-                            <div class="btn-mini-action bg-teal btn-edit"><i class="fa-solid fa-pencil"></i></div>
-                        </td>
-                    </tr>
-                </tbody>
+                <tr>
+                    <th>Nama Kategori Akun</th>
+                    <th>Keterangan</th>
+                    <th class="action-header">Action</th>
+                </tr>
+                <?php if (!empty($table)): ?>
+                    <?php foreach ($table as $row): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($row["name"]) ?></td>
+                            <td><?= htmlspecialchars($row["description"]) ?></td>
+                            <td>
+                                <div class="table-action">
+                                    <button class="delete-button trash-can-button" item-id=<?php echo $row["id"]; ?>>
+                                        <i class="fa-regular fa-trash-can"></i>
+                                    </button>
+                                    <button class="write-button pen-button" item-id=<?php echo $row["id"]; ?>>
+                                        <i class="fa-solid fa-pen"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <td class="empty-table-placeholder" colspan="7">Tidak ada akun anggaran yang ditemukan.</td>
+                <?php endif; ?>
             </table>
-
-            <div class="bottom-actions">
-                <div class="btn-large bg-red" id="btn-hapus-massal"><i class="fa-solid fa-trash"></i></div>
-            </div>
         </div>
 
     <script src="frontend/budget-category/kategori.js?v=<?php echo time();?>"></script>
