@@ -28,7 +28,7 @@
                     <td><?= htmlspecialchars($row["datetime"]) ?></td>
                     <td><?= htmlspecialchars($row["name"]) ?></td>
                     <td><?= htmlspecialchars($row["volume"]) ?></td>
-                    <td>Rp<?= htmlspecialchars($row["unit_price"], 2, ',', ',') ?></td>
+                    <td>Rp<?= htmlspecialchars(number_format($row["unit_price"], 2, ',', ',')) ?></td>
                     <td>Rp<?= htmlspecialchars(number_format($row["amount"], 2, ',', '.')) ?></td>
                     <td><?= htmlspecialchars($row["description"]) ?></td>
                     <td>
