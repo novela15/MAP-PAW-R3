@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buku Anggaran</title>
+</head>
+
+<body>
+    
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <button class="sidebar-icon-button"><i class="fas fa-bars"></i></button>
+            <button class="sidebar-icon-button"><i class="fas fa-plus-circle"></i></button>
+        </div>
+        <div class="sidebar-search-container">
+            <input type="text" placeholder="Search" class="sidebar-search">
+            <button class="sidebar-search-button"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="sidebar-label">Menu</div>
+        <button class="sidebar-button">Buku Anggaran</button>
+        <button class="sidebar-button">Kategori Anggaran</button>
+        <button class="sidebar-button">Akun Anggaran</button>
+        <button class="sidebar-button">Catat Belanja</button>
+        <button class="sidebar-button selected-sidebar-button has-submenu">
+            Laporan
+            <i class="fas fa-chevron-right submenu-icon"></i>
+        </button>
+        <div class="submenu">
+            <button class="sidebar-button">Jurnal Umum</button>
+            <button class="sidebar-button selected-sidebar-button">Buku Besar</button>
+            <button class="sidebar-button">Realisasi Anggaran</button>
+        </div>
+        <button class="sidebar-button">Tutup Buku</button>
+        <button class="sidebar-button">Keluar</button>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+        <h2 class="page-title">Buku Anggaran</h2>
+
+        <!-- CARD SUMMARY -->
+        <div class="summary-container">
+            <div class="summary-card">
+                <div>Jumlah Anggaran</div>
+                <span class="money">IDR 00,00</span>
+            </div>
+
+            <div class="summary-card">
+                <div>Sisa Anggaran</div>
+                <span class="money">IDR 00,00</span>
+            </div>
+
+            <div class="summary-card status-card">
+                <div class="status-icon">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <div>
+                    <div>Status Buku</div>
+                    <span class="status-text">Belum Disetujui</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TABLE CONTAINER -->
+        <div class="table-container">
+            <h3>Daftar Anggaran</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nama Akun</th>
+                        <th>Anggaran</th>
+                        <th>Pengeluaran</th>
+                        <th>Sisa/Lebih</th>
+                        <th>Realisasi</th>
+                        <th>Status Anggaran</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="bottom-button">
+                <button>Catat Belanja</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
