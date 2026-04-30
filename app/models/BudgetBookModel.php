@@ -16,17 +16,17 @@ class BudgetBookModel {
         $query = "
             SELECT
                 ba.name,
-                ba.amount AS budget,
-                COALESCE(SUM(be.amount), 0) AS used,
-                (ba.amount - COALESCE(SUM(be.amount), 0)) AS surplus,
+                0 AS budget,
+                COALESCE(SUM(0), 0) AS used,
+                (0 - COALESCE(SUM(0), 0)) AS surplus,
                 CASE 
-                    WHEN ba.amount > 0 THEN 
-                        (COALESCE(SUM(be.amount), 0) / ba.amount) * 100
+                    WHEN 0 > 0 THEN 
+                        (COALESCE(SUM(0), 0) / 0) * 100
                     ELSE 0
                 END AS realization,
                 CASE 
-                    WHEN COALESCE(SUM(be.amount), 0) < ba.amount * 0.8 THEN 'Aman'
-                    WHEN COALESCE(SUM(be.amount), 0) <= ba.amount THEN 'Waspada'
+                    WHEN COALESCE(SUM(0), 0) < 0 * 0.8 THEN 'Aman'
+                    WHEN COALESCE(SUM(0), 0) <= 0 THEN 'Waspada'
                     ELSE 'Bahaya'
                 END AS status
             FROM budget_accounts ba
