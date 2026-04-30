@@ -13,8 +13,8 @@
             <p>Nama Akun</p>
             <input type="text" name="name" value="" required>
 
-            <p>Satuan</p>
-            <input type="text" name="unit" value="" required>
+            <p>Harga Satuan</p>
+            <input type="number" name="unit_price" value="" required>
 
             <p>Deskripsi</p>
             <textarea name="description"></textarea>

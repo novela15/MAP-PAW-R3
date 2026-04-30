@@ -16,8 +16,7 @@
             <th>Tanggal</th>
             <th>Akun Anggaran</th>
             <th>Volume</th>
-            <th>Satuan</th>
-            <th>Jumlah Total</th>
+            <th>Harga Satuan</th>
             <th>Keterangan</th>
             <th>Bukti Pengeluaran</th>
             <th>Action</th>
@@ -29,7 +28,6 @@
                     <td><?= htmlspecialchars($row["name"]) ?></td>
                     <td><?= htmlspecialchars($row["volume"]) ?></td>
                     <td>Rp<?= htmlspecialchars(number_format($row["unit_price"], 2, ',', ',')) ?></td>
-                    <td>Rp<?= htmlspecialchars(number_format($row["amount"], 2, ',', '.')) ?></td>
                     <td><?= htmlspecialchars($row["description"]) ?></td>
                     <td>
                         <?php if (!empty($row["proof"])): ?>

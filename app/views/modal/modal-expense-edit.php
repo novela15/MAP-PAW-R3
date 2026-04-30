@@ -11,10 +11,7 @@
             </select>
 
             <p>Volume</p>
-            <input type="text" name="volume" value="" required>
-
-            <p>Jumlah</p>
-            <input type="text" name="amount" value="" required>
+            <input type="number" name="volume" value="" required>
 
             <p>Deskripsi</p>
             <textarea name="description"></textarea>

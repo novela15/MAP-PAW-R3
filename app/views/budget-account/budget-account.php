@@ -17,7 +17,7 @@
             <th>Kategori</th>
             <th>Keterangan</th>
             <th>Volume</th>
-            <th>Satuan</th>
+            <th>Harga Satuan</th>
             <th>Jumlah</th>
             <th>Action</th>
         </tr>
@@ -29,7 +29,7 @@
                     <td><?= htmlspecialchars($row["description"]) ?></td>
                     <td><?= htmlspecialchars($row["volume"]) ?></td>
                     <td>Rp<?= htmlspecialchars(number_format($row["unit_price"], 2, ',', '.')) ?></td>
-                    <td>Rp<?= htmlspecialchars(number_format($row["amount"], 2, ',', '.')) ?></td>
+                    <td>Rp<?= htmlspecialchars(number_format($row["total_price"], 2, ',', '.')) ?></td>
                     <td>
                         <div class="table-action">
                             <button class="delete-button trash-can-button" item-id=<?php echo $row["id"]; ?>>
