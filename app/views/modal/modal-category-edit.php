@@ -9,6 +9,7 @@
             <p>Deskripsi</p>
             <textarea name="description"></textarea>
 
+            <input type="hidden" name="item_id" value="<?php echo $_GET["item_id"] ?>">
             <input type="hidden" name="type" value="edit">
 
             <div class="horizontal-buttons">
