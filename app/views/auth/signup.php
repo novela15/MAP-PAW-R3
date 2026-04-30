@@ -23,29 +23,41 @@
                         class="input username-input"
                         name="username_input"
                         type="text"
-                        placeholder="<?php echo $messages["username_error"] ?? "Username"; ?>"
+                        placeholder="Username"
                     >
+                    <?php if(isset($_SESSION["messages"]) && isset($_SESSION["messages"]["username_error"])): ?>
+                        <?php echo '<div class="error-message">' . $_SESSION["messages"]["username_error"] . '</div>'; ?>
+                    <?php endif; ?>
 		            <p class="input-label">Email</p>
 		            <input
                         class="input email-input"
                         name="email_input"
                         type="email"
-                        placeholder="<?php echo $messages["email_error"] ?? "Email"; ?>"
+                        placeholder="Email"
                     >
+                    <?php if(isset($_SESSION["messages"]) && isset($_SESSION["messages"]["email_error"])): ?>
+                        <?php echo '<div class="error-message">' . $_SESSION["messages"]["email_error"] . '</div>'; ?>
+                    <?php endif; ?>
 		            <p class="input-label">Password</p>
 		            <input
                         class="input password-input"
                         name="password_input"
                         type="password"
-                        placeholder="<?php echo $messages["password_error"] ?? "Password (minimal 6 karakter)"; ?>"
+                        placeholder="Password (minimal 6 karakter)"
                     >
+                    <?php if(isset($_SESSION["messages"]) && isset($_SESSION["messages"]["password_error"])): ?>
+                        <?php echo '<div class="error-message">' . $_SESSION["messages"]["password_error"] . '</div>'; ?>
+                    <?php endif; ?>
 		            <p class="input-label">Konfirmasi Password</p>
 		            <input
                         class="input password-confirm-input"
                         name="password_confirm_input"
                         type="password"
-                        placeholder="<?php echo $messages["password_error"] ?? "Konfirmasi Password"; ?>"
+                        placeholder="Konfirmasi Password"
                     >
+                    <?php if(isset($_SESSION["messages"]) && isset($_SESSION["messages"]["password_error"])): ?>
+                        <?php echo '<div class="error-message">' . $_SESSION["messages"]["password_error"] . '</div>'; ?>
+                    <?php endif; ?>
 		        </div>
 
 		        <div class="input-container button-container">

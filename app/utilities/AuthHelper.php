@@ -37,13 +37,17 @@ class AuthHelper {
     }
 
     public function getAllMessages(): array {
-        $message = $_SESSION["messages"] ?? [];
+        $messages = $_SESSION["messages"] ?? [];
         unset($_SESSION["messages"]);
-        return $message;
+        return $messages;
     }
 
     public function getMessage(string $key): array {
         return $_SESSION["messages"][$key] ?? [];
+    }
+
+    public function setAllMessages(array $array): void {
+        $_SESSION["messages"] = $array;
     }
 
     public function setMessage(string $key, $value): void {

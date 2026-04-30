@@ -12,8 +12,13 @@ class AuthController {
     }
 
     public function login() {
-        if (!$this->validator->validateArray($_POST)) {
-            $errors = $this->validator->getErrors();
+        if ($_SERVER["REQUEST_METHOD"] === "POST" && !$this->validator->validateArray($_POST)) {
+            $this->authHelper->clearMessages();
+
+            foreach ($this->validator->getErrors() as $key => $value) {
+                $this->authHelper->setMessage($key . "_error", $value);
+            }
+
             header("Location: login");
             exit;
         }
@@ -34,7 +39,7 @@ class AuthController {
     }
 
     public function signup() {
-        if (!$this->validator->validateArray($_POST)) {
+        if ($_SERVER["REQUEST_METHOD"] === "POST" && !$this->validator->validateArray($_POST)) {
             foreach ($this->validator->getErrors() as $key => $value) {
                 $this->authHelper->setMessage($key . "_error", $value);
             }
@@ -62,7 +67,7 @@ class AuthController {
     }
 
     public function update() {
-        if (!$this->validator->validateArray($_POST)) {
+        if ($_SERVER["REQUEST_METHOD"] === "POST" && !$this->validator->validateArray($_POST)) {
             foreach ($this->validator->getErrors() as $key => $value) {
                 $this->authHelper->setMessage($key . "_error", $value);
             }

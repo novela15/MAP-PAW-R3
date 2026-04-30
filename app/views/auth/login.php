@@ -23,15 +23,21 @@
                         class="input email-input"
                         name="email_input"
                         type="email"
-                        placeholder="<?php echo $messages["email_error"] ?? "Email"; ?>"
+                        placeholder="Email"
                     >
+                    <?php if(isset($_SESSION["messages"]) && isset($_SESSION["messages"]["email_error"])): ?>
+                        <?php echo '<div class="error-message">' . $_SESSION["messages"]["email_error"] . '</div>'; ?>
+                    <?php endif; ?>
 		            <p class="input-label">Password</p>
 		            <input
                         class="input password-input"
                         name="password_input"
                         type="password"
-                        placeholder="<?php echo $messages["password_error"] ?? "Password"; ?>"
+                        placeholder="Password"
                     >
+                    <?php if(isset($_SESSION["messages"]) && isset($_SESSION["messages"]["password_error"])): ?>
+                        <?php echo '<div class="error-message">' . $_SESSION["messages"]["password_error"] . '</div>'; ?>
+                    <?php endif; ?>
 		            <a href="" class="forgot-password">Lupa password?</a>
 		        </div>
 
