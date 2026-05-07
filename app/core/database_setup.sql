@@ -7,7 +7,8 @@ CREATE TABLE map_paw_r3.users (
     username VARCHAR(100) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     password_hash VARCHAR(255) DEFAULT NULL,
-    registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    method ENUM('native', 'google') NOT NULL DEFAULT 'native'
 );
 
 CREATE TABLE map_paw_r3.budget_category (

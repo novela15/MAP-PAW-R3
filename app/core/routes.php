@@ -11,6 +11,9 @@ $router->get("signup", function() {
 });
 $router->post("signup", "AuthController::signup");
 
+$router->get("google-oauth", "AuthController::handleGoogleAuth");
+$router->post("google-oauth", "AuthController::handleGoogleAuth");
+
 $router->get("budget-book", "BudgetBookController::index");
 
 $router->get("budget-category", "BudgetCategoryController::index");

@@ -62,8 +62,10 @@
 
 		        <div class="input-container button-container">
 		            <button class="signup-email" name="signup_email" type="submit">Daftar</button>
-		            <div>atau</div>
-		            <button class="signup-google" name="signup_google" type="submit">Daftar dengan<img src="https://www.google.com/favicon.ico" loading="lazy"></button>
+                    <?php if(IS_GOOGLE_AUTH_ENABLED): ?>
+	    	            <div>atau</div>
+    		            <button class="signup-google" formaction="google-oauth" name="signup_google" type="submit">Daftar dengan<img src="https://www.google.com/favicon.ico" loading="lazy"></button>
+                    <?php endif; ?>
 		        </div>
             </form>
 

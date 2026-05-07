@@ -75,6 +75,13 @@ body {
     padding-right: 1rem;
 }
 
+.registration-container .button-container button:only-child {
+    padding-left: 4rem;
+    padding-right: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .registration-container .button-container button:hover {
     background-color: #AFAFAF;
 }

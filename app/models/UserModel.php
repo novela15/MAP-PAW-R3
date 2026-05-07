@@ -19,8 +19,8 @@ class UserModel {
 
     public function create(array $data): array {
         $this->db->query(
-            "INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)",
-            [$data["username"], $data["email"], password_hash($data["password_hash"], PASSWORD_DEFAULT)]
+            "INSERT INTO users (username, email, password_hash, method) VALUES (?, ?, ?, ?)",
+            [$data["username"], $data["email"], password_hash($data["password_hash"], PASSWORD_DEFAULT), $data["method"] ?? "native"]
         );
 
         return $this->getUserById($this->db->getConnection()->lastInsertId());

@@ -43,8 +43,10 @@
 
 		        <div class="input-container button-container">
 		            <button class="login-email" name="login_email">Masuk</button>
-		            <div>atau</div>
-		            <button class="login-google" name="login_google">Masuk dengan<img src="https://www.google.com/favicon.ico" loading="lazy"></button>
+                    <?php if(IS_GOOGLE_AUTH_ENABLED): ?>
+		                <div>atau</div>
+		                <button class="login-google" formaction="google-oauth" name="login_google">Masuk dengan<img src="https://www.google.com/favicon.ico" loading="lazy"></button>
+                    <?php endif; ?>
 		        </div>
             </form>
 

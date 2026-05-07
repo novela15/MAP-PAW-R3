@@ -27,11 +27,16 @@ define("DB_CHARSET", "utf8mb4");
 
 // Pages Access Config //
 define("DEFAULT_PAGE", "budget-book");
-define("NO_SESSION_PAGES", ["login", "signup"]); // Pages forbidden to access while being logged in
-define("PUBLIC_PAGES", ["login", "signup"]); // Pages accessible without being logged in
+define("NO_SESSION_PAGES", ["login", "signup", "google-oauth"]); // Pages forbidden to access while being logged in
+define("PUBLIC_PAGES", ["login", "signup", "google-oauth"]); // Pages accessible without being logged in
 
 // Environment Config //
 // dev: Development environment, display error messages from the server.
 // prod: Production environment, disables error messages from the server.
 // Remember to change to 'prod' before hosting.
 define("ENVIRONMENT", "dev");
+
+// Google OAuth Config //
+define("GOOGLE_OAUTH_CLIENT_VERSION", "v3");
+define("GOOGLE_OAUTH_REDIRECT_URI", "http://localhost/MAP-PAW-R3/google-oauth");
+define("IS_GOOGLE_AUTH_ENABLED", true);

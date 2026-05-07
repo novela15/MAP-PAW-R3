@@ -3,6 +3,10 @@
 require_once "../app/core/config.php";
 require_once UTILITIES_PATH . "Autoloader.php";
 
+if (file_exists("../app/core/secrets.php")) {
+    require_once "../app/core/secrets.php";
+}
+
 Autoloader::register();
 
 // Replace backslash with slash (if the server runs on Windows)
@@ -11,6 +15,12 @@ $script_directory = str_replace("\\", "/", dirname($_SERVER["SCRIPT_NAME"], 2));
 $page = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 $page = str_replace($script_directory, "", $page);
 $page = trim($page, "/");
+
+if (ENVIRONMENT === "dev") {
+    ini_set("display_errors", 1);
+    ini_set("display_startup_errors", 1);
+    error_reporting(E_ALL);
+}
 
 try {
     $router = new Router();
