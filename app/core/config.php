@@ -38,5 +38,4 @@ define("ENVIRONMENT", "dev");
 
 // Google OAuth Config //
 define("GOOGLE_OAUTH_CLIENT_VERSION", "v3");
-define("GOOGLE_OAUTH_REDIRECT_URI", "http://localhost/MAP-PAW-R3/google-oauth");
 define("IS_GOOGLE_AUTH_ENABLED", true);
