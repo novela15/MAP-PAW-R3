@@ -11,6 +11,8 @@ $router->get("signup", function() {
 });
 $router->post("signup", "AuthController::signup");
 
+$router->get("link-to-google-oauth", "AuthController::linkToGoogleOAuth");
+
 $router->get("google-oauth", "AuthController::handleGoogleAuth");
 $router->post("google-oauth", "AuthController::handleGoogleAuth");
 

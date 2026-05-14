@@ -10,6 +10,10 @@ class UserModel {
     public function authenticate(string $email, string $password): array|bool {
         $user = $this->getUserByEmail($email);
 
+        if (!$user || empty($user["password_hash"])) {
+            return false;
+        }
+
         if ($user && password_verify($password, $user["password_hash"])) {
             return $user;
         }
@@ -19,8 +23,14 @@ class UserModel {
 
     public function create(array $data): array {
         $this->db->query(
-            "INSERT INTO users (username, email, password_hash, method) VALUES (?, ?, ?, ?)",
-            [$data["username"], $data["email"], password_hash($data["password_hash"], PASSWORD_DEFAULT), $data["method"] ?? "native"]
+            "INSERT INTO users (username, email, password_hash, auth_method, oauth_id) VALUES (?, ?, ?, ?, ?)",
+            [
+                $data["username"],
+                $data["email"],
+                password_hash($data["password_hash"], PASSWORD_DEFAULT),
+                $data["auth_method"] ?? "native",
+                $data["oauth_id"] ?? ""
+            ],
         );
 
         return $this->getUserById($this->db->getConnection()->lastInsertId());
@@ -43,5 +53,15 @@ class UserModel {
     public function getUserById(string $id): array {
         $statement = $this->db->query("SELECT * FROM users WHERE id = ?", [$id]);
         return $statement->fetch() ?: [];
+    }
+
+    public function getUserByOAuthId(string $oauth_id, string $method): array {
+        $statement = $this->db->query("SELECT * FROM users WHERE auth_method = ? AND oauth_id = ?", [$method, $oauth_id]);
+        return $statement->fetch() ?: [];
+    }
+
+    public function linkToOAuth(string $id, string $email, string $oauth_id, string $method) {
+        $statement = $this->db->query("UPDATE users SET email = ?, auth_method = ?, oauth_id = ? WHERE id = ?", [$email, $method, $oauth_id, $id]);
+        return $this->getUserByOAuthId($oauth_id, $method);
     }
 }

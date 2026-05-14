@@ -37,7 +37,20 @@
         </div>
 
         <div class="input-container button-container">
-            <button class="confirm-button" name="confirm_user_settings" type="submit">Konfirmasi Perubahan</button>
+            <button class="generic-button confirm-button" name="confirm_user_settings" type="submit">Konfirmasi Perubahan</button>
         </div>
     </form>
+
+    <?php if(IS_GOOGLE_AUTH_ENABLED && $userData["auth_method"] === "native"): ?>
+        <div class="warning-box">
+            <div class="warning-icon-box">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <div class="warning-text">
+              <p>Kaitkan akun Anda dengan Google untuk login dengan lebih cepat dan aman.</p>
+              <p>Email akun saat ini (<b><?php echo $userData["email"]; ?></b>) akan otomatis terganti jika berbeda dengan email Google yang Anda pilih. Pastikan Anda memiliki akses ke akun Google tersebut.</p>
+            </div>
+        </div>
+        <a class="generic-button" href="link-to-google-oauth">Kaitkan ke Akun Google</a>
+    <?php endif; ?>
 </div>

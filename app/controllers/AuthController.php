@@ -58,6 +58,7 @@ class AuthController {
             "username" => $_POST["username_input"],
             "email" => $_POST["email_input"],
             "password_hash" => $_POST["password_input"],
+            "auth_method" => "native",
         ]);
 
         $this->authHelper->updateSession($newUser["id"], $_POST["username_input"]);
@@ -76,7 +77,7 @@ class AuthController {
             exit;
         }
 
-        if (empty($this->userModel->getUserByEmail($_POST["email_input"]))) {
+        if (empty($this->userModel->getUserById($_SESSION["user_id"]))) {
             $this->authHelper->setMessage("email_error", "Email tidak valid.");
             header("Refresh: 0");
             exit;
@@ -88,7 +89,7 @@ class AuthController {
             "password_hash" => $_POST["password_input"],
         ]);
 
-        $this->authHelper->updateSession($newUser["id"], $_POST["username_input"]);
+        $this->authHelper->updateSession($newUser["id"], $newUser["username"]);
         $this->authHelper->clearMessages();
         header("Refresh: 0");
         exit;
@@ -100,12 +101,15 @@ class AuthController {
         exit;
     }
 
-    public function handleGoogleAuth() {
-        if (!IS_GOOGLE_AUTH_ENABLED) {
+    public function handleGoogleAuth($isLinking = false) {
+        $isConfigMissing = !defined("GOOGLE_OAUTH_CLIENT_ID")
+            || !defined("GOOGLE_OAUTH_CLIENT_SECRET")
+            || !defined("GOOGLE_OAUTH_REDIRECT_URI");
+
+        if (IS_GOOGLE_AUTH_ENABLED && $isConfigMissing) {
+            throw new RequestException(500, "Masalah internal server.");
             exit;
         }
-
-        $this->authHelper->clearMessages();
 
         if (isset($_GET["code"]) && !empty($_GET["code"])) {
             $params = [
@@ -122,10 +126,8 @@ class AuthController {
             curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-            $response = curl_exec($ch);
+            $response = json_decode(curl_exec($ch), true);
             curl_close($ch);
-
-            $response = json_decode($response, true);
 
             if (isset($response["access_token"]) && !empty($response["access_token"])) {
                 $ch = curl_init();
@@ -133,40 +135,62 @@ class AuthController {
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($ch, CURLOPT_HTTPHEADER, ["Authorization: Bearer " . $response["access_token"]]);
 
-                $response = curl_exec($ch);
+                $profile = json_decode(curl_exec($ch), true);
                 curl_close($ch);
 
-                $profile = json_decode($response, true);
+                $googleId = $profile["id"] ?? $profile["sub"] ?? null;
 
-                if (isset($profile["email"])) {
+                if (isset($googleId) && isset($profile["email"])) {
                     $google_name_parts = [];
                     $google_name_parts[] = isset($profile["given_name"]) ? preg_replace("/[^a-zA-Z0-9]/s", "", $profile["given_name"]) : "";
                     $google_name_parts[] = isset($profile["family_name"]) ? preg_replace("/[^a-zA-Z0-9]/s", "", $profile["family_name"]) : "";
-                    session_regenerate_id();
 
-                    $_SESSION["google_email"] = $profile["email"];
+                    if ($isLinking) {
+                        if (isset($_SESSION["user_id"])) {
+                            $modifiedUser = $this->userModel->linkToOAuth($_SESSION["user_id"], $profile["email"], $googleId, "google");
 
-                    if (empty($this->userModel->getUserByEmail($profile["email"]))) {
-                        $newUser = $this->userModel->create([
-                            "username" => implode(' ', $google_name_parts),
-                            "email" => $profile["email"],
-                            "password_hash" => "",
-                        ]);
-
-                        $this->authHelper->updateSession($newUser["id"], $newUser["username"]);
+                            if (empty($modifiedUser)) {
+                                header($_SERVER["HTTP_REFERER"]);
+                                exit;
+                            } else {
+                                $this->authHelper->updateSession($modifiedUser["id"], $modifiedUser["username"]);
+                            }
+                        }
                     } else {
-                        $user = $this->userModel->authenticate($profile["email"], "");
-                        $this->authHelper->updateSession($user["id"], $user["username"]);
+                        if (empty($this->userModel->getUserByEmail($profile["email"]))) {
+                            $newUser = $this->userModel->create([
+                                "username" => implode(' ', $google_name_parts),
+                                "email" => $profile["email"],
+                                "password_hash" => "",
+                                "auth_method" => "google",
+                                "oauth_id" => $googleId,
+                            ]);
+
+                            $this->authHelper->updateSession($newUser["id"], $newUser["username"]);
+                        } else {
+                            $user = $this->userModel->getUserByOAuthId($googleId, "google");
+
+                            if (empty($user)) {
+                                $this->authHelper->updateSession($user["id"], $user["username"]);
+                            } else {
+                                $this->authHelper->setMessage("google_auth_error", "Gagal mengautentikasi user.");
+                                header("Location: login");
+                                exit;
+                            }
+                        }
                     }
 
                     header("Location: " . DEFAULT_PAGE);
                     exit;
                 } else {
-                    $this->authHelper->setMessage("google_auth_error", "Google OAuth mengalami error. Silakan coba lagi.");
+                    $this->authHelper->setMessage("google_auth_error", "Akun Google tidak ditemukan.");
                 }
             } else {
                 $this->authHelper->setMessage("google_auth_error", "Google OAuth mengalami error. Silakan coba lagi.");
             }
+
+            header("Location: login");
+            exit;
         } else {
             $params = [
                 "response_type" => "code",
@@ -176,8 +200,18 @@ class AuthController {
                 "access_type" => "offline",
                 "prompt" => "consent"
             ];
+
             header("Location: https://accounts.google.com/o/oauth2/auth?" . http_build_query($params));
             exit;
         }
+    }
+
+    public function linkToGoogleOAuth() {
+        if (!isset($_SESSION["user_id"])) {
+            header($_SERVER["HTTP_REFERER"]);
+            exit;
+        }
+
+        $this->handleGoogleAuth(true);
     }
 }
