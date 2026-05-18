@@ -40,6 +40,8 @@ class AuthController {
 
     public function signup() {
         if ($_SERVER["REQUEST_METHOD"] === "POST" && !$this->validator->validateArray($_POST)) {
+            $this->authHelper->clearMessages();
+
             foreach ($this->validator->getErrors() as $key => $value) {
                 $this->authHelper->setMessage($key . "_error", $value);
             }
@@ -84,6 +86,7 @@ class AuthController {
         }
 
         $newUser = $this->userModel->update([
+            "user_id" => $_SESSION["user_id"],
             "username" => $_POST["username_input"],
             "email" => $_POST["email_input"],
             "password_hash" => $_POST["password_input"],
@@ -147,9 +150,11 @@ class AuthController {
 
                     if ($isLinking) {
                         if (isset($_SESSION["user_id"])) {
-                            $modifiedUser = $this->userModel->linkToOAuth($_SESSION["user_id"], $profile["email"], $googleId, "google");
+                            $this->userModel->linkToOAuth($_SESSION["user_id"], $profile["email"], $googleId, "google");
 
-                            if (empty($modifiedUser)) {
+                            $modifiedUser = $this->userModel->getUserByOAuthId($googleId, "google");
+
+                            if ($modifiedUser) {
                                 header($_SERVER["HTTP_REFERER"]);
                                 exit;
                             } else {
@@ -213,5 +218,66 @@ class AuthController {
         }
 
         $this->handleGoogleAuth(true);
+    }
+
+    public function resetPassword() {
+        if (!isset($_GET["email"]) || !isset($_GET["token"])) {
+            $this->authHelper->clearMessages();
+            $this->authHelper->setMessage("password_reset_error", "Link untuk mereset password tidak valid.");
+            include_once VIEWS_PATH . "auth/reset-password.php";
+            exit;
+        }
+
+        $user = $this->userModel->getUserByEmail($_GET["email"]);
+        $isInvalid = empty($user["reset_token_expire_date"])
+            || strtotime($user["reset_token_expire_date"]) < time()
+            || !password_verify($_GET["token"], $user["reset_token"]);
+
+        if ($isInvalid) {
+            $this->authHelper->setMessage("password_reset_error", "Link untuk mereset password tidak valid.");
+            header("Location: reset-password");
+            exit;
+        }
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $newUser = $this->userModel->update([
+                "user_id" => $user["user_id"],
+                "username" => $user["username"],
+                "email" => $user["email"],
+                "password_hash" => password_hash($_POST["password_input"], PASSWORD_DEFAULT),
+            ]);
+
+            $this->authHelper->updateSession($newUser["id"], $newUser["username"]);
+            $this->authHelper->clearMessages();
+            header("Refresh: 0");
+            exit;
+        } else {
+            include_once VIEWS_PATH . "auth/reset-password.php";
+        }
+    }
+
+    public function sendPasswordResetEmail() {
+        if ($_SERVER["REQUEST_METHOD"] === "POST" && !$this->validator->validateArray($_POST)) {
+            $this->authHelper->clearMessages();
+
+            foreach ($this->validator->getErrors() as $key => $value) {
+                $this->authHelper->setMessage($key . "_error", $value);
+            }
+
+            header("Location: request-password-reset");
+            exit;
+        }
+
+        $user = $this->userModel->getUserByEmail($_POST["email_input"]);
+
+        if (empty($user)) {
+            $this->authHelper->setMessage("email_error", "Email tidak valid.");
+            header("Location: request-password-reset");
+            exit;
+        }
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $this->userModel->sendPasswordResetEmail($_POST["email_input"]);
+        }
     }
 }

@@ -9,7 +9,9 @@ CREATE TABLE map_paw_r3.users (
     password_hash VARCHAR(255) DEFAULT NULL,
     registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     auth_method ENUM('native', 'google') NOT NULL DEFAULT 'native',
-    oauth_id VARCHAR(255) DEFAULT NULL
+    oauth_id VARCHAR(255) DEFAULT NULL,
+    reset_token VARCHAR(255) DEFAULT NULL,
+    reset_token_expire_date TIMESTAMP NULL DEFAULT NULL
 );
 
 CREATE TABLE map_paw_r3.budget_category (

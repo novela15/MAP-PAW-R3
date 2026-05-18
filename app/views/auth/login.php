@@ -38,7 +38,7 @@
                     <?php if(isset($_SESSION["messages"]) && isset($_SESSION["messages"]["password_error"])): ?>
                         <?php echo '<div class="error-message">' . $_SESSION["messages"]["password_error"] . '</div>'; ?>
                     <?php endif; ?>
-		            <a href="" class="forgot-password">Lupa password?</a>
+		            <a href="request-password-reset" class="forgot-password">Lupa password?</a>
 		        </div>
 
 		        <div class="input-container button-container">

@@ -11,6 +11,14 @@ $router->get("signup", function() {
 });
 $router->post("signup", "AuthController::signup");
 
+$router->get("request-password-reset", function() {
+    include_once VIEWS_PATH . "auth/request-password-reset.php";
+});
+$router->post("request-password-reset", "AuthController::sendPasswordResetEmail");
+
+$router->get("reset-password", "AuthController::resetPassword");
+$router->post("reset-password", "AuthController::resetPassword");
+
 $router->get("link-to-google-oauth", "AuthController::linkToGoogleOAuth");
 
 $router->get("google-oauth", "AuthController::handleGoogleAuth");

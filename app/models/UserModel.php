@@ -39,7 +39,7 @@ class UserModel {
     public function update(array $data): array {
         $this->db->query(
             "UPDATE users SET username = ?, email = ?, password_hash = ? WHERE id = ?",
-            [$data["username"], $data["email"], password_hash($data["password_hash"], PASSWORD_DEFAULT), $_SESSION["user_id"]]
+            [$data["username"], $data["email"], password_hash($data["password_hash"], PASSWORD_DEFAULT), $data["user_id"]]
         );
 
         return $this->getUserById($_SESSION["user_id"]);
@@ -60,8 +60,48 @@ class UserModel {
         return $statement->fetch() ?: [];
     }
 
-    public function linkToOAuth(string $id, string $email, string $oauth_id, string $method) {
-        $statement = $this->db->query("UPDATE users SET email = ?, auth_method = ?, oauth_id = ? WHERE id = ?", [$email, $method, $oauth_id, $id]);
-        return $this->getUserByOAuthId($oauth_id, $method);
+    public function linkToOAuth(string $id, string $email, string $oauth_id, string $method): bool {
+        $statement = $this->db->query(
+            "UPDATE users SET email = ?, auth_method = ?, oauth_id = ? WHERE id = ?",
+            [$email, $method, $oauth_id, $id]
+        );
+        return $statement->rowCount() > 0;
+    }
+
+    public function generatePasswordResetToken(string $email): bool {
+        $token = password_hash(bin2hex(random_bytes(32)), PASSWORD_DEFAULT);
+        $expiresAt = date("Y-m-d H:i:s", strtotime('+1 hour'));
+
+        $statement = $this->db->query(
+            "UPDATE users SET reset_token = ?, reset_token_expire_date = ? WHERE email = ? AND auth_method = 'native'",
+            [$token, $expiresAt, $email]
+        );
+
+        return $statement->rowCount() > 0;
+    }
+
+    public function sendPasswordResetEmail(string $email) {
+        if (!$this->generatePasswordResetToken($email)) { return; }
+
+        $user = $this->getUserByEmail($email);
+        if (empty($user)) { return; }
+
+        $resetUrl = PASSWORD_RESET_URI . "?token=" . $user["reset_token"] . "&email=" . $user["email"];
+        $data = [
+            "from" => [
+                "email" => "", 
+                "name"  => "MAP (Manajemen Anggaran Proyek)"
+            ],
+            "to" => [
+                ["email" => $user["email"]]
+            ],
+            "subject" => "Reset Password",
+            "html"    => "<p>Halo,</p>
+                         <p>Tampaknya anda melupakan password untuk MAP (Manajemen Anggaran Proyek). Jika ini benar, klik link di bawah untuk mereset password anda:</p>
+                         <p><a href='{$resetUrl}'>{$resetUrl}</a></p>
+                         <p>Jika anda tidak merasa ingin melakukan ini, anda bisa mengabaikan email ini.</p>"
+        ];
+
+        // TODO: Find a suitable SMTP
     }
 }

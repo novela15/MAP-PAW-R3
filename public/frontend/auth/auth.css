@@ -48,6 +48,10 @@ body {
     width: 100%;
 }
 
+.registration-container .footer {
+    text-align: center;
+}
+
 .registration-container .link {
     margin-top: 1rem;
     padding-right: 4rem;
