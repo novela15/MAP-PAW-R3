@@ -1,55 +1,47 @@
 <!-- ALWAYS put CSS files at the top -->
-<link rel="stylesheet" href="frontend/budget-account/budget-account.css?v=<?php echo time();?>">
+<link rel="stylesheet" href="frontend/budget-account/budget-account.css?v=<?php echo time(); ?>">
 
 <p class="container-header">Akun Anggaran</p>
 
 <div class="subcontainer">
     <div class="horizontal-flex">
-        <p class="container-header">Daftar Akun Anggaran</p>
         <div class="add-container horizontal-flex">
             <button class="add-button">+</button>
             <div>Buat</div>
         </div>
     </div>
-    <table class="budget-account-table">
-        <tr>
-            <th>Nama Akun Anggaran</th>
-            <th>Kategori</th>
-            <th>Keterangan</th>
-            <th>Volume</th>
-            <th>Harga Satuan</th>
-            <th>Jumlah</th>
-            <th>Action</th>
-        </tr>
+
+    <div class="grid-container">
         <?php if (!empty($budgetAccountTables)): ?>
             <?php foreach ($budgetAccountTables as $row): ?>
-                <tr>
-                    <td><?= htmlspecialchars($row["name"]) ?></td>
-                    <td><?= htmlspecialchars($row["category"]) ?></td>
-                    <td><?= htmlspecialchars($row["description"]) ?></td>
-                    <td><?= htmlspecialchars($row["volume"]) ?></td>
-                    <td>Rp<?= htmlspecialchars(number_format($row["unit_price"], 2, ',', '.')) ?></td>
-                    <td>Rp<?= htmlspecialchars(number_format($row["total_price"], 2, ',', '.')) ?></td>
-                    <td>
-                        <div class="table-action">
-                            <button class="delete-button trash-can-button" item-id=<?php echo $row["id"]; ?>>
-                                <i class="fa-regular fa-trash-can"></i>
-                            </button>
-                            <button class="write-button pen-button" item-id=<?php echo $row["id"]; ?>>
-                                <i class="fa-solid fa-pen"></i>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
+                <div class="budget-account-card">
+                    <div class="name"><?php echo htmlspecialchars($row["name"]); ?></div>
+                    <div class="category"><?php echo htmlspecialchars($row["category"]); ?></div>
+                    <hr />
+                    <div class="content-grid">
+                        <div class="volume"><span class="label">Volume</span><br><?php echo htmlspecialchars($row["volume"]); ?></div>
+                        <div class="unit-price"><span class="label">Harga Satuan</span><br>Rp<?php echo htmlspecialchars(number_format($row["unit_price"], 2, ',', '.')); ?></div>
+                        <div class="total-price"><span class="label">Total Harga</span><br>Rp<?php echo htmlspecialchars(number_format($row["total_price"], 2, ',', '.')); ?></div>
+                    </div>
+                    <div class="description"><span class="label">Deskripsi</span><br><?php echo htmlspecialchars($row["description"]); ?></div>
+                    <div class="action">
+                        <button class="delete-button trash-can-button" title="Hapus" item-id=<?php echo $row["id"]; ?>>
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                        <button class="write-button pen-button" title="Edit" item-id=<?php echo $row["id"]; ?>>
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                    </div>
+                </div>
             <?php endforeach; ?>
         <?php else: ?>
-            <td class="empty-table-placeholder" colspan="7">Tidak ada akun anggaran yang ditemukan.</td>
+            <div class="empty-table-placeholder">Tidak ada akun anggaran yang ditemukan.</div>
         <?php endif; ?>
-    </table>
+    </div>
 </div>
 
 <!--
     ALWAYS put JS files at the end,
     and ALWAYS make JS files as modules so they don't pollute the global namespace
 -->
-<script defer src="frontend/budget-account/budget-account.js?v=<?php echo time();?>" type="module"></script>
+<script defer src="frontend/budget-account/budget-account.js?v=<?php echo time(); ?>" type="module"></script>

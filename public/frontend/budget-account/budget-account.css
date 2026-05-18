@@ -39,43 +39,56 @@
     background-color: #192222;
 }
 
-.budget-account-table {
-    border-collapse: collapse;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: 1rem;
-    table-layout: auto;
-    width: calc(100% - 2rem);
+.grid-container {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 1.5rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
 }
 
-.budget-account-table th {
-    background-color: #477B79;
-    color: whitesmoke;
-    text-align: center;
-}
-
-.budget-account-table td {
+.budget-account-card {
     background-color: white;
-}
-
-.budget-account-table, th, td {
-    border: 1px solid #B9B9B9;
-    height: 1rem;
-    padding: 0.5rem;
-}
-
-.empty-table-placeholder {
+    border: solid 2px #8e8e8e;
+    border-radius: 1rem;
     padding: 1rem;
-    text-align: center;
+    width: 100%;
 }
 
-.table-action {
+.budget-account-card .content-grid {
     display: grid;
     gap: 0.5rem;
-    grid-template-columns: 1fr 1fr;
-    margin: auto;
-    place-items: center;
-    width: fit-content;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.budget-account-card .label {
+    color: #8e8e8e;
+    font-size: 0.75rem;
+}
+
+.budget-account-card .name {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.budget-account-card div {
+    margin-bottom: 0.5rem;
+}
+
+.budget-account-card hr {
+    color: #8e8e8e;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+}
+
+.action {
+    display: grid;
+    gap: 1rem;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    justify-content: end;
+    width: 100%;
 }
 
 .pen-button {
