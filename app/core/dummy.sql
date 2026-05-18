@@ -2,8 +2,8 @@
 -- Open phpMyAdmin, go to the SQL tab, copy everything in this file, and run it.
 
 -- USERS
-INSERT INTO `users` (`id`, `username`, `email`, `password_hash`, `registration_date`) VALUES
-(1, 'Test User', 'a@a.a', '$2y$10$fpl/C3jwGdiVivY1xYLns.Y0dSEBPUYfrsqTWQCPvQgyNguTuOPfu', '2026-04-01 12:01:28');
+INSERT INTO `users` (`id`, `username`, `email`, `password_hash`, `registration_date`, `auth_method`) VALUES
+(1, 'Test User', 'a@a.a', '$2y$10$fpl/C3jwGdiVivY1xYLns.Y0dSEBPUYfrsqTWQCPvQgyNguTuOPfu', '2026-04-01 12:01:28', 'native');
 
 -- CATEGORY
 INSERT INTO `budget_category` (`id`, `user_id`, `name`, `description`) VALUES
