@@ -8,8 +8,6 @@ class BudgetAccountModel {
     }
 
     public function create(array $data): array {
-        // Update database baru
-        
         $this->db->query(
             "INSERT INTO budget_accounts (user_id, name, category_id, description, unit_price) VALUES (?, ?, ?, ?, ?)",
             [
@@ -34,12 +32,12 @@ class BudgetAccountModel {
                 ba.*,
                 bc.name AS category,
                 COALESCE(SUM(be.volume), 0) AS volume,
-                COALESCE(SUM(be.volume) * SUM(ba.unit_price), 0) AS total_price
+                COALESCE(SUM(be.volume), 0) * ba.unit_price AS total_price
             FROM budget_accounts ba
             INNER JOIN budget_category bc ON ba.category_id = bc.id
             LEFT JOIN budget_expenses be ON ba.id = be.budget_account_id
             WHERE ba.user_id = ?
-            GROUP BY ba.id
+            GROUP BY ba.id, bc.name, ba.unit_price;
         ";
 
         $statement = $this->db->query($query, [$id]);
@@ -52,7 +50,7 @@ class BudgetAccountModel {
     }
 
     public function update(array $data): array {
-        $this->db->query("UPDATE budget_accounts SET name = ?, category_id = ?, description = ?, unit_price = ?WHERE id = ?",
+        $this->db->query("UPDATE budget_accounts SET name = ?, category_id = ?, description = ?, unit_price = ? WHERE id = ?",
             [
                 $data["name"],
                 $data["category_id"],
