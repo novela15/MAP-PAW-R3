@@ -30,6 +30,7 @@ CREATE TABLE map_paw_r3.budget_accounts (
     name VARCHAR(100) NOT NULL,
     category_id INT UNSIGNED NOT NULL,
     description TEXT,
+    budget DECIMAL(15,2) DEFAULT 0 CHECK (budget >= 0),
     unit_price DECIMAL(15,2) DEFAULT 0 CHECK (unit_price >= 0),
     CONSTRAINT fk_account_user_id FOREIGN KEY (user_id) REFERENCES map_paw_r3.users(id) ON DELETE CASCADE,
     CONSTRAINT fk_account_category_id FOREIGN KEY (category_id) REFERENCES map_paw_r3.budget_category(id) ON DELETE CASCADE
