@@ -9,17 +9,19 @@ class RecordExpenseModel {
 
     public function create(array $data): array {
         $this->db->query(
-            "INSERT INTO budget_expenses (user_id, budget_account_id, volume, description, proof) VALUES (?, ?, ?, ?, ?)",
+            "INSERT INTO budget_expenses (user_id, datetime, budget_account_id, volume, unit_price, description, proof) VALUES (?, ?, ?, ?, ?, ?, ?)",
             [
                 $data["user_id"],
+                $data["datetime"], // Diambil dari input type="date" (YYYY-MM-DD)
                 $data["budget_account_id"],
                 $data["volume"],
+                $data["unit_price"], // Satuan (Rp) dari input Belanja
                 $data["description"],
                 $data["proof"] ?? null
             ]
         );
 
-        return $this->getAllByUserId($this->db->getConnection()->lastInsertId());
+        return $this->getAllByUserId($data["user_id"]);
     }
 
     public function deleteById(int $id): void {
@@ -29,25 +31,26 @@ class RecordExpenseModel {
     public function getAllByUserId(int $id): array {
         $statement = $this->db->query("
             SELECT
-                budget_expenses.*,
-                budget_accounts.name AS name,
-                budget_accounts.unit_price AS unit_price,
-                (budget_expenses.volume * budget_accounts.unit_price) AS total_price
-            FROM budget_expenses
-            INNER JOIN budget_accounts ON budget_expenses.budget_account_id = budget_accounts.id
-            WHERE budget_expenses.user_id = ?
-            ORDER BY budget_expenses.datetime DESC", [$id]
+                be.*,
+                ba.name AS name,
+                be.unit_price AS unit_price,
+                (be.volume * be.unit_price) AS total_price
+            FROM budget_expenses be
+            INNER JOIN budget_accounts ba ON be.budget_account_id = ba.id
+            WHERE be.user_id = ?
+            ORDER BY be.datetime DESC", [$id]
         );
         return $statement->fetchAll() ?: [];
     }
 
     public function update(array $data): array {
         $this->db->query(
-            "UPDATE budget_expenses SET user_id = ?, budget_account_id = ?, volume = ?, description = ?, proof = ? WHERE user_id = ? AND id = ?",
+            "UPDATE budget_expenses SET datetime = ?, budget_account_id = ?, volume = ?, unit_price = ?, description = ?, proof = ? WHERE user_id = ? AND id = ?",
             [
-                $data["user_id"],
+                $data["datetime"],
                 $data["budget_account_id"],
                 $data["volume"],
+                $data["unit_price"],
                 $data["description"],
                 $data["proof"] ?? null,
                 $data["user_id"],
@@ -55,6 +58,6 @@ class RecordExpenseModel {
             ]
         );
 
-        return $this->getAllByUserId($this->db->getConnection()->lastInsertId());
+        return $this->getAllByUserId($data["user_id"]);
     }
 }
