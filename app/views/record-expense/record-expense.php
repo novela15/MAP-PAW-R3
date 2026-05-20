@@ -18,7 +18,7 @@
                     <div class="content-grid">
                         <div>
                             <div class="name"><?php echo htmlspecialchars($row["name"]); ?></div>
-                            <div class="datetime"><?php echo htmlspecialchars(date("D, d M Y, H:i", strtotime($row["datetime"]))); ?></div>
+                            <div class="datetime" utc="<?php echo date('c', strtotime($row["datetime"])); ?>"><?php echo htmlspecialchars(date("D, d M Y, H:i", strtotime($row["datetime"]))); ?></div>
                             <div class="description"><?php echo htmlspecialchars($row["description"]); ?></div>
                         </div>
                         <div>

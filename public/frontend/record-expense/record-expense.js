@@ -15,6 +15,23 @@ for (const BUTTON of EDIT_BUTTONS) {
     });
 }
 
+for (const element of document.querySelectorAll(".datetime")) {
+    const utcDateStr = element.getAttribute("utc");
+    if (!utcDateStr) continue;
+
+    const localDate = new Date(utcDateStr);
+
+    element.textContent = localDate.toLocaleString("en-GB", {
+        weekday: "short",
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+    });
+}
+
 ADD_BUTTON.addEventListener("click", function() {
     openModal("modal-expense-add");
 });
