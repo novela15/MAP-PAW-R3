@@ -24,7 +24,12 @@
                         <div class="total-price"><span class="label">Total pengeluaran</span><br>Rp<?php echo htmlspecialchars(number_format($row["total_price"], 2, ',', '.')); ?></div>
                         <div class="total-price"><span class="label">Jumlah transaksi</span><br><?php echo htmlspecialchars($row["transaction_count"]); ?></div>
                     </div>
-                    <div class="description"><span class="label">Deskripsi</span><br><?php echo htmlspecialchars($row["description"]); ?></div>
+                    <?php if (!empty($row["description"])): ?>
+                        <div class="description"><span class="label">Deskripsi</span><br><?php echo htmlspecialchars($row["description"]); ?></div>
+                    <?php endif; ?>
+
+                    <div class="filler"></div>
+
                     <div class="action">
                         <button class="delete-button trash-can-button" title="Hapus" item-id=<?php echo $row["id"]; ?>>
                             <i class="fa-regular fa-trash-can"></i>

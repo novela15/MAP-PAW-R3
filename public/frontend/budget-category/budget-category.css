@@ -49,6 +49,8 @@
 }
 
 .card {
+    display: flex;
+    flex-direction: column;
     background-color: white;
     border: solid 2px #8e8e8e;
     border-radius: 1rem;

@@ -20,6 +20,9 @@
                         <div class="volume"><span class="label">Terhubung ke</span><br><?php echo htmlspecialchars($row["accounts_count"]); ?> kategori</div>
                         <div class="total-price"><span class="label">Total pengeluaran</span><br>Rp<?php echo htmlspecialchars(number_format($row["total_expense"], 2, ',', '.')); ?></div>
                     </div>
+
+                    <div class="filler"></div>
+
                     <div class="action">
                         <button class="delete-button trash-can-button" title="Hapus" item-id=<?php echo $row["id"]; ?>>
                             <i class="fa-regular fa-trash-can"></i>
