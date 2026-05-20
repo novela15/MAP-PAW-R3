@@ -17,15 +17,15 @@ class BudgetBookModel {
                 ba.id,
                 ba.name,
                 ba.budget AS budget,
-                COALESCE(SUM(be.volume * ba.unit_price), 0) AS total_expenses,
+                COALESCE(SUM(be.volume * be.unit_price), 0) AS total_expenses,
                 CASE 
                     WHEN ba.budget > 0 THEN 
-                        (COALESCE(SUM(be.volume * ba.unit_price), 0) / ba.budget) * 100
+                        (COALESCE(SUM(be.volume * be.unit_price), 0) / ba.budget) * 100
                     ELSE 0
                 END AS realization,
                 CASE 
-                    WHEN COALESCE(SUM(be.volume * ba.unit_price), 0) < ba.budget * 0.8 THEN 'Aman'
-                    WHEN COALESCE(SUM(be.volume * ba.unit_price), 0) <= ba.budget THEN 'Waspada'
+                    WHEN COALESCE(SUM(be.volume * be.unit_price), 0) < ba.budget * 0.8 THEN 'Aman'
+                    WHEN COALESCE(SUM(be.volume * be.unit_price), 0) <= ba.budget THEN 'Waspada'
                     ELSE 'Bahaya'
                 END AS status
             FROM budget_accounts ba

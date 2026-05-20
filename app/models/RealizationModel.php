@@ -8,14 +8,13 @@ class RealizationModel {
     }
 
     public function getRealizationByUserId($userId) {
-        // Query sudah disesuaikan dengan skema database_setup.sql
         $sql = "SELECT 
                     c.id AS category_id,
                     c.name AS category_name,
                     a.id AS account_id,
                     a.name AS account_name,
                     a.budget AS budget_plan,
-                    COALESCE(SUM(e.volume * a.unit_price), 0) AS actual_realization
+                    COALESCE(SUM(e.volume * e.unit_price), 0) AS actual_realization
                 FROM budget_category c
                 LEFT JOIN budget_accounts a ON c.id = a.category_id
                 LEFT JOIN budget_expenses e ON a.id = e.budget_account_id
@@ -38,7 +37,6 @@ class RealizationModel {
                 ];
             }
             
-            // Masukkan data hanya jika akun anggaran tersedia
             if ($row['account_name']) {
                 $report[$catId]['accounts'][] = $row;
                 $report[$catId]['total_budget'] += $row['budget_plan'];

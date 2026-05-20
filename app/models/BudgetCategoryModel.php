@@ -17,7 +17,7 @@ class BudgetCategoryModel {
             ]
         );
 
-        return $this->getAllByUserId($this->db->getConnection()->lastInsertId());
+        return $this->getAllByUserId($data["user_id"]);
     }
 
     public function deleteById(int $id): void {
@@ -29,7 +29,7 @@ class BudgetCategoryModel {
             SELECT 
                 budget_category.*,
                 COUNT(DISTINCT budget_accounts.id) AS accounts_count,
-                IFNULL(SUM(budget_expenses.volume * budget_accounts.unit_price), 0) AS total_expense
+                IFNULL(SUM(budget_expenses.volume * budget_expenses.unit_price), 0) AS total_expense
             FROM budget_category
             LEFT JOIN budget_accounts ON budget_accounts.category_id = budget_category.id
             LEFT JOIN budget_expenses ON budget_accounts.id = budget_expenses.budget_account_id
@@ -50,6 +50,6 @@ class BudgetCategoryModel {
             ]
         );
 
-        return $this->getAllByUserId($this->db->getConnection()->lastInsertId());
+        return $this->getAllByUserId($data["user_id"]);
     }
 }

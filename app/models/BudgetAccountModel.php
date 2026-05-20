@@ -8,18 +8,21 @@ class BudgetAccountModel {
     }
 
     public function create(array $data): array {
+        $budget = $data["volume"] * $data["unit_price"];
         $this->db->query(
-            "INSERT INTO budget_accounts (user_id, name, category_id, description, unit_price) VALUES (?, ?, ?, ?, ?)",
+            "INSERT INTO budget_accounts (user_id, name, category_id, description, volume, unit_price, budget) VALUES (?, ?, ?, ?, ?, ?, ?)",
             [
                 $data["user_id"],
                 $data["name"],
                 $data["category_id"],
                 $data["description"],
-                $data["unit_price"]
+                $data["volume"],
+                $data["unit_price"],
+                $budget
             ]
         );
 
-        return $this->getAllByUserId($this->db->getConnection()->lastInsertId());
+        return $this->getAllByUserId($data["user_id"]);
     }
 
     public function deleteById(int $id): void {
@@ -29,16 +32,23 @@ class BudgetAccountModel {
     public function getAllByUserId(int $id): array {
         $query = "
             SELECT
-                ba.*,
+                ba.id,
+                ba.user_id,
+                ba.category_id,
+                ba.name,
+                ba.description,
+                ba.volume AS estimated_volume,
+                ba.unit_price AS estimated_unit_price,
+                ba.budget AS total_budget_plan,
                 bc.name AS category,
-                COALESCE(SUM(be.volume), 0) AS volume,
-                COALESCE(SUM(be.volume), 0) * ba.unit_price AS total_price,
+                COALESCE(SUM(be.volume), 0) AS actual_volume_spent,
+                COALESCE(SUM(be.volume * be.unit_price), 0) AS total_actual_price,
                 COUNT(be.id) AS transaction_count
             FROM budget_accounts ba
             INNER JOIN budget_category bc ON ba.category_id = bc.id
             LEFT JOIN budget_expenses be ON ba.id = be.budget_account_id
             WHERE ba.user_id = ?
-            GROUP BY ba.id, bc.name, ba.unit_price;
+            GROUP BY ba.id, bc.name;
         ";
 
         $statement = $this->db->query($query, [$id]);
@@ -51,16 +61,20 @@ class BudgetAccountModel {
     }
 
     public function update(array $data): array {
-        $this->db->query("UPDATE budget_accounts SET name = ?, category_id = ?, description = ?, unit_price = ? WHERE id = ?",
+        $budget = $data["volume"] * $data["unit_price"];
+        $this->db->query(
+            "UPDATE budget_accounts SET name = ?, category_id = ?, description = ?, volume = ?, unit_price = ?, budget = ? WHERE id = ?",
             [
                 $data["name"],
                 $data["category_id"],
                 $data["description"],
+                $data["volume"],
                 $data["unit_price"],
+                $budget,
                 $data["id"]
             ]
         );
 
-        return $this->getAllByUserId($this->db->getConnection()->lastInsertId());
+        return $this->getAllByUserId($data["user_id"]);
     }
 }
