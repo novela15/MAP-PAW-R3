@@ -1,11 +1,13 @@
-class ReportModel {
+<?php
+
+class RealizationModel {
     private $db;
 
     public function __construct($dbConnection) {
         $this->db = $dbConnection;
     }
 
-    public function getHierarchicalReport($userId) {
+    public function getRealizationByUserId($userId) {
         $sql = "SELECT 
                     c.id AS category_id,
                     c.name AS category_name,
