@@ -9,18 +9,22 @@ class RealizationModel {
     }
 
     public function getRealizationByUserId($userId) {
+        
+        // --- YANG DIGANTI (Bagian SQL Query) ---
         $sql = "SELECT 
                     c.id AS category_id,
                     c.name AS category_name,
+                    a.id AS account_id,
                     a.name AS account_name,
                     a.amount AS budget_plan,
-                    COALESCE(SUM(e.volume * a.unit_price), 0) AS actual_realization
+                    COALESCE(SUM(e.amount), 0) AS actual_realization
                 FROM budget_category c
                 LEFT JOIN budget_accounts a ON c.id = a.category_id
                 LEFT JOIN budget_expenses e ON a.id = e.budget_account_id
                 WHERE c.user_id = ?
                 GROUP BY c.id, a.id
                 ORDER BY c.id, a.id";
+        // ---------------------------------------
 
         // Menggunakan metode query bawaan dari class Database milikmu
         $stmt = $this->db->query($sql, [$userId]);

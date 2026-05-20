@@ -26,6 +26,11 @@
 
                     if (!empty($realizationData)): 
                         foreach ($realizationData as $category): 
+                            
+                            // --- YANG DIGANTI (Tambah saringan ini) ---
+                            if (empty($category['accounts'])) continue;
+                            // ------------------------------------------
+
                             $subTotalAnggaran = 0;
                             $subTotalRealisasi = 0;
                     ?>
