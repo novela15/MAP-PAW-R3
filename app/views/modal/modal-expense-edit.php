@@ -3,18 +3,39 @@
         <div class="modal-header">Edit Catatan Belanja</div>
 
         <form class="input-container" method="POST" action="record-expense">
-            <p>Akun Anggaran</p>
+            <p>Tanggal</p>
+            <input type="date" name="tanggal" required>
+
+            <p>Nama Akun</p>
             <select name="budget_account_id" required>
-            <?php foreach ($budgetAccounts as $category): ?>
-                <option value="<?php echo $category["id"]; ?>"><?php echo $category["name"]; ?></option>
-            <?php endforeach; ?>
+                <option value="" disabled selected>Pilih Akun...</option>
+                <?php foreach ($budgetAccounts as $category): ?>
+                    <option value="<?php echo $category["id"]; ?>"><?php echo $category["name"]; ?></option>
+                <?php endforeach; ?>
             </select>
 
             <p>Volume</p>
-            <input type="number" name="volume" value="" required>
+            <input type="number" name="volume" placeholder="Contoh: 1" required>
+
+            <p>Satuan</p>
+            <div class="input-group">
+                <span class="input-prefix">Rp</span>
+                <input type="number" name="harga_satuan" placeholder="Harga" required>
+            </div>
+
+            <p>Struk</p>
+            <div class="input-group">
+                <label class="upload-btn">
+                    Upload
+                    <input type="file" name="struk" style="display: none;" onchange="this.nextElementSibling.value = this.files[0].name">
+                </label>
+                <input type="text" placeholder="No file chosen" readonly>
+            </div>
 
             <p>Deskripsi</p>
-            <textarea name="description"></textarea>
+            <textarea name="description" rows="4"></textarea>
+
+            <input type="hidden" name="type" value="add">
 
             <input type="hidden" name="item_id" value="<?php echo $_GET["item_id"] ?>">
             <input type="hidden" name="type" value="edit">
