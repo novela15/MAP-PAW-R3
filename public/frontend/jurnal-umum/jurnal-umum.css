@@ -1,0 +1,148 @@
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  background-color: #b1d8d3;
+}
+
+/* App Layout Grid - Menjamin space kosong tetap ada walau tanpa sidebar HTML */
+.app-container {
+  display: grid;
+  grid-template-columns: 280px 1fr; 
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* Main Content Area */
+.main-content {
+  background-color: #b1d8d3;
+  padding: 32px 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+  grid-column: 2; /* Selalu paksa di kolom kanan */
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+}
+
+/* White Report Card Container */
+.report-card {
+  background-color: #eef7f6;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 24px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+/* Table Design */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  flex-grow: 1;
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+}
+
+.report-table th {
+  background-color: #43716c;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 12px 10px;
+  text-align: center;
+  border: 1px solid #cbd5e1;
+}
+
+/* Atur lebar kolom secara proporsional */
+.report-table th:nth-child(1) { width: 12%; }
+.report-table th:nth-child(2) { width: 22%; }
+.report-table th:nth-child(3) { width: 14%; }
+.report-table th:nth-child(4) { width: 18%; }
+.report-table th:nth-child(5) { width: 16%; }
+.report-table th:nth-child(6) { width: 18%; }
+
+.report-table td {
+  padding: 10px 16px;
+  border: 1px solid #cbd5e1;
+  height: 48px;
+}
+
+/* Kolom Bukti Pengeluaran (Ikon) */
+.action-cell {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.btn-invoice {
+  background: none;
+  border: none;
+  position: relative;
+  font-size: 20px;
+  color: #1e293b;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-invoice .sub-icon {
+  position: absolute;
+  font-size: 9px;
+  bottom: -2px;
+  right: -5px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 1px;
+  font-weight: bold;
+}
+
+/* Footer & Unduh Button */
+.card-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.btn-unduh {
+  background-color: #648984;
+  color: #ffffff;
+  border: none;
+  padding: 12px 36px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-unduh:hover {
+  background-color: #4a6864;
+}

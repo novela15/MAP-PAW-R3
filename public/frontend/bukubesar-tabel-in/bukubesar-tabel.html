@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan - Buku Besar</title>
+  <link rel="stylesheet" href="bukubesar-tabel.css">
+  <link rel="stylesheet" href="sidebar.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <button class="icon-btn"><i class="fa-solid fa-bars"></i></button>
+        <button class="icon-btn"><i class="fa-solid fa-circle-plus"></i></button>
+      </div>
+      <div class="search-container">
+        <input type="text" placeholder="Search" class="search-input">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      </div>
+      <div class="menu-section">
+        <span class="menu-title">Menu</span>
+        <nav class="menu-list">
+          <a href="#" class="menu-item">Buku Anggaran</a>
+          <a href="#" class="menu-item">Kategori Anggaran</a>
+          <a href="#" class="menu-item">Akun Anggaran</a>
+          <a href="#" class="menu-item active">Catat Belanja</a>
+          <a href="#" class="menu-item">Laporan</a>
+          <a href="#" class="menu-item">Tutup Buku</a>
+          <a href="#" class="menu-item">Keluar</a>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <h1 class="page-title">Laporan</h1>
+      
+      <div class="report-card">
+        <h2 class="card-title">Buku Besar <span class="category-placeholder">[namaKategori]</span></h2>
+        
+        <div class="table-container">
+          <table class="report-table">
+            <thead>
+              <tr>
+                <th>Tanggal</th>
+                <th>Keterangan</th>
+                <th>Debit</th>
+                <th>Kredit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr class="total-row">
+                <td>Total</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card-footer">
+          <button class="btn-unduh" id="btnUnduh">Unduh</button>
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="sidebar.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
