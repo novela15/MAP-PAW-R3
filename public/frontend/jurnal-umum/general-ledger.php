@@ -50,5 +50,4 @@
     </main>
 </div>
 
-<script src="frontend/sidebar/sidebar.js?v=<?php echo time();?>"></script>
 <script src="frontend/general-ledger/jurnal-umum.js?v=<?php echo time();?>"></script>

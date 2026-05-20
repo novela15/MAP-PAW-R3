@@ -37,7 +37,6 @@ HEAD:public/frontend/general-ledger/buku-besar.css
     min-height: calc(100vh - 120px);
 }
 
-bukubesar-tabel-in:buku-besar.css
 .card-header {
     display: flex;
     justify-content: space-between;

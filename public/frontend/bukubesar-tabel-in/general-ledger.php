@@ -63,5 +63,4 @@
     </main>
 </div>
 
-<script src="frontend/sidebar/sidebar.js?v=<?php echo time();?>"></script>
-<script src="frontend/general-ledger/buku-besar.js?v=<?php echo time();?>"></script>
+<script src="frontend/general-ledger/bukubesar-tabel.js?v=<?php echo time();?>"></script>
