@@ -1,0 +1,87 @@
+/* Mengatur Judul Luar */
+.laporan-header {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+/* Kotak Utama dengan Background Hijau Muda */
+.realization-card {
+    background-color: #eaf3f0; /* Warna hijau sangat muda khas desainmu */
+    border-radius: 15px;
+    padding: 30px;
+    border: 1px solid #d2e4de;
+}
+
+.realization-card h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #000;
+    font-weight: 700;
+}
+
+/* Tabel Kustom */
+.realization-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+}
+
+.realization-table th, .realization-table td {
+    border: 1px solid #d4dfdb;
+    padding: 12px 15px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Header Tabel Warna Gelap */
+.realization-table th {
+    background-color: #4b7a76; /* Hijau Toska Gelap */
+    color: #ffffff;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Warna untuk baris Sub Total */
+.subtotal-row td {
+    background-color: #c4e0d9; /* Hijau Toska Sedang */
+}
+
+/* Warna untuk baris Total Bawah */
+.total-row td {
+    background-color: #9ac2b9; /* Hijau Toska Lebih Gelap Sedikit */
+}
+
+/* Bantuan Posisi Teks */
+.text-right {
+    text-align: right !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+/* Posisi Tombol Unduh di Kanan Bawah */
+.btn-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+.btn-unduh {
+    background-color: #6d8e8b;
+    color: white;
+    border: none;
+    padding: 12px 40px;
+    border-radius: 25px; /* Biar tombolnya lonjong seperti di gambar */
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-unduh:hover {
+    background-color: #557270;
+}

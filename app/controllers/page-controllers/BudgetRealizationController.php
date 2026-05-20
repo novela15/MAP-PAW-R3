@@ -2,9 +2,10 @@
 
 class BudgetRealizationController extends FeaturePageController {
     public function index() {
-        $model = new RealizationModel();        
+        // Hapus $this->db di dalam kurung, biarkan kosong
+        $model = new RealizationModel(); 
         $realizationData = $model->getRealizationByUserId($_SESSION["user_id"]);
-
+        
         $this->renderView(
             "budget-realization/budget-realization",
             "Budget Realization",
