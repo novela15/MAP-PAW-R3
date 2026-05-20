@@ -31,10 +31,12 @@ class RecordExpenseModel {
             SELECT
                 budget_expenses.*,
                 budget_accounts.name AS name,
-                budget_accounts.unit_price AS unit_price
+                budget_accounts.unit_price AS unit_price,
+                (budget_expenses.volume * budget_accounts.unit_price) AS total_price
             FROM budget_expenses
             INNER JOIN budget_accounts ON budget_expenses.budget_account_id = budget_accounts.id
-            WHERE budget_expenses.user_id = ?", [$id]
+            WHERE budget_expenses.user_id = ?
+            ORDER BY budget_expenses.datetime DESC", [$id]
         );
         return $statement->fetchAll() ?: [];
     }

@@ -28,7 +28,7 @@ class BudgetCategoryModel {
         $statement = $this->db->query("
             SELECT 
                 budget_category.*,
-                COUNT(budget_accounts.id) AS accounts_count,
+                COUNT(DISTINCT budget_accounts.id) AS accounts_count,
                 IFNULL(SUM(budget_expenses.volume * budget_accounts.unit_price), 0) AS total_expense
             FROM budget_category
             LEFT JOIN budget_accounts ON budget_accounts.category_id = budget_category.id

@@ -1,63 +1,49 @@
 <!-- ALWAYS put CSS files at the top -->
-<link rel="stylesheet" href="frontend/record-expense/record-expense.css?v=<?php echo time();?>">
+<link rel="stylesheet" href="frontend/record-expense/record-expense.css?v=<?php echo time(); ?>">
 
 <p class="container-header">Catatan Belanja</p>
 
 <div class="subcontainer">
     <div class="horizontal-flex">
-        <p class="container-header">Daftar Catatan Belanja</p>
         <div class="add-container horizontal-flex">
             <button class="add-button">+</button>
             <div>Buat</div>
         </div>
     </div>
-    <table class="record-expense-table">
-        <tr>
-            <th>Tanggal</th>
-            <th>Akun Anggaran</th>
-            <th>Volume</th>
-            <th>Harga Satuan</th>
-            <th>Keterangan</th>
-            <th>Bukti Pengeluaran</th>
-            <th>Action</th>
-        </tr>
-        <?php if (!empty($table)): ?>
-            <?php foreach ($table as $row): ?>
-                <tr>
-                    <td><?= htmlspecialchars($row["datetime"]) ?></td>
-                    <td><?= htmlspecialchars($row["name"]) ?></td>
-                    <td><?= htmlspecialchars($row["volume"]) ?></td>
-                    <td>Rp<?= htmlspecialchars(number_format($row["unit_price"], 2, ',', ',')) ?></td>
-                    <td><?= htmlspecialchars($row["description"]) ?></td>
-                    <td>
-                        <?php if (!empty($row["proof"])): ?>
-                            <a href="uploads/<?= htmlspecialchars($row["proof"]) ?>" target="_blank">
-                                Lihat Bukti
-                            </a>
-                        <?php else: ?>
-                            -
-                        <?php endif; ?>
-                    </td>
-                    <td>
-                        <div class="table-action">
-                            <button class="delete-button trash-can-button" item-id=<?php echo $row["id"]; ?>>
-                                <i class="fa-regular fa-trash-can"></i>
-                            </button>
-                            <button class="write-button pen-button" item-id=<?php echo $row["id"]; ?>>
-                                <i class="fa-solid fa-pen"></i>
-                            </button>
+
+    <div class="grid-container">
+        <?php if (!empty($recordExpenseModel)): ?>
+            <?php foreach ($recordExpenseModel as $row): ?>
+                <div class="card">
+                    <div class="content-grid">
+                        <div>
+                            <div class="name"><?php echo htmlspecialchars($row["name"]); ?></div>
+                            <div class="datetime" utc="<?php echo date('c', strtotime($row["datetime"])); ?>"><?php echo htmlspecialchars(date("D, d M Y, H:i", strtotime($row["datetime"]))); ?></div>
+                            <div class="description"><?php echo htmlspecialchars($row["description"]); ?></div>
                         </div>
-                    </td>
-                </tr>
+                        <div>
+                            <div class="price-calculation"><?php echo htmlspecialchars($row["volume"]) . " x Rp" . htmlspecialchars(number_format($row["unit_price"], 2, ',', '.')); ?></div>
+                            <div class="total-price">Rp<?php echo htmlspecialchars(number_format($row["total_price"], 2, ',', '.')); ?></div>
+                            <div class="action">
+                                <button class="delete-button trash-can-button" title="Hapus" item-id=<?php echo $row["id"]; ?>>
+                                    <i class="fa-regular fa-trash-can"></i>
+                                </button>
+                                <button class="write-button pen-button" title="Edit" item-id=<?php echo $row["id"]; ?>>
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             <?php endforeach; ?>
         <?php else: ?>
-            <td class="empty-table-placeholder" colspan="7">Tidak ada akun anggaran yang ditemukan.</td>
+            <div class="empty-table-placeholder">Tidak ada akun anggaran yang ditemukan.</div>
         <?php endif; ?>
-    </table>
+    </div>
 </div>
 
 <!--
     ALWAYS put JS files at the end,
     and ALWAYS make JS files as modules so they don't pollute the global namespace
 -->
-<script defer src="frontend/record-expense/record-expense.js?v=<?php echo time();?>" type="module"></script>
+<script defer src="frontend/record-expense/record-expense.js?v=<?php echo time(); ?>" type="module"></script>

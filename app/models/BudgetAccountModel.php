@@ -32,7 +32,8 @@ class BudgetAccountModel {
                 ba.*,
                 bc.name AS category,
                 COALESCE(SUM(be.volume), 0) AS volume,
-                COALESCE(SUM(be.volume), 0) * ba.unit_price AS total_price
+                COALESCE(SUM(be.volume), 0) * ba.unit_price AS total_price,
+                COUNT(be.id) AS transaction_count
             FROM budget_accounts ba
             INNER JOIN budget_category bc ON ba.category_id = bc.id
             LEFT JOIN budget_expenses be ON ba.id = be.budget_account_id

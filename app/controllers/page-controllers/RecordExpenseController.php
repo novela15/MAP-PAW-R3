@@ -29,7 +29,7 @@ class RecordExpenseController extends FeaturePageController {
         $this->renderView(
             "record-expense/record-expense",
             "Record Expense",
-            ["table" => $recordExpenseModel->getAllByUserId($_SESSION["user_id"])]
+            ["recordExpenseModel" => $recordExpenseModel->getAllByUserId($_SESSION["user_id"])]
         );
         }
 

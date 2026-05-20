@@ -42,13 +42,13 @@
 .grid-container {
     display: grid;
     gap: 1.5rem;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     margin-bottom: 1.5rem;
     margin-left: 1.5rem;
     margin-right: 1.5rem;
 }
 
-.budget-account-card {
+.card {
     background-color: white;
     border: solid 2px #8e8e8e;
     border-radius: 1rem;
@@ -56,27 +56,41 @@
     width: 100%;
 }
 
-.budget-account-card .content-grid {
+.card .content-grid {
     display: grid;
     gap: 0.5rem;
     grid-template-columns: repeat(2, 1fr);
 }
 
-.budget-account-card .label {
+.card .content-grid div > div:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
+
+.card .content-grid div {
+    min-width: 0;
+}
+.card .description {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.card .label {
     color: #8e8e8e;
     font-size: 0.75rem;
 }
 
-.budget-account-card .name {
+.card .name {
     font-size: 1.25rem;
     font-weight: bold;
 }
 
-.budget-account-card div {
+.card > div:not(:last-child) {
     margin-bottom: 0.5rem;
 }
 
-.budget-account-card hr {
+.card hr {
     color: #8e8e8e;
     margin-bottom: 1.5rem;
     margin-top: 1rem;
