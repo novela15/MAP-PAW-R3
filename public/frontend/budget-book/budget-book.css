@@ -1,39 +1,8 @@
-.horizontal-flex {
-    display: flex;
-    flex-direction: row;
+.subcontainer {
+    padding-top: 1.5rem;
 }
 
-.budget-book-table {
-    border-collapse: collapse;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: 1rem;
-    table-layout: auto;
-    width: calc(100% - 2rem);
-}
-
-.budget-book-table th {
-    background-color: #477B79;
-    color: whitesmoke;
-    text-align: center;
-}
-
-.budget-book-table td {
-    background-color: white;
-}
-
-.budget-book-table, th, td {
-    border: 1px solid #B9B9B9;
-    height: 1rem;
-    padding: 0.5rem;
-}
-
-.empty-table-placeholder {
-    padding: 1rem;
-    text-align: center;
-}
-
-.card {
+.horizontal-flex .card {
     background-color: #477B79;
     border-radius: 16px;
     color: whitesmoke;
@@ -46,55 +15,192 @@
     text-align: right;
 }
 
-.card:first-child {
+.horizontal-flex .card:first-child {
     margin-left: 1.5rem;
     margin-right: 0.75rem;
 }
 
-.card:last-child {
+.horizontal-flex .card:last-child {
     margin-left: 0.75rem;
     margin-right: 1.5rem;
-}
-
-.container-button {
-    align-items: center;
-    background-color: #477B79;
-    border: none;
-    border-radius: 16px;
-    color: whitesmoke;
-    cursor: pointer;
-    display: flex;
-    font-size: 0.875rem;
-    font-weight: bold;
-    height: 2.5rem;
-    justify-content: space-between;
-    margin: 1rem;
-    padding: 0.5rem 0.75rem;
-    text-align: left;
-    text-decoration: none;
-    width: fit-content;
-}
-
-.container-button:hover {
-    background-color: #324444;
-}
-
-.container-button:active {
-    background-color: #192222;
 }
 
 .bold {
     font-weight: bold;
 }
 
-.currency {
+.currency-green {
     color: #00ff00;
 }
 
+.currency-red {
+    color: #ff0000;
+}
+
+.currency-yellow {
+    color: #ffff00;
+}
+
+.status-green {
+    color: #367E18 !important;
+}
+
 .status-red {
-    background-color: #ff0000 !important;
+    color: #CC3636 !important;
 }
 
 .status-yellow {
-    background-color: #ffff00 !important;
+    color: #B68D00 !important;
+}
+
+.empty-placeholder {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.horizontal-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.add-container {
+    box-sizing: border-box;
+    height: 4rem;
+    margin-left: auto;
+    width: fit-content;
+}
+
+.add-container div {
+    font-size: 1.25rem;
+    line-height: 0.75rem;
+    margin-left: 0.5rem;
+    margin-right: 1rem;
+    margin-top: 1.5rem;
+    width: fit-content;
+}
+
+.add-button {
+    background-color: #668685;
+    border: none;
+    border-radius: 8px;
+    color: whitesmoke;
+    font-size: 1.5rem;
+    line-height: 0.75rem;
+    height: 2rem;
+    margin-top: 1rem;
+    width: 2rem;
+}
+
+.add-button:hover {
+    background-color: #324444;
+}
+
+.add-button:active {
+    background-color: #192222;
+}
+
+.grid-container {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-bottom: 1.5rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: solid 2px #8e8e8e;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 100%;
+}
+
+.card .content-grid {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.card .content-grid div {
+    margin-bottom: 0.5rem;
+    min-width: 0;
+}
+
+.card .description {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.card .label {
+    color: #8e8e8e;
+    font-size: 0.75rem;
+}
+
+.card .name {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card > div:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
+
+.card hr {
+    color: #8e8e8e;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+}
+
+.action {
+    display: grid;
+    gap: 1rem;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    justify-content: end;
+    width: 100%;
+}
+
+.pen-button {
+    background-color: #668685;
+    border: none;
+    border-radius: 8px;
+    color: whitesmoke;
+    font-size: 1.5rem;
+    line-height: 0.75rem;
+    height: 2rem;
+    width: 2rem;
+}
+
+.pen-button:hover {
+    background-color: #324444;
+}
+
+.pen-button:active {
+    background-color: #192222;
+}
+
+.trash-can-button {
+    background-color: #CF3234;
+    border: none;
+    border-radius: 8px;
+    color: whitesmoke;
+    font-size: 1.5rem;
+    line-height: 0.75rem;
+    height: 2rem;
+    width: 2rem;
+}
+
+.trash-can-button:hover {
+    background-color: #641919;
+}
+
+.trash-can-button:active {
+    background-color: #320c0c;
 }
