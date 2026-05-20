@@ -1,7 +1,7 @@
 const ADD_BUTTON = document.querySelector(".add-button");
 
-const DELETE_BUTTONS = document.querySelectorAll(".table-action .delete-button");
-const EDIT_BUTTONS = document.querySelectorAll(".table-action .write-button");
+const DELETE_BUTTONS = document.querySelectorAll(".action .delete-button");
+const EDIT_BUTTONS = document.querySelectorAll(".action .write-button");
 
 for (const BUTTON of DELETE_BUTTONS) {
     BUTTON.addEventListener("click", function() {

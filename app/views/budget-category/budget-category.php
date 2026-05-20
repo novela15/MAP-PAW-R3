@@ -13,7 +13,7 @@
     <div class="grid-container">
         <?php if (!empty($budgetCategoryModel)): ?>
             <?php foreach ($budgetCategoryModel as $row): ?>
-                <div class="budget-account-card">
+                <div class="card">
                     <div class="name"><?php echo htmlspecialchars($row["name"]); ?></div>
                     <div class="description"><?php echo htmlspecialchars($row["description"]); ?></div>
                     <div class="content-grid">

@@ -14,14 +14,15 @@
     <div class="grid-container">
         <?php if (!empty($budgetAccountTables)): ?>
             <?php foreach ($budgetAccountTables as $row): ?>
-                <div class="budget-account-card">
+                <div class="card">
                     <div class="name"><?php echo htmlspecialchars($row["name"]); ?></div>
                     <div class="category"><?php echo htmlspecialchars($row["category"]); ?></div>
                     <hr />
                     <div class="content-grid">
-                        <div class="volume"><span class="label">Volume</span><br><?php echo htmlspecialchars($row["volume"]); ?></div>
+                        <div class="volume"><span class="label">Total volume</span><br><?php echo htmlspecialchars($row["volume"]); ?></div>
                         <div class="unit-price"><span class="label">Harga satuan</span><br>Rp<?php echo htmlspecialchars(number_format($row["unit_price"], 2, ',', '.')); ?></div>
-                        <div class="total-price"><span class="label">Total harga</span><br>Rp<?php echo htmlspecialchars(number_format($row["total_price"], 2, ',', '.')); ?></div>
+                        <div class="total-price"><span class="label">Total pengeluaran</span><br>Rp<?php echo htmlspecialchars(number_format($row["total_price"], 2, ',', '.')); ?></div>
+                        <div class="total-price"><span class="label">Jumlah transaksi</span><br><?php echo htmlspecialchars($row["transaction_count"]); ?></div>
                     </div>
                     <div class="description"><span class="label">Deskripsi</span><br><?php echo htmlspecialchars($row["description"]); ?></div>
                     <div class="action">

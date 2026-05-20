@@ -39,41 +39,79 @@
     background-color: #192222;
 }
 
-.record-expense-table {
-    border-collapse: collapse;
-    margin: 1rem;
-    table-layout: auto;
-    width: calc(100% - 2rem);
+.grid-container {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-bottom: 1.5rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
 }
 
-.record-expense-table th {
-    background-color: #477B79;
-    color: whitesmoke;
-    text-align: center;
-}
-
-.record-expense-table td {
+.card {
     background-color: white;
-}
-
-.record-expense-table, th, td {
-    border: 1px solid #B9B9B9;
-    height: 1rem;
-    padding: 0.5rem;
-}
-
-.empty-table-placeholder {
+    border: solid 2px #8e8e8e;
+    border-radius: 1rem;
     padding: 1rem;
-    text-align: center;
+    width: 100%;
 }
 
-.table-action {
+.card .content-grid {
     display: grid;
     gap: 0.5rem;
-    grid-template-columns: 1fr 1fr;
-    margin: auto;
-    place-items: center;
-    width: fit-content;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.card .content-grid div > div:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
+
+.card .content-grid div {
+    min-width: 0;
+}
+
+.card .content-grid > div:last-child {
+    text-align: right;
+}
+
+.card .description {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.card .label {
+    color: #8e8e8e;
+    font-size: 0.75rem;
+}
+
+.card .name {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card .total-price {
+    font-weight: bold;
+}
+
+.card > div:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
+
+.card hr {
+    color: #8e8e8e;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+}
+
+.action {
+    display: grid;
+    gap: 1rem;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    justify-content: end;
+    width: 100%;
 }
 
 .pen-button {
