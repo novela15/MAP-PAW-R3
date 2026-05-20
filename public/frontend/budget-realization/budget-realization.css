@@ -1,28 +1,38 @@
-/* Mengatur Judul Luar */
-.laporan-header {
-    font-size: 24px;
+/* Styling Header Laporan persis seperti Buku Besar */
+.container-header {
+    font-size: 30px;
     font-weight: 700;
-    margin-bottom: 20px;
-    color: #000;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
 }
 
-/* Kotak Utama dengan Background Hijau Muda */
-.realization-card {
-    background-color: #eaf3f0; /* Warna hijau sangat muda khas desainmu */
-    border-radius: 15px;
-    padding: 30px;
-    border: 1px solid #d2e4de;
+/* Card pembungkus utama */
+.card {
+    background-color: #eaf3f0; /* Hijau muda pucat khas desainmu */
+    border-radius: 12px;
+    padding: 24px 28px;
+    min-height: calc(100vh - 120px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
-.realization-card h2 {
-    margin-top: 0;
-    margin-bottom: 20px;
-    font-size: 22px;
-    color: #000;
-    font-weight: 700;
+.card-header {
+    margin-bottom: 24px;
 }
 
-/* Tabel Kustom */
+.card-title {
+    font-size: 25px;
+    font-weight: 600;
+    color: #1a1a1a;
+    letter-spacing: -0.3px;
+    margin: 0;
+}
+
+/* Styling Tabel Kustom */
+.table-responsive {
+    overflow-x: auto;
+}
+
 .realization-table {
     width: 100%;
     border-collapse: collapse;
@@ -31,39 +41,40 @@
 
 .realization-table th, .realization-table td {
     border: 1px solid #d4dfdb;
-    padding: 12px 15px;
+    padding: 14px 16px;
     font-size: 14px;
-    color: #333;
+    color: #2C4A44; /* Warna text hijau gelap menyesuaikan Buku Besar */
 }
 
-/* Header Tabel Warna Gelap */
+/* Header Tabel */
 .realization-table th {
-    background-color: #4b7a76; /* Hijau Toska Gelap */
+    background-color: #4b7a76;
     color: #ffffff;
     text-align: center;
     font-weight: 600;
+    letter-spacing: 0.3px;
 }
 
-/* Warna untuk baris Sub Total */
+/* Subtotal & Total */
 .subtotal-row td {
-    background-color: #c4e0d9; /* Hijau Toska Sedang */
+    background-color: #c4e0d9;
 }
 
-/* Warna untuk baris Total Bawah */
 .total-row td {
-    background-color: #9ac2b9; /* Hijau Toska Lebih Gelap Sedikit */
+    background-color: #9ac2b9;
 }
 
-/* Bantuan Posisi Teks */
+/* Helpers */
 .text-right {
     text-align: right !important;
+    padding-right: 20px !important;
 }
 
 .text-center {
     text-align: center !important;
 }
 
-/* Posisi Tombol Unduh di Kanan Bawah */
+/* Tombol Unduh */
 .btn-container {
     display: flex;
     justify-content: flex-end;
@@ -71,17 +82,20 @@
 }
 
 .btn-unduh {
-    background-color: #6d8e8b;
+    background-color: #6a8d8a;
     color: white;
     border: none;
-    padding: 12px 40px;
-    border-radius: 25px; /* Biar tombolnya lonjong seperti di gambar */
-    font-weight: bold;
+    padding: 12px 45px;
+    border-radius: 25px;
+    font-weight: 600;
     font-size: 15px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .btn-unduh:hover {
-    background-color: #557270;
+    background-color: #4b7a76;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
