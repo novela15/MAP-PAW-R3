@@ -1,6 +1,4 @@
 <link rel="stylesheet" href="frontend/general-ledger/bukubesar-tabel.css?v=<?php echo time();?>">
-<link rel="stylesheet" href="frontend/sidebar/sidebar.css?v=<?php echo time();?>">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <div class="app-container">
     <main class="main-content">
