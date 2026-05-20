@@ -26,22 +26,13 @@
 
                     if (!empty($realizationData)): 
                         foreach ($realizationData as $category): 
-                            
-                            // --- YANG DIGANTI (Tambah saringan ini) ---
-                            if (empty($category['accounts'])) continue;
-                            // ------------------------------------------
-
+                            if (empty($category['accounts'])) continue; 
                             $subTotalAnggaran = 0;
                             $subTotalRealisasi = 0;
                     ?>
-                            
                             <tr>
                                 <td style="width: 15%; padding-left: 20px;"><strong><?= htmlspecialchars($category['name']) ?></strong></td>
-                                <td style="width: 20%;"></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td style="width: 20%;"></td><td></td><td></td><td></td><td></td>
                             </tr>
 
                             <?php 
@@ -50,7 +41,6 @@
                                 $realisasi = $account['actual_realization'];
                                 $selisih = $anggaran - $realisasi;
                                 $persentase = $anggaran > 0 ? ($realisasi / $anggaran) * 100 : 0;
-
                                 $subTotalAnggaran += $anggaran;
                                 $subTotalRealisasi += $realisasi;
                             ?>
@@ -94,11 +84,8 @@
                             <td><strong>Rp <?= number_format($grandSelisih, 0, ',', '.') ?></strong></td>
                             <td><strong><?= number_format($grandPersentase, 1) ?>%</strong></td>
                         </tr>
-
                     <?php else: ?>
-                        <tr>
-                            <td colspan="6" class="text-center" style="padding: 30px; color: #666;">Belum ada data anggaran atau realisasi.</td>
-                        </tr>
+                        <tr><td colspan="6" class="text-center" style="padding: 30px;">Belum ada data anggaran atau realisasi.</td></tr>
                     <?php endif; ?>
                 </tbody>
             </table>
@@ -109,3 +96,114 @@
         </div>
     </div>
 </div>
+
+<table id="table-excel" style="display: none;">
+    <thead>
+        <tr>
+            <th style="background-color: #4b7a76; color: #ffffff;">Kategori</th>
+            <th style="background-color: #4b7a76; color: #ffffff;">Akun Anggaran</th>
+            <th style="background-color: #4b7a76; color: #ffffff;">Anggaran</th>
+            <th style="background-color: #4b7a76; color: #ffffff;">Realisasi</th>
+            <th style="background-color: #4b7a76; color: #ffffff;">Lebih / Kurang</th>
+            <th style="background-color: #4b7a76; color: #ffffff;">Presentase</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php 
+        $rowNum = 1; // Mulai dari baris 1 (Header)
+        $subtotalRows = []; // Menyimpan baris subtotal untuk rumus Grand Total
+
+        if (!empty($realizationData)): 
+            foreach ($realizationData as $category): 
+                if (empty($category['accounts'])) continue; 
+                
+                $rowNum++; // Baris Kategori
+        ?>
+                <tr>
+                    <td><strong><?= htmlspecialchars($category['name']) ?></strong></td>
+                    <td></td><td></td><td></td><td></td><td></td>
+                </tr>
+
+                <?php 
+                $startCatRow = $rowNum + 1; // Baris awal data akun
+                
+                foreach ($category['accounts'] as $account): 
+                    $rowNum++; // Baris Akun
+                    $anggaran = $account['budget_plan'];
+                    $realisasi = $account['actual_realization'];
+                ?>
+                    <tr>
+                        <td></td>
+                        <td><?= htmlspecialchars($account['account_name']) ?></td>
+                        <td style="mso-number-format:'\Rp\#\,\#\#0'"><?= $anggaran ?></td>
+                        <td style="mso-number-format:'\Rp\#\,\#\#0'"><?= $realisasi ?></td>
+                        <td style="mso-number-format:'\Rp\#\,\#\#0'">=C<?= $rowNum ?>-D<?= $rowNum ?></td>
+                        <td style="mso-number-format:'0.0%'">=IF(C<?= $rowNum ?>>0, D<?= $rowNum ?>/C<?= $rowNum ?>, 0)</td>
+                    </tr>
+                <?php endforeach; 
+                $endCatRow = $rowNum; // Baris akhir data akun
+                $rowNum++; // Baris Subtotal
+                $subtotalRows[] = $rowNum; 
+                ?>
+                <tr style="background-color: #c4e0d9;">
+                    <td colspan="2"><strong>Sub Total</strong></td>
+                    <td style="mso-number-format:'\Rp\#\,\#\#0'">=SUM(C<?= $startCatRow ?>:C<?= $endCatRow ?>)</td>
+                    <td style="mso-number-format:'\Rp\#\,\#\#0'">=SUM(D<?= $startCatRow ?>:D<?= $endCatRow ?>)</td>
+                    <td style="mso-number-format:'\Rp\#\,\#\#0'">=C<?= $rowNum ?>-D<?= $rowNum ?></td>
+                    <td style="mso-number-format:'0.0%'">=IF(C<?= $rowNum ?>>0, D<?= $rowNum ?>/C<?= $rowNum ?>, 0)</td>
+                </tr>
+            <?php endforeach; 
+            
+            $rowNum++; // Baris Grand Total
+            // Membuat rumus penjumlahan semua subtotal: =C5+C10+C15 dst
+            $formulaC = empty($subtotalRows) ? '0' : '=' . implode('+', array_map(function($r){ return 'C'.$r; }, $subtotalRows));
+            $formulaD = empty($subtotalRows) ? '0' : '=' . implode('+', array_map(function($r){ return 'D'.$r; }, $subtotalRows));
+            ?>
+            <tr style="background-color: #9ac2b9;">
+                <td colspan="2"><strong>Total</strong></td>
+                <td style="mso-number-format:'\Rp\#\,\#\#0'"><?= $formulaC ?></td>
+                <td style="mso-number-format:'\Rp\#\,\#\#0'"><?= $formulaD ?></td>
+                <td style="mso-number-format:'\Rp\#\,\#\#0'">=C<?= $rowNum ?>-D<?= $rowNum ?></td>
+                <td style="mso-number-format:'0.0%'">=IF(C<?= $rowNum ?>>0, D<?= $rowNum ?>/C<?= $rowNum ?>, 0)</td>
+            </tr>
+        <?php endif; ?>
+    </tbody>
+</table>
+
+<script>
+document.querySelector('.btn-unduh').addEventListener('click', function() {
+    // 1. Ambil tabel khusus Excel yang tersembunyi
+    const table = document.getElementById('table-excel');
+    if (!table) return;
+
+    const today = new Date().toISOString().slice(0, 10);
+    const filename = 'Laporan_Realisasi_Anggaran_' + today + '.xls';
+
+    // 2. Susun format HTML dengan style khusus
+    const styleExcel = `
+        <style>
+            table { border-collapse: collapse; font-family: Arial, sans-serif; }
+            th, td { border: 1px solid #d4dfdb; padding: 5px; font-size: 11pt; }
+            th { text-align: center; font-weight: bold; }
+        </style>
+    `;
+
+    const finalHtml = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">' +
+                      '<head><meta charset="UTF-8">' + styleExcel + '</head>' +
+                      '<body>' + table.outerHTML + '</body></html>';
+
+    // 3. Download
+    const blob = new Blob(['\ufeff' + finalHtml], { type: 'application/vnd.ms-excel' });
+
+    if (navigator.msSaveOrOpenBlob) {
+        navigator.msSaveOrOpenBlob(blob, filename);
+    } else {
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+});
+</script>
