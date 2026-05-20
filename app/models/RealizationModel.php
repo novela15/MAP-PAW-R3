@@ -1,27 +1,30 @@
-class ReportModel {
+<?php
+
+class RealizationModel {
     private $db;
 
-    public function __construct($dbConnection) {
-        $this->db = $dbConnection;
+    public function __construct() {
+        // Ini kuncinya! Mengambil koneksi database sesuai standar aplikasimu
+        $this->db = Database::getInstance();
     }
 
-    public function getHierarchicalReport($userId) {
+    public function getRealizationByUserId($userId) {
         $sql = "SELECT 
                     c.id AS category_id,
                     c.name AS category_name,
                     a.name AS account_name,
                     a.amount AS budget_plan,
-                    COALESCE(SUM(e.amount), 0) AS actual_realization
-                FROM map_paw_r3.budget_category c
-                LEFT JOIN map_paw_r3.budget_accounts a ON c.id = a.category_id
-                LEFT JOIN map_paw_r3.budget_expenses e ON a.id = e.budget_account_id
-                WHERE c.user_id = :user_id
+                    COALESCE(SUM(e.volume * a.unit_price), 0) AS actual_realization
+                FROM budget_category c
+                LEFT JOIN budget_accounts a ON c.id = a.category_id
+                LEFT JOIN budget_expenses e ON a.id = e.budget_account_id
+                WHERE c.user_id = ?
                 GROUP BY c.id, a.id
                 ORDER BY c.id, a.id";
 
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute(['user_id' => $userId]);
-        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // Menggunakan metode query bawaan dari class Database milikmu
+        $stmt = $this->db->query($sql, [$userId]);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
 
         // Mengelompokkan data berdasarkan kategori
         $report = [];
