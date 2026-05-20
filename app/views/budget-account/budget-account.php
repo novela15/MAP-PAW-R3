@@ -41,7 +41,7 @@
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
-            <div class="empty-table-placeholder">Tidak ada akun anggaran yang ditemukan.</div>
+            <div class="empty-placeholder">Tidak ada akun anggaran yang ditemukan.</div>
         <?php endif; ?>
     </div>
 </div>
