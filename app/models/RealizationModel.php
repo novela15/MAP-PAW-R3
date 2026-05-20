@@ -14,7 +14,7 @@ class RealizationModel {
                     c.name AS category_name,
                     a.id AS account_id,
                     a.name AS account_name,
-                    a.amount AS budget_plan,
+                    a.budget AS budget_plan,
                     COALESCE(SUM(e.volume * a.unit_price), 0) AS actual_realization
                 FROM budget_category c
                 LEFT JOIN budget_accounts a ON c.id = a.category_id
