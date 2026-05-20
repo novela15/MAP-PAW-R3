@@ -17,7 +17,7 @@
             <p>Volume</p>
             <input type="number" name="volume" placeholder="Contoh: 1" required>
 
-            <p>Satuan</p>
+            <p>Harga Satuan</p>
             <div class="input-group">
                 <span class="input-prefix">Rp</span>
                 <input type="number" name="harga_satuan" placeholder="Harga" required>
