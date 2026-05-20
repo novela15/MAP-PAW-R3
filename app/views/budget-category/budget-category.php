@@ -1,49 +1,39 @@
-<link rel="stylesheet" href="frontend/budget-category/kategori.css?v=<?php echo time();?>">
-
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@600;700&family=Inter:wght@600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="frontend/budget-category/budget-category.css?v=<?php echo time();?>">
 
 <p class="container-header">Kategori Anggaran</p>
 
 <div class="subcontainer">
-        <div class="table-card">
-            <div class="table-header-row">
-                <h3 class="table-title">Daftar Kategori Anggaran</h3>
+    <div class="horizontal-flex">
         <div class="add-container horizontal-flex">
             <button class="add-button">+</button>
             <div>Buat</div>
         </div>
-            </div>
+    </div>
 
-            <table class="custom-table" id="table-kategori">
-                <tr>
-                    <th>Nama Kategori Akun</th>
-                    <th>Keterangan</th>
-                    <th class="action-header">Action</th>
-                </tr>
-                <?php if (!empty($table)): ?>
-                    <?php foreach ($table as $row): ?>
-                        <tr>
-                            <td><?= htmlspecialchars($row["name"]) ?></td>
-                            <td><?= htmlspecialchars($row["description"]) ?></td>
-                            <td>
-                                <div class="table-action">
-                                    <button class="delete-button trash-can-button" item-id=<?php echo $row["id"]; ?>>
-                                        <i class="fa-regular fa-trash-can"></i>
-                                    </button>
-                                    <button class="write-button pen-button" item-id=<?php echo $row["id"]; ?>>
-                                        <i class="fa-solid fa-pen"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <td class="empty-table-placeholder" colspan="7">Tidak ada akun anggaran yang ditemukan.</td>
-                <?php endif; ?>
-            </table>
-        </div>
-
-    <script src="frontend/budget-category/kategori.js?v=<?php echo time();?>"></script>
-</body>
+    <div class="grid-container">
+        <?php if (!empty($budgetCategoryModel)): ?>
+            <?php foreach ($budgetCategoryModel as $row): ?>
+                <div class="budget-account-card">
+                    <div class="name"><?php echo htmlspecialchars($row["name"]); ?></div>
+                    <div class="description"><?php echo htmlspecialchars($row["description"]); ?></div>
+                    <div class="content-grid">
+                        <div class="volume"><span class="label">Terhubung ke</span><br><?php echo htmlspecialchars($row["accounts_count"]); ?> kategori</div>
+                        <div class="total-price"><span class="label">Total pengeluaran</span><br>Rp<?php echo htmlspecialchars(number_format($row["total_expense"], 2, ',', '.')); ?></div>
+                    </div>
+                    <div class="action">
+                        <button class="delete-button trash-can-button" title="Hapus" item-id=<?php echo $row["id"]; ?>>
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                        <button class="write-button pen-button" title="Edit" item-id=<?php echo $row["id"]; ?>>
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <div class="empty-table-placeholder">Tidak ada kategori anggaran yang ditemukan.</div>
+        <?php endif; ?>
+    </div>
 </div>
+
+<script src="frontend/budget-category/budget-category.js?v=<?php echo time(); ?>"></script>

@@ -25,7 +25,17 @@ class BudgetCategoryModel {
     }
 
     public function getAllByUserId(int $id): array {
-        $statement = $this->db->query("SELECT * FROM budget_category WHERE budget_category.user_id = ?", [$id]);
+        $statement = $this->db->query("
+            SELECT 
+                budget_category.*,
+                COUNT(budget_accounts.id) AS accounts_count,
+                IFNULL(SUM(budget_expenses.volume * budget_accounts.unit_price), 0) AS total_expense
+            FROM budget_category
+            LEFT JOIN budget_accounts ON budget_accounts.category_id = budget_category.id
+            LEFT JOIN budget_expenses ON budget_accounts.id = budget_expenses.budget_account_id
+            WHERE budget_category.user_id = ?
+            GROUP BY budget_category.id
+        ", [$id]);
         return $statement->fetchAll() ?: [];
     }
 

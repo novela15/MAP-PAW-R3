@@ -29,7 +29,7 @@ class BudgetCategoryController extends FeaturePageController {
         $this->renderView(
             "budget-category/budget-category",
             "Budget Category",
-            ["table" => $budgetCategoryModel->getAllByUserId($_SESSION["user_id"])]
+            ["budgetCategoryModel" => $budgetCategoryModel->getAllByUserId($_SESSION["user_id"])]
         );
     }
 

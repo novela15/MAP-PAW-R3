@@ -20,8 +20,8 @@
                     <hr />
                     <div class="content-grid">
                         <div class="volume"><span class="label">Volume</span><br><?php echo htmlspecialchars($row["volume"]); ?></div>
-                        <div class="unit-price"><span class="label">Harga Satuan</span><br>Rp<?php echo htmlspecialchars(number_format($row["unit_price"], 2, ',', '.')); ?></div>
-                        <div class="total-price"><span class="label">Total Harga</span><br>Rp<?php echo htmlspecialchars(number_format($row["total_price"], 2, ',', '.')); ?></div>
+                        <div class="unit-price"><span class="label">Harga satuan</span><br>Rp<?php echo htmlspecialchars(number_format($row["unit_price"], 2, ',', '.')); ?></div>
+                        <div class="total-price"><span class="label">Total harga</span><br>Rp<?php echo htmlspecialchars(number_format($row["total_price"], 2, ',', '.')); ?></div>
                     </div>
                     <div class="description"><span class="label">Deskripsi</span><br><?php echo htmlspecialchars($row["description"]); ?></div>
                     <div class="action">
