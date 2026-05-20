@@ -1,16 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const btnUnduh = document.getElementById("btnUnduh");
-  const btnInvoices = document.querySelectorAll(".btn-invoice");
+    const btnUnduh = document.getElementById("btnUnduhJurnal");
+    const btnInvoices = document.querySelectorAll(".btn-invoice");
 
-  // Aksi tombol unduh
-  btnUnduh.addEventListener("click", () => {
-    alert("Mengunduh laporan Jurnal Umum...");
-  });
+    if (btnUnduh) {
+        btnUnduh.addEventListener("click", () => {
+            alert("Mengunduh Laporan Jurnal Umum...");
+        });
+    }
 
-  // Aksi ketika ikon bukti pengeluaran di dalam tabel diklik
-  btnInvoices.forEach((btn, index) => {
-    btn.addEventListener("click", () => {
-      alert(`Membuka bukti pengeluaran untuk baris ke-${index + 1}`);
+    btnInvoices.forEach((btn, index) => {
+        btn.addEventListener("click", () => {
+            alert(`Membuka bukti pengeluaran untuk baris ke-${index + 1}`);
+        });
     });
-  });
 });

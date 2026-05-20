@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const btnUnduh = document.getElementById("btnUnduh");
-
-  btnUnduh.addEventListener("click", () => {
-    alert("Fungsi unduh laporan dipicu!");
-  });
+    const btnUnduh = document.getElementById("btnUnduhBukuBesar");
+    if (btnUnduh) {
+        btnUnduh.addEventListener("click", () => {
+            alert("Mengunduh Laporan Buku Besar...");
+        });
+    }
 });
