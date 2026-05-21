@@ -23,23 +23,23 @@ VALUES
 
 -- BUDGET EXPENSES (REALISASI)
 INSERT INTO `budget_expenses`
-(`id`, `user_id`, `budget_account_id`, `datetime`, `volume`, `description`, `proof`)
+(`id`, `user_id`, `budget_account_id`, `datetime`, `volume`, `unit_price`, `description`, `proof`)
 VALUES
-(1, 1, 1, NOW(), 50, 'Fotokopi tugas', NULL),
-(2, 1, 1, NOW(), 2, 'Kartu ujian', NULL),
+(1, 1, 1, NOW(), 50, 100, 'Fotokopi tugas', NULL),
+(2, 1, 1, NOW(), 2, 100, 'Kartu ujian', NULL),
 
-(3, 1, 2, NOW(), 2, 'Isi bensin', NULL),
-(4, 1, 2, NOW(), 2, 'Isi bensin', NULL),
+(3, 1, 2, NOW(), 2, 10000, 'Isi bensin', NULL),
+(4, 1, 2, NOW(), 2, 10000, 'Isi bensin', NULL),
 
-(5, 1, 3, NOW(), 2, 'Sarapan', NULL),
-(6, 1, 3, NOW(), 2, 'Sarapan', NULL),
-(7, 1, 3, NOW(), 2, 'Sarapan', NULL),
+(5, 1, 3, NOW(), 2, 8000, 'Sarapan', NULL),
+(6, 1, 3, NOW(), 2, 8000, 'Sarapan', NULL),
+(7, 1, 3, NOW(), 2, 8000, 'Sarapan', NULL),
 
-(8, 1, 4, NOW(), 2, 'Makan siang', NULL),
-(9, 1, 4, NOW(), 2, 'Makan siang', NULL),
-(10, 1, 4, NOW(), 2, 'Makan siang', NULL),
+(8, 1, 4, NOW(), 2, 15000, 'Makan siang', NULL),
+(9, 1, 4, NOW(), 2, 15000, 'Makan siang', NULL),
+(10, 1, 4, NOW(), 2, 15000, 'Makan siang', NULL),
 
-(11, 1, 5, NOW(), 2, 'Makan malam', NULL),
-(12, 1, 5, NOW(), 2, 'Makan malam', NULL),
-(13, 1, 5, NOW(), 2, 'Makan malam', NULL),
-(14, 1, 5, NOW(), 2, 'Makan malam', NULL);
+(11, 1, 5, NOW(), 2, 12000, 'Makan malam', NULL),
+(12, 1, 5, NOW(), 2, 12000, 'Makan malam', NULL),
+(13, 1, 5, NOW(), 2, 12000, 'Makan malam', NULL),
+(14, 1, 5, NOW(), 2, 12000, 'Makan malam', NULL);
