@@ -1,5 +1,7 @@
 <?php
 
+require once 'helper_text.php';
+
 class BudgetAccountModel {
     private $db;
 
@@ -8,14 +10,16 @@ class BudgetAccountModel {
     }
 
     public function create(array $data): array {
+        $name = sanitize_text_input(format_text_title($data["name"]));
+        $description = sanitize_text_input(format_text_title($data["description"]));
         $budget = $data["volume"] * $data["unit_price"];
         $this->db->query(
             "INSERT INTO budget_accounts (user_id, name, category_id, description, volume, unit_price, budget) VALUES (?, ?, ?, ?, ?, ?, ?)",
             [
                 $data["user_id"],
-                $data["name"],
+                $name,
                 $data["category_id"],
-                $data["description"],
+                $description,
                 $data["volume"],
                 $data["unit_price"],
                 $budget
@@ -61,13 +65,15 @@ class BudgetAccountModel {
     }
 
     public function update(array $data): array {
+        $name = sanitize_text_input(format_text_title($data["name"]));
+        $description = sanitize_text_input(format_text_title($data["description"]));
         $budget = $data["volume"] * $data["unit_price"];
         $this->db->query(
             "UPDATE budget_accounts SET name = ?, category_id = ?, description = ?, volume = ?, unit_price = ?, budget = ? WHERE id = ?",
             [
-                $data["name"],
+                $name,
                 $data["category_id"],
-                $data["description"],
+                $description,
                 $data["volume"],
                 $data["unit_price"],
                 $budget,
