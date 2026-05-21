@@ -19,21 +19,27 @@ body {
     flex: 1;
     background-color: #C1E1DE;
     min-height: 100vh;
-    padding: 24px 32px;
+    padding: 1.5rem;
 }
 
 .page-title {
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: bold;
     color: #1E1E1E;
-    margin-bottom: 16px;
+    margin-bottom: 1.5rem;
     letter-spacing: -0.5px;
 }
 
 HEAD:public/frontend/general-ledger/buku-besar.css
 /* Card */
 .card {
-    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: solid 2px #8e8e8e;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 100%;
     min-height: calc(100vh - 120px);
 }
 
@@ -41,15 +47,15 @@ HEAD:public/frontend/general-ledger/buku-besar.css
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 1.5rem;
 }
 
 .card-title {
-    font-size: 25px;
-    font-weight: 600;
-    color: #1a1a1a;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #000000;
     letter-spacing: -0.3px;
 }
 
@@ -64,17 +70,17 @@ HEAD:public/frontend/general-ledger/buku-besar.css
     width: 100%;
     border-collapse: collapse;
     background-color: #ffffff;
-    border: 1px solid #8e8e8e;
+    border: 2px solid #8e8e8e;
 }
 
 .report-table th {
-    background-color: #477B79;
-    color: #ffffff;
-    font-weight: 500;
-    font-size: 14px;
-    padding: 12px 10px;
+    background-color: #668685;
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 0.75rem;
+    padding: 1rem;
     text-align: center;
-    border: 1px solid #8e8e8e;
+    border: 2px solid #8e8e8e;
 }
 
 /* Pembagian lebar kolom sesuai dengan figma */
@@ -86,9 +92,9 @@ HEAD:public/frontend/general-ledger/buku-besar.css
 .report-table th:nth-child(6) { width: 18%; }
 
 .report-table td {
-    padding: 10px 16px;
-    border: 1px solid #8e8e8e;
-    height: 48px;
+    padding: 1rem;
+    border: 2px solid #8e8e8e;
+    color: #000000;
 }
 
 /* Kolom Aksi Bukti Pengeluaran */
@@ -123,21 +129,25 @@ HEAD:public/frontend/general-ledger/buku-besar.css
 .card-footer {
     display: flex;
     justify-content: flex-end;
-    margin-top: 20px;
+    margin-top: 1.5rem;
 }
 
 .btn-unduh {
-    background-color: #648984;
-    color: #ffffff;
+    background-color: #668685;
+    color: whitesmoke;
     border: none;
-    padding: 12px 36px;
-    font-size: 14px;
-    font-weight: 500;
-    border-radius: 16px;
+    padding: 0.5rem 1.5rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
 .btn-unduh:hover {
-    background-color: #668685;
+    background-color: #324444;
+}
+
+.btn-unduh:active {
+    background-color: #192222;
 }
