@@ -41,7 +41,7 @@ $router->get("general-ledger", "GeneralLedgerController::index");
 
 $router->get("budget-realization", "BudgetRealizationController::index");
 
-$router->get("close-book", "CloseBookController::index");
+$router->post("close-book", "CloseBookController::post");
 
 $router->get("settings", "SettingsController::index");
 $router->post("settings", "SettingsController::update");
