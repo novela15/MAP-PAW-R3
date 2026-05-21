@@ -1,40 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body, html {
-    height: 100%;
-    font-family: 'Inter', sans-serif;
-    background-color: #b1d8d3;
-}
-
-/* Mengunci space kosong 280px untuk sidebar di kiri */
-.app-container {
-    display: grid;
-    grid-template-columns: 280px 1fr; 
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-}
-
-.main-content {
-    background-color: #b1d8d3;
-    padding: 32px 24px 24px 24px;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    grid-column: 2;
-}
-
-.content-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    height: 100%;
-}
-
 .page-title {
     font-size: 24px;
     font-weight: 700;
@@ -42,15 +5,11 @@ body, html {
 }
 
 .card {
-    background-color: #eef7f6;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
     padding: 24px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 .card-header {

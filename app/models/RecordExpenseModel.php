@@ -38,7 +38,7 @@ class RecordExpenseModel {
             FROM budget_expenses be
             INNER JOIN budget_accounts ba ON be.budget_account_id = ba.id
             WHERE be.user_id = ?
-            ORDER BY be.datetime DESC", [$id]
+            ORDER BY be.id DESC, be.datetime DESC", [$id]
         );
         return $statement->fetchAll() ?: [];
     }
