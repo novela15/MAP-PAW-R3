@@ -1,5 +1,6 @@
 <!-- ALWAYS put CSS files at the top -->
 <link rel="stylesheet" href="frontend/record-expense/record-expense.css?v=<?php echo time(); ?>">
+<link rel="stylesheet" href="frontend/skeleton/generic.css?v=<?php echo time(); ?>">
 
 <p class="container-header">Catatan Belanja</p>
 

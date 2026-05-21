@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="frontend/budget-book/budget-book.css?v=<?php echo time(); ?>">
+<link rel="stylesheet" href="frontend/skeleton/generic.css?v=<?php echo time(); ?>">
 
 <p class="container-header">Buku Anggaran</p>
 
@@ -39,9 +40,9 @@
                         <div class="total-price"><span class="label">Anggaran</span><br>Rp<?php echo htmlspecialchars(number_format($row["budget"], 2, ',', '.')); ?></div>
                         <div class="total-expenses"><span class="label">Total pengeluaran</span><br>Rp<?php echo htmlspecialchars(number_format($row["total_expenses"], 2, ',', '.')); ?></div>
                         <?php if ($row["budget"] >= $row["total_expenses"]): ?>
-                            <div class="surplus bold"><span class="label">Sisa</span><br>Rp<?php echo htmlspecialchars(number_format($row["budget"] - $row["total_expenses"], 2, ',', '.')); ?></div>
+                            <div class="surplus"><span class="label">Sisa</span><br><span class="bold">Rp<?php echo htmlspecialchars(number_format($row["budget"] - $row["total_expenses"], 2, ',', '.')); ?></span></div>
                         <?php else: ?>
-                            <div class="surplus bold"><span class="label">Kurang</span><br>Rp<?php echo htmlspecialchars(number_format($row["total_expenses"] - $row["budget"], 2, ',', '.')); ?></div>
+                            <div class="surplus"><span class="label">Kurang</span><br><span class="bold">Rp<?php echo htmlspecialchars(number_format($row["total_expenses"] - $row["budget"], 2, ',', '.')); ?></span></div>
                         <?php endif; ?>
                         <div class="realization"><span class="label">Realisasi</span><br><?php echo htmlspecialchars(number_format($row["realization"], 0)); ?>%</div>
                     </div>
