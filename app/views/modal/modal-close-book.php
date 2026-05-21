@@ -2,7 +2,7 @@
     <div class="modal-content">
         <div class="modal-header">KONFIRMASI</div>
 
-        <form action="closebook" class="input-container" method="POST">
+        <form action="close-book" class="input-container" method="POST">
             <i class="fa-solid fa-circle-exclamation"></i>
 
             <p class="confirmation-text">
