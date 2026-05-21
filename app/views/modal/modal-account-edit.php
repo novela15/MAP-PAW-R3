@@ -1,4 +1,4 @@
-<div class="modal modal-account">
+<div class="modal modal-account-edit">
     <div class="modal-content">
         <div class="modal-header">Edit Akun Anggaran</div>
 
@@ -6,26 +6,34 @@
             <p>Kategori</p>
             <select name="category_id" required>
             <?php foreach ($budgetCategories as $category): ?>
-                <option value="<?php echo $category["id"]; ?>"><?php echo $category["name"]; ?></option>
+                <!-- Menambahkan kondisi selected jika id kategori cocok -->
+                <option value="<?php echo $category["id"]; ?>" <?php echo ($accountData && $accountData['category_id'] == $category['id']) ? 'selected' : ''; ?>>
+                    <?php echo $category["name"]; ?>
+                </option>
             <?php endforeach; ?>
             </select>
             
             <p>Nama Akun</p>
-            <input type="text" name="name" value="" required>
+            <!-- Mengisi value dari data lama -->
+            <input type="text" name="name" value="<?php echo $accountData ? htmlspecialchars($accountData['name']) : ''; ?>" required>
 
             <p>Volume</p>
-            <input type="number" name="volume" min="0" step="0.01" required>
+            <!-- Mengisi value dari data lama -->
+            <input type="number" name="volume" min="0" step="0.01" value="<?php echo $accountData ? $accountData['volume'] : ''; ?>" required>
 
             <p>Satuan</p>
             <div class="input-group">
                 <span class="input-prefix">Rp</span>
-                <input type="number" name="unit_price" placeholder="Harga" required>
+                <!-- Mengisi value dari data lama -->
+                <input type="number" name="unit_price" placeholder="Harga" value="<?php echo $accountData ? $accountData['unit_price'] : ''; ?>" required>
             </div>
 
             <p>Deskripsi</p>
-            <textarea name="description"></textarea>
+            <!-- Mengisi text di dalam textarea dari data lama -->
+            <textarea name="description"><?php echo $accountData ? htmlspecialchars($accountData['description']) : ''; ?></textarea>
 
-            <input type="hidden" name="item_id" value="<?php echo $_GET["item_id"] ?>">
+            <!-- Mengganti value item_id dengan ID akun yang sedang diedit -->
+            <input type="hidden" name="id" value="<?php echo $accountData ? $accountData['id'] : ''; ?>">
             <input type="hidden" name="type" value="edit">
 
             <div class="horizontal-buttons">
