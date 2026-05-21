@@ -1,5 +1,6 @@
 <!-- ALWAYS put CSS files at the top -->
 <link rel="stylesheet" href="frontend/record-expense/record-expense.css?v=<?php echo time(); ?>">
+<link rel="stylesheet" href="frontend/skeleton/generic.css?v=<?php echo time(); ?>">
 
 <p class="container-header">Catatan Belanja</p>
 
@@ -18,7 +19,7 @@
                     <div class="content-grid">
                         <div>
                             <div class="name"><?php echo htmlspecialchars($row["name"]); ?></div>
-                            <div class="datetime" utc="<?php echo date('c', strtotime($row["datetime"])); ?>"><?php echo htmlspecialchars(date("D, d M Y, H:i", strtotime($row["datetime"]))); ?></div>
+                            <div class="datetime" utc="<?php echo date('c', strtotime($row["datetime"])); ?>"><?php echo htmlspecialchars(date("D, d M Y", strtotime($row["datetime"]))); ?></div>
                             <div class="description"><?php echo htmlspecialchars($row["description"]); ?></div>
                         </div>
                         <div>
