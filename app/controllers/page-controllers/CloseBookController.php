@@ -2,6 +2,8 @@
 
 class CloseBookController extends FeaturePageController {
     public function post() {
-        // TODO: Implement
+        $model = new CloseBookModel(); 
+        $count = $model->removeAll($_SESSION["user_id"]);
+        header("location: " . DEFAULT_PAGE);
     }
 }
