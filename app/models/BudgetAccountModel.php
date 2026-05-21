@@ -34,6 +34,7 @@ class BudgetAccountModel {
     }
 
     public function getAllByUserId(int $id): array {
+        // KEMBALI MENGGUNAKAN budget_expenses & MASING-MASING KOLOM VOLUME
         $query = "
             SELECT
                 ba.id,
