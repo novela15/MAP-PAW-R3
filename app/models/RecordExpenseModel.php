@@ -1,6 +1,6 @@
 <?php
 
-require_once 'helper_text.php';
+require_once __DIR__ . '/../utilities/helper_text.php';
 
 class RecordExpenseModel {
     private $db;
