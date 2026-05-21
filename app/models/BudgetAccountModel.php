@@ -9,9 +9,16 @@ class BudgetAccountModel {
         $this->db = Database::getInstance();
     }
 
+    // --- FUNGSI BARU: Mengambil data tunggal berdasarkan ID untuk modal edit ---
+    public function getById(int $id): ?array {
+        $statement = $this->db->query("SELECT * FROM budget_accounts WHERE id = ?", [$id]);
+        return $statement->fetch() ?: null;
+    }
+
     public function create(array $data): array {
         $name = sanitize_text_input(format_text_title($data["name"]));
-        $description = sanitize_text_input(format_text_title($data["description"]));
+        // Diubah menggunakan format_text_sentence agar deskripsi lebih natural
+        $description = sanitize_text_input(format_text_sentence($data["description"])); 
         $budget = $data["volume"] * $data["unit_price"];
         $this->db->query(
             "INSERT INTO budget_accounts (user_id, name, category_id, description, volume, unit_price, budget) VALUES (?, ?, ?, ?, ?, ?, ?)",
@@ -66,7 +73,8 @@ class BudgetAccountModel {
 
     public function update(array $data): array {
         $name = sanitize_text_input(format_text_title($data["name"]));
-        $description = sanitize_text_input(format_text_title($data["description"]));
+        // Diubah menggunakan format_text_sentence agar deskripsi lebih natural
+        $description = sanitize_text_input(format_text_sentence($data["description"]));
         $budget = $data["volume"] * $data["unit_price"];
         $this->db->query(
             "UPDATE budget_accounts SET name = ?, category_id = ?, description = ?, volume = ?, unit_price = ?, budget = ? WHERE id = ?",

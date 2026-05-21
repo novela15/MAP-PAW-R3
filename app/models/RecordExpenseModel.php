@@ -10,7 +10,7 @@ class RecordExpenseModel {
     }
 
     public function create(array $data): array {
-        $description = sanitize_text_input(format_text_title($data["description"]));
+        $description = sanitize_text_input(format_text_sentence($data["description"]));
         $this->db->query(
             "INSERT INTO budget_expenses (user_id, datetime, budget_account_id, volume, unit_price, description, proof) VALUES (?, ?, ?, ?, ?, ?, ?)",
             [
