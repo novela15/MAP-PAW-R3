@@ -1,4 +1,4 @@
--- open phpMyAdmin, go to SQL tab, copy everything in this file and run it
+-- Open phpMyAdmin, go to SQL tab, copy everything in this file and run it
 
 CREATE DATABASE IF NOT EXISTS map_paw_r3;
 

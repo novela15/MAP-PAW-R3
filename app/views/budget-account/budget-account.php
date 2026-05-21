@@ -1,5 +1,6 @@
 <!-- ALWAYS put CSS files at the top -->
 <link rel="stylesheet" href="frontend/budget-account/budget-account.css?v=<?php echo time(); ?>">
+<link rel="stylesheet" href="frontend/skeleton/generic.css?v=<?php echo time(); ?>">
 
 <p class="container-header">Akun Anggaran</p>
 
@@ -21,7 +22,11 @@
                     <div class="content-grid">
                         <div class="volume"><span class="label">Volume</span><br><?php echo htmlspecialchars($row["estimated_volume"]); ?></div>
                         <div class="unit-price"><span class="label">Estimasi harga satuan</span><br>Rp<?php echo htmlspecialchars(number_format($row["estimated_unit_price"], 2, ',', '.')); ?></div>
-                        <div class="total-price"><span class="label">Pengeluaran</span><br><b>Rp<?php echo htmlspecialchars(number_format($row["total_actual_price"], 2, ',', '.')); ?></b></div>
+                        <?php if ($row["total_actual_price"] > $row["estimated_volume"] * $row["estimated_unit_price"]): ?>
+                            <div class="total-price status-red"><span class="label">Total pengeluaran</span><br><b>Rp<?php echo htmlspecialchars(number_format($row["total_actual_price"], 2, ',', '.')); ?></b></div>
+                        <?php else: ?>
+                            <div class="total-price status-green"><span class="label">Total pengeluaran</span><br><b>Rp<?php echo htmlspecialchars(number_format($row["total_actual_price"], 2, ',', '.')); ?></b></div>
+                        <?php endif; ?>
                         <div class="total-price"><span class="label">Jumlah transaksi</span><br><?php echo htmlspecialchars($row["transaction_count"]); ?></div>
                     </div>
                     <?php if (!empty($row["description"])): ?>

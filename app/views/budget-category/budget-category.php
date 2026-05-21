@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="frontend/budget-category/budget-category.css?v=<?php echo time();?>">
+<link rel="stylesheet" href="frontend/skeleton/generic.css?v=<?php echo time(); ?>">
 
 <p class="container-header">Kategori Anggaran</p>
 
