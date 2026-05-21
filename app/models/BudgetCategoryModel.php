@@ -1,5 +1,7 @@
 <?php
 
+require_once 'helper_text.php';
+
 class BudgetCategoryModel {
     private $db;
 
@@ -8,12 +10,14 @@ class BudgetCategoryModel {
     }
 
     public function create(array $data): array {
+        $name = sanitize_text_input(format_text_title($data["name"]));
+        $description = sanitize_text_input(format_text_title($data["description"]));
         $this->db->query(
             "INSERT INTO budget_category (user_id, name, description) VALUES (?, ?, ?)",
             [
                 $data["user_id"],
-                $data["name"],
-                $data["description"]
+                $name,
+                $description
             ]
         );
 
@@ -40,11 +44,13 @@ class BudgetCategoryModel {
     }
 
     public function update(array $data): array {
+        $name = sanitize_text_input(format_text_title($data["name"]));
+        $description = sanitize_text_input(format_text_title($data["description"]));
         $this->db->query(
             "UPDATE budget_category SET name = ?, description = ? WHERE user_id = ? AND id = ?",
             [
-                $data["name"],
-                $data["description"],
+                $name,
+                $description,
                 $data["user_id"],
                 $data["id"],
             ]

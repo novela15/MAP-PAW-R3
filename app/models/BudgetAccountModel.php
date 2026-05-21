@@ -1,6 +1,6 @@
 <?php
 
-require once 'helper_text.php';
+require_once 'helper_text.php';
 
 class BudgetAccountModel {
     private $db;

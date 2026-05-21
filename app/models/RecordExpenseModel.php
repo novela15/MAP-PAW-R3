@@ -1,5 +1,7 @@
 <?php
 
+require_once 'helper_text.php';
+
 class RecordExpenseModel {
     private $db;
 
