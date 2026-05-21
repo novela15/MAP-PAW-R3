@@ -21,7 +21,7 @@
                     <div class="content-grid">
                         <div class="volume"><span class="label">Volume</span><br><?php echo htmlspecialchars($row["estimated_volume"]); ?></div>
                         <div class="unit-price"><span class="label">Estimasi harga satuan</span><br>Rp<?php echo htmlspecialchars(number_format($row["estimated_unit_price"], 2, ',', '.')); ?></div>
-                        <div class="total-price"><span class="label">Estimasi pengeluaran</span><br>Rp<?php echo htmlspecialchars(number_format($row["total_budget_plan"], 2, ',', '.')); ?></div>
+                        <div class="total-price"><span class="label">Pengeluaran</span><br><b>Rp<?php echo htmlspecialchars(number_format($row["total_budget_plan"], 2, ',', '.')); ?></b></div>
                         <div class="total-price"><span class="label">Jumlah transaksi</span><br><?php echo htmlspecialchars($row["transaction_count"]); ?></div>
                     </div>
                     <?php if (!empty($row["description"])): ?>
