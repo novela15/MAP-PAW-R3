@@ -67,10 +67,10 @@
                     <span class="text">Realisasi Anggaran</span>
                 </a>
             </div>
-            <a class="sidebar-button" href="close-book">
+            <button class="sidebar-button close-book">
                 <i class="icon fa-solid fa-lock"></i>
                 <span class="text">Tutup Buku</span>
-            </a>
+            </button>
 
             <!--
             This element serves no functional purpose,
