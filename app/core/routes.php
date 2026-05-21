@@ -37,11 +37,7 @@ $router->post("record-expense", "RecordExpenseController::post");
 
 $router->get("general-journal", "GeneralJournalController::index");
 
-$router->get('jurnal-umum', "JurnalUmumController::index");
-
 $router->get("general-ledger", "GeneralLedgerController::index");
-
-$router->get('bukbesar-tabel', "BukuBesarTabelController::index");
 
 $router->get("budget-realization", "BudgetRealizationController::index");
 
