@@ -4,7 +4,7 @@
 
         <form class="input-container" method="POST" action="record-expense">
             <p>Tanggal</p>
-            <input type="date" name="tanggal" required>
+            <input type="date" name="datetime" required>
 
             <p>Nama Akun</p>
             <select name="budget_account_id" required>
@@ -20,14 +20,14 @@
             <p>Harga Satuan</p>
             <div class="input-group">
                 <span class="input-prefix">Rp</span>
-                <input type="number" name="harga_satuan" placeholder="Harga" required>
+                <input type="number" name="unit_price" placeholder="Harga" required>
             </div>
 
             <p>Struk</p>
             <div class="input-group">
                 <label class="upload-btn">
                     Upload
-                    <input type="file" name="struk" style="display: none;" onchange="this.nextElementSibling.value = this.files[0].name">
+                    <input type="file" name="proof" style="display: none;" onchange="this.nextElementSibling.value = this.files[0].name">
                 </label>
                 <input type="text" placeholder="No file chosen" readonly>
             </div>
