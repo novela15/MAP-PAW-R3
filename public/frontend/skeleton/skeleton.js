@@ -5,6 +5,7 @@ let pathname = window.location.pathname;
 // Single elements
 let container = document.querySelector(".container");
 let current_page_anchor = document.querySelector('a.sidebar-button[href="' + pathname.substring(pathname.lastIndexOf("/") + 1) + '"]');
+const CLOSE_BOOK_BUTTON = document.querySelector(".close-book-button");
 const LOGOUT_BUTTON = document.querySelector(".sidebar-logout-button");
 let sidebar = document.querySelector(".sidebar");
 let sidebar_toggle_button = document.querySelector(".sidebar-toggle-button");
@@ -50,6 +51,11 @@ for (const button of sidebar_buttons) {
         }
     });
 }
+
+
+CLOSE_BOOK_BUTTON.addEventListener("click", function() {
+    openModal("modal-close-book");
+});
 
 
 LOGOUT_BUTTON.addEventListener("click", function() {

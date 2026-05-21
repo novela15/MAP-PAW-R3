@@ -67,10 +67,10 @@
                     <span class="text">Realisasi Anggaran</span>
                 </a>
             </div>
-            <a class="sidebar-button" href="close-book">
+            <button class="sidebar-button close-book-button">
                 <i class="icon fa-solid fa-lock"></i>
                 <span class="text">Tutup Buku</span>
-            </a>
+            </button>
 
             <!--
             This element serves no functional purpose,
@@ -99,8 +99,8 @@
             ?>
         </div>
 
-        <script src="frontend/skeleton/modalUtils.js?v=<?php echo time();?>" type="module"></script>
-        <script src="frontend/skeleton/skeleton.js?v=<?php echo time();?>" type="module"></script>
+        <script src="frontend/skeleton/modalUtils.js?v=<?php echo time(); ?>" type="module"></script>
+        <script src="frontend/skeleton/skeleton.js?v=<?php echo time(); ?>" type="module"></script>
     </body>
 </html>
 

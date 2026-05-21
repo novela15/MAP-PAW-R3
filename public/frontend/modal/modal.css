@@ -107,6 +107,7 @@
     width: calc(100% - 2rem);
 }
 
+
 .modal .cancel {
     background-color: #CF3234;
 }
@@ -127,6 +128,57 @@
     background-color: #324444;
 }
 
-.modal =.ok:active {
+.modal .ok:active {
     background-color: #192222;
 }
+
+.modal .input-group {
+    display: flex;
+    align-items: stretch;
+    background-color: #FFFFFF;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    height: 2rem;
+    margin-bottom: 1.25rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    width: calc(100% - 2rem);
+    overflow: hidden; 
+    box-sizing: border-box;
+}
+
+.modal .input-prefix, 
+.modal .upload-btn {
+    background-color: #7caaa4; 
+    color: #1a3038;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.75rem;
+    border-right: 1px solid #d9d9d9;
+    cursor: pointer;
+    font-size: 0.9rem;
+    user-select: none;
+}
+
+.modal .upload-btn:hover {
+    background-color: #618c87;
+}
+
+.modal .input-group input {
+    border: none !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding-left: 0.5rem;
+}
+
+.modal .input-group input[type="file"] {
+    display: none;
+}
+
+.modal .horizontal-buttons {
+    justify-content: space-between; 
+}
+

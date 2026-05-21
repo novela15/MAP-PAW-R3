@@ -1,4 +1,4 @@
--- Open phpMyAdmin, go to the SQL tab, copy everything in this file, and run it.
+-- open phpMyAdmin, go to SQL tab, copy everything in this file and run it
 
 CREATE DATABASE IF NOT EXISTS map_paw_r3;
 
@@ -22,16 +22,15 @@ CREATE TABLE map_paw_r3.budget_category (
     CONSTRAINT fk_category_user_id FOREIGN KEY (user_id) REFERENCES map_paw_r3.users(id) ON DELETE CASCADE
 );
 
--- There are volume and amount columns in the frontend,
--- they're aggregated from volume and amount columns in budget_expenses table.
 CREATE TABLE map_paw_r3.budget_accounts (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user_id INT UNSIGNED NOT NULL,
+    category_id INT UNSIGNED NOT NULL, 
     name VARCHAR(100) NOT NULL,
-    category_id INT UNSIGNED NOT NULL,
+    volume DECIMAL(15,2) DEFAULT 0 CHECK (volume >= 0),
+    unit_price DECIMAL(15,2) DEFAULT 0 CHECK (unit_price >= 0),
     description TEXT,
     budget DECIMAL(15,2) DEFAULT 0 CHECK (budget >= 0),
-    unit_price DECIMAL(15,2) DEFAULT 0 CHECK (unit_price >= 0),
     CONSTRAINT fk_account_user_id FOREIGN KEY (user_id) REFERENCES map_paw_r3.users(id) ON DELETE CASCADE,
     CONSTRAINT fk_account_category_id FOREIGN KEY (category_id) REFERENCES map_paw_r3.budget_category(id) ON DELETE CASCADE
 );
@@ -39,9 +38,10 @@ CREATE TABLE map_paw_r3.budget_accounts (
 CREATE TABLE map_paw_r3.budget_expenses (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user_id INT UNSIGNED NOT NULL,
-    datetime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    datetime DATE NOT NULL,
     budget_account_id INT UNSIGNED NOT NULL,
     volume DECIMAL(15, 2) DEFAULT 0 CHECK (volume >= 0),
+    unit_price DECIMAL(15, 2) DEFAULT 0 CHECK (unit_price >= 0),
     description TEXT,
     proof VARCHAR(255),
     CONSTRAINT fk_expense_user_id FOREIGN KEY (user_id) REFERENCES map_paw_r3.users(id) ON DELETE CASCADE,

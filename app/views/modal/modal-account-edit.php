@@ -9,12 +9,18 @@
                 <option value="<?php echo $category["id"]; ?>"><?php echo $category["name"]; ?></option>
             <?php endforeach; ?>
             </select>
-
+            
             <p>Nama Akun</p>
             <input type="text" name="name" value="" required>
 
-            <p>Harga Satuan</p>
-            <input type="number" name="unit_price" value="" required>
+            <p>Volume</p>
+            <input type="number" name="volume" min="0" step="0.01" required>
+
+            <p>Satuan</p>
+            <div class="input-group">
+                <span class="input-prefix">Rp</span>
+                <input type="number" name="unit_price" placeholder="Harga" required>
+            </div>
 
             <p>Deskripsi</p>
             <textarea name="description"></textarea>
