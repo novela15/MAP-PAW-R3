@@ -4,13 +4,12 @@
 
         <form class="input-container" method="POST" action="budget-category">
             <p>Nama Kategori</p>
-            <input type="text" name="name" value="<?php echo $categoryData ? htmlspecialchars($categoryData['name']) : ''; ?>" required>
+            <input type="text" name="name" value="<?php echo $categoryData ? htmlspecialchars($categoryData["name"]) : ""; ?>" required>
 
             <p>Deskripsi</p>
-            <textarea name="description"><?php echo $categoryData ? htmlspecialchars($categoryData['description']) : ''; ?></textarea>
+            <textarea name="description"><?php echo $categoryData ? htmlspecialchars($categoryData["description"]) : ""; ?></textarea>
 
-            <!-- Mengubah name="item_id" menjadi name="id" untuk konsistensi query UPDATE -->
-            <input type="hidden" name="id" value="<?php echo $categoryData ? $categoryData['id'] : ''; ?>">
+            <input type="hidden" name="item_id" value="<?php echo $categoryData ? $categoryData["id"] : ""; ?>">
             <input type="hidden" name="type" value="edit">
 
             <div class="horizontal-buttons">

@@ -2,14 +2,17 @@
 
 class BudgetCategoryModel {
     private $db;
+    private $textHelper;
 
     public function __construct() {
         $this->db = Database::getInstance();
+        $this->textHelper = new TextHelper();
     }
 
     public function create(array $data): array {
-        $name = sanitize_text_input(format_text_title($data["name"]));
-        $description = sanitize_text_input(format_text_sentence($data["description"]));
+        $name = $this->textHelper->sanitizeTextInput($this->textHelper->formatTextTitle($data["name"]));
+        $description = $this->textHelper->sanitizeTextInput($this->textHelper->formatTextSentence($data["description"]));
+
         $this->db->query(
             "INSERT INTO budget_category (user_id, name, description) VALUES (?, ?, ?)",
             [
@@ -41,9 +44,15 @@ class BudgetCategoryModel {
         return $statement->fetchAll() ?: [];
     }
 
+    public function getById(int $id): array {
+        $statement = $this->db->query("SELECT * FROM budget_category WHERE id = ?", [$id]);
+        return $statement->fetch() ?: [];
+    }
+
     public function update(array $data): array {
-        $name = sanitize_text_input(format_text_title($data["name"]));
-        $description = sanitize_text_input(format_text_sentence($data["description"]));
+        $name = $this->textHelper->sanitizeTextInput($this->textHelper->formatTextTitle($data["name"]));
+        $description = $this->textHelper->sanitizeTextInput($this->textHelper->formatTextSentence($data["description"]));
+
         $this->db->query(
             "UPDATE budget_category SET name = ?, description = ? WHERE user_id = ? AND id = ?",
             [

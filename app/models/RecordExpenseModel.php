@@ -2,18 +2,20 @@
 
 class RecordExpenseModel {
     private $db;
+    private $textHelper;
 
     public function __construct() {
         $this->db = Database::getInstance();
+        $this->textHelper = new TextHelper();
     }
 
     public function create(array $data): array {
-        $description = sanitize_text_input(format_text_sentence($data["description"]));
+        $description = $this->textHelper->sanitizeTextInput($this->textHelper->formatTextSentence($data["description"]));
         $this->db->query(
             "INSERT INTO budget_expenses (user_id, datetime, budget_account_id, volume, unit_price, description, proof) VALUES (?, ?, ?, ?, ?, ?, ?)",
             [
                 $data["user_id"],
-                $data["datetime"], // Diambil dari input type="date" (YYYY-MM-DD)
+                $data["datetime"], // YYYY-MM-DD
                 $data["budget_account_id"],
                 $data["volume"],
                 $data["unit_price"], // Satuan (Rp) dari input Belanja
@@ -44,8 +46,13 @@ class RecordExpenseModel {
         return $statement->fetchAll() ?: [];
     }
 
+    public function getById(int $id): array {
+        $statement = $this->db->query("SELECT * FROM budget_expenses WHERE id = ?", [$id]);
+        return $statement->fetch() ?: [];
+    }
+
     public function update(array $data): array {
-        $description = sanitize_text_input(format_text_title($data["description"]));
+        $description = $this->textHelper->sanitizeTextInput($this->textHelper->formatTextSentence($data["description"]));
         $this->db->query(
             "UPDATE budget_expenses SET datetime = ?, budget_account_id = ?, volume = ?, unit_price = ?, description = ?, proof = ? WHERE user_id = ? AND id = ?",
             [
