@@ -1,3 +1,13 @@
+body {
+    height: revert;
+    overflow: scroll;
+}
+
+.container {
+    height: revert;
+    overflow: scroll;
+}
+
 .subcontainer {
     padding-top: 1.5rem;
 }

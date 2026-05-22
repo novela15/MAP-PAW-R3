@@ -37,4 +37,29 @@ class BudgetBookModel {
         $statement = $this->db->query($query, [$id]);
         return $statement->fetchAll() ?: [];
     }
+
+    public function getMonthlySpending(int $id): array {
+        $query = "
+            SELECT 
+                DATE_FORMAT(e.datetime, '%Y-%m') AS expense_month,
+                c.name AS category_name,
+                SUM(e.volume * e.unit_price) AS total_expense
+            FROM 
+                budget_expenses e
+            JOIN 
+                budget_accounts a ON e.budget_account_id = a.id
+            JOIN 
+                budget_category c ON a.category_id = c.id
+            WHERE e.user_id = ?
+            GROUP BY 
+                DATE_FORMAT(e.datetime, '%Y-%m'), 
+                c.name
+            ORDER BY 
+                expense_month ASC, 
+                total_expense DESC;
+        ";
+
+        $statement = $this->db->query($query, [$id]);
+        return $statement->fetchAll() ?: [];
+    }
 }

@@ -1,6 +1,36 @@
 <link rel="stylesheet" href="frontend/budget-book/budget-book.css?v=<?php echo time(); ?>">
 <link rel="stylesheet" href="frontend/skeleton/generic.css?v=<?php echo time(); ?>">
 
+<!-- Google Charts script must be on top apparently -->
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+    window.budgetData = [
+        <?php
+        if (!empty($budgetBookModel)) {
+            foreach ($budgetBookModel as $row) {
+                $remaining = $row["budget"] - $row["total_expenses"];
+                echo "['" . addslashes(htmlspecialchars($row["name"])) . "', " 
+                     . (float)$row["budget"] . ", " 
+                     . (float)$row["total_expenses"] . ", " 
+                     . (float)$remaining . "],";
+            }
+        }
+        ?>
+    ];
+    window.monthlySpendingData = [
+        <?php
+        if (!empty($history)) {
+            foreach ($history as $row) {
+                echo "['" . addslashes(htmlspecialchars(date("Y m", strtotime($row["expense_month"])))) . "', '" 
+                     . addslashes(htmlspecialchars($row["category_name"])) . "', " 
+                     . (float)$row["total_expense"] . "],";
+            }
+        }
+        ?>
+    ];
+</script>
+<script src="frontend/budget-book/budget-book.js?v=<?php echo time(); ?>"></script>
+
 <p class="container-header">Buku Anggaran</p>
 
 <div class="horizontal-flex">
@@ -20,6 +50,15 @@
         <?php endif; ?>
             Rp<?php echo number_format(($total_budget ?? 0) - ($total_expenses ?? 0), 2, ',', '.'); ?>
         </div>
+    </div>
+</div>
+
+<div class="horizontal-flex">
+    <div class="card">
+        <div class="chart categories-chart"></div>
+    </div>
+    <div class="card">
+        <div class="chart monthly-spending-chart"></div>
     </div>
 </div>
 
