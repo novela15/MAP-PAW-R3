@@ -30,3 +30,5 @@
         <?php endif; ?>
     </div>
 </div>
+
+<script defer src="frontend/general-ledger/general-ledger.js?v=<?php echo time(); ?>"></script>

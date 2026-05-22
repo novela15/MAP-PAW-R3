@@ -1,31 +1,26 @@
 /* Styling Header Laporan persis seperti Buku Besar */
 .container-header {
-    font-size: 30px;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: bold;
     color: #1a1a1a;
-    margin-bottom: 16px;
-    letter-spacing: -0.5px;
 }
 
 /* Card pembungkus utama */
 .card {
     background-color: #eaf3f0; /* Hijau muda pucat khas desainmu */
-    border-radius: 12px;
-    padding: 24px 28px;
-    min-height: calc(100vh - 120px);
+    border-radius: 16px;
+    padding: 1.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .card-header {
-    margin-bottom: 24px;
+    margin-bottom: 1rem;
 }
 
 .card-title {
-    font-size: 25px;
-    font-weight: 600;
+    font-size: 1.25rem;
+    font-weight: bold;
     color: #1a1a1a;
-    letter-spacing: -0.3px;
-    margin: 0;
 }
 
 /* Styling Tabel Kustom */

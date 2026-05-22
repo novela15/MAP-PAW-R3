@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="frontend/budget-realization/budget-realization.css?v=<?php echo time();?>">
+<link rel="stylesheet" href="frontend/budget-realization/budget-realization.css?v=<?php echo time(); ?>">
 
 <p class="container-header">Laporan</p>
 

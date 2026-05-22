@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="frontend/bukubesar-tabel-in/bukubesar-tabel.css?v=<?php echo time(); ?>">
+<link rel="stylesheet" href="frontend/general-ledger/bukubesar-tabel.css?v=<?php echo time(); ?>">
 
 <p class="container-header">Laporan</p>
 
