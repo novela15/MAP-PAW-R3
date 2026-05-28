@@ -5,11 +5,26 @@ class GeneralLedgerController extends FeaturePageController {
         $generalLedgerModel = new GeneralLedgerModel();
         $name = $_GET["account"] ?? "[ Unknown ]";
 
-        if (isset($_GET["account"])) {
+        $userId = $_SESSION["user_id"] ?? null;
+        if ($userId === null) {
+            // fallback: tidak ada session user, render halaman kosong
+            $this->renderView(
+                "general-ledger/general-ledger",
+                "General Ledger",
+                ["generalLedgerModel" => [], "index" => 0]
+            );
+            return;
+        }
+
+        $account = $_GET["account"] ?? null;
+        if ($account !== null && $account !== "") {
             $this->renderView(
                 "general-ledger/general-ledger-table",
                 "General Ledger",
-                ["generalLedgerModel" => $generalLedgerModel->getTableContentsByUserId($_SESSION["user_id"]), "name" => $name]
+                [
+                    "generalLedgerModel" => $generalLedgerModel->getTableContentsByUserId((int)$userId, (string)$account),
+                    "name" => $name
+                ]
             );
         } else {
             $index = 0;
@@ -17,7 +32,7 @@ class GeneralLedgerController extends FeaturePageController {
             $this->renderView(
                 "general-ledger/general-ledger",
                 "General Ledger",
-                ["generalLedgerModel" => $generalLedgerModel->getAllByUserId($_SESSION["user_id"]), "index" => $index]
+                ["generalLedgerModel" => $generalLedgerModel->getAllByUserId((int)$userId), "index" => $index]
             );
         }
     }

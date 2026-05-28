@@ -8,26 +8,28 @@ class GeneralLedgerModel {
     }
 
     public function getAllByUserId(int $id): array {
-        $query = "SELECT * FROM budget_category WHERE user_id = ?";
+        $query = "SELECT * FROM budget_accounts WHERE user_id = ?";
 
         $statement = $this->db->query($query, [$id]);
         return $statement->fetchAll() ?: [];
     }
 
-    public function getTableContentsByUserId(int $id): array {
+    public function getTableContentsByUserId(int $id, string $account): array {
         $statement = $this->db->query("
             SELECT
-                be.*,
-                ba.name AS name,
-                be.unit_price AS unit_price,
-                (be.volume * be.unit_price) AS total_price,
-                0 AS debit,
+                be.datetime,
+                be.description,
+                ba.name,
+                (be.volume * be.unit_price) AS debit,
                 0 AS credit
             FROM budget_expenses be
-            INNER JOIN budget_accounts ba ON be.budget_account_id = ba.id
+            INNER JOIN budget_accounts ba 
+                ON be.budget_account_id = ba.id
             WHERE be.user_id = ?
-            ORDER BY be.id DESC, be.datetime DESC", [$id]
-        );
+            AND ba.name = ?
+            ORDER BY be.datetime DESC
+        ", [$id, $account]);
+
         return $statement->fetchAll() ?: [];
     }
 

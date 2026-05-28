@@ -21,24 +21,46 @@
                                 <th>Kredit</th>
                             </tr>
                         </thead>
-                        <?php if (!empty($generalLedgerModel)): ?>
-                            <?php foreach ($generalLedgerModel as $row): ?>
-                                <tr>
-                                    <td><?php echo $row["datetime"]; ?></td>
-                                    <td><?php echo $row["description"]; ?></td>
-                                    <td><?php echo $row["debit"]; ?></td>
-                                    <td><?php echo $row["credit"]; ?></td>
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                            <div class="empty-placeholder">Tidak ada data.</div>
-                        <?php endif; ?>
+
                         <tbody>
+                            <?php if (!empty($generalLedgerModel)): ?>
+
+                                <?php 
+                                    $totalDebit = 0;
+                                    $totalCredit = 0;
+                                ?>
+
+                                <?php foreach ($generalLedgerModel as $row): ?>
+
+                                    <?php 
+                                        $totalDebit += $row["debit"];
+                                        $totalCredit += $row["credit"];
+                                    ?>
+
+                                    <tr>
+                                        <td><?php echo $row["datetime"]; ?></td>
+                                        <td><?php echo htmlspecialchars($row["description"]); ?></td>
+                                        <td>Rp <?php echo number_format($row["debit"], 0, ',', '.'); ?></td>
+                                        <td>Rp <?php echo number_format($row["credit"], 0, ',', '.'); ?></td>
+                                    </tr>
+
+                                <?php endforeach; ?>
+
+                            <?php else: ?>
+
+                                <tr>
+                                    <td colspan="4" class="empty-placeholder">
+                                        Tidak ada data.
+                                    </td>
+                                </tr>
+
+                            <?php endif; ?>
+
                             <tr class="total-row">
                                 <td>Total</td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>Rp <?php echo number_format($totalDebit ?? 0, 0, ',', '.'); ?></td>
+                                <td>Rp <?php echo number_format($totalCredit ?? 0, 0, ',', '.'); ?></td>
                             </tr>
                         </tbody>
                     </table>
