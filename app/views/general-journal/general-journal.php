@@ -19,21 +19,27 @@
                 </tr>
             </thead>
             <tbody>
-                <?php for($i = 1; $i <= 5; $i++): ?>
+                <?php if (!empty($journalData)): ?>
+                    <?php foreach ($journalData as $row): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($row["datetime"] ?? ""); ?></td>
+                            <td><?php echo htmlspecialchars($row["account_name"] ?? ""); ?></td>
+                            <td><?php echo htmlspecialchars($row["volume"] ?? ""); ?></td>
+                            <td><?php echo htmlspecialchars($row["unit_price"] ?? ""); ?></td>
+                            <td><?php echo htmlspecialchars($row["total_price"] ?? ""); ?></td>
+                            <td class="action-cell">
+                                <button class="btn-invoice" data-proof="<?php echo htmlspecialchars((string)($row["proof"] ?? "")); ?>">
+                                    <i class="fa-solid fa-file-invoice"></i>
+                                    <i class="fa-solid fa-magnifying-glass sub-icon"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="action-cell">
-                            <button class="btn-invoice">
-                                <i class="fa-solid fa-file-invoice"></i>
-                                <i class="fa-solid fa-magnifying-glass sub-icon"></i>
-                            </button>
-                        </td>
+                        <td colspan="6" class="text-center" style="padding: 30px;">Belum ada data.</td>
                     </tr>
-                <?php endfor; ?>
+                <?php endif; ?>
             </tbody>
         </table>
     </div>
