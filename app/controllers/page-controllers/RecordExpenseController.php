@@ -31,7 +31,7 @@ class RecordExpenseController extends FeaturePageController {
             "Record Expense",
             ["recordExpenseModel" => $recordExpenseModel->getAllByUserId($_SESSION["user_id"])]
         );
-        }
+    }
 
     public function post() {
         if (!isset($_POST) || !isset($_POST["type"])) { return; }

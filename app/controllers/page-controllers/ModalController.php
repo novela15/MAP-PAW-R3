@@ -2,6 +2,11 @@
 
 class ModalController extends FeaturePageController {
     public function index() {
+        if (!isset($_GET["type"]) || empty($_GET["type"])) {
+            header("Location: error");
+            exit();
+        }
+
         switch ($_GET["type"]) {
             case "modal-account-add":
                 $budgetCategoryModel = new BudgetCategoryModel();
