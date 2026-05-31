@@ -1,3 +1,6 @@
+-- WARNING: Set up the database first!
+-- Open phpMyAdmin, go to the SQL tab, copy everything in this file, and run it.
+
 -- =========================================
 -- USERS
 -- =========================================
