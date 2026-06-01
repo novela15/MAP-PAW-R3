@@ -8,7 +8,7 @@
         <title>MAP - Sign Up</title>
 
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-        <link rel="stylesheet" href="frontend/auth/auth.css?v=<?php echo time();?>">
+        <link rel="stylesheet" href="frontend/auth/auth.css?v=<?php echo time(); ?>">
     </head>
 
     <body>

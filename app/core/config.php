@@ -39,3 +39,6 @@ define("ENVIRONMENT", "dev");
 // Google OAuth Config //
 define("GOOGLE_OAUTH_CLIENT_VERSION", "v3");
 define("IS_GOOGLE_AUTH_ENABLED", true);
+
+// Password Reset Config //
+define("IS_PASSWORD_RESET_ENABLED", false);

@@ -8,7 +8,7 @@
         <title>MAP - Login</title>
 
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-        <link rel="stylesheet" href="frontend/auth/auth.css?v=<?php echo time();?>">
+        <link rel="stylesheet" href="frontend/auth/auth.css?v=<?php echo time(); ?>">
     </head>
 
     <body>
@@ -38,7 +38,10 @@
                     <?php if(isset($_SESSION["messages"]) && isset($_SESSION["messages"]["password_error"])): ?>
                         <?php echo '<div class="error-message">' . $_SESSION["messages"]["password_error"] . '</div>'; ?>
                     <?php endif; ?>
-		            <a href="request-password-reset" class="forgot-password">Lupa password?</a>
+
+                    <?php if(IS_PASSWORD_RESET_ENABLED): ?>
+    		            <a href="request-password-reset" class="forgot-password">Lupa password?</a>
+                    <?php endif; ?>
 		        </div>
 
 		        <div class="input-container button-container">
