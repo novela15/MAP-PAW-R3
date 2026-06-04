@@ -49,4 +49,38 @@
     </div>
 </div>
 
+<table id="table-excel-jurnal" style="display:none;">
+    <thead>
+        <tr>
+            <th>Tanggal</th>
+            <th>Nama Akun</th>
+            <th>Volume</th>
+            <th>Harga Satuan</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    <?php if (!empty($journalData)): ?>
+
+        <?php foreach ($journalData as $row): ?>
+
+            <tr>
+                <td><?= htmlspecialchars($row["datetime"] ?? "") ?></td>
+                <td><?= htmlspecialchars($row["account_name"] ?? "") ?></td>
+                <td><?= htmlspecialchars($row["volume"] ?? "") ?></td>
+                <td><?= htmlspecialchars($row["unit_price"] ?? "") ?></td>
+                <td><?= htmlspecialchars($row["total_price"] ?? "") ?></td>
+            </tr>
+
+        <?php endforeach; ?>
+
+    <?php endif; ?>
+
+    </tbody>
+</table>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<script src="frontend/shared/export-excel.js?v=<?php echo time(); ?>"></script>
 <script src="frontend/jurnal-umum/jurnal-umum.js?v=<?php echo time(); ?>"></script>

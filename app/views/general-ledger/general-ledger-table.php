@@ -67,11 +67,59 @@
                 </div>
 
                 <div class="card-footer">
-                    <button class="btn-unduh" id="btnUnduhBukuBesar">Unduh</button>
+                    <button class="btn-unduh" id= "btnUnduhBukuBesar">Unduh</button>
                 </div>
             </div>
         </div>
     </main>
 </div>
 
+<table id="table-excel-buku-besar" style="display:none;">
+    <thead>
+        <tr>
+            <th>Tanggal</th>
+            <th>Keterangan</th>
+            <th>Debit</th>
+            <th>Kredit</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    <?php if (!empty($generalLedgerModel)): ?>
+
+        <?php
+        $totalDebit = 0;
+        $totalCredit = 0;
+        ?>
+
+        <?php foreach ($generalLedgerModel as $row): ?>
+
+            <?php
+            $totalDebit += $row["debit"];
+            $totalCredit += $row["credit"];
+            ?>
+
+            <tr>
+                <td><?= htmlspecialchars($row["datetime"]) ?></td>
+                <td><?= htmlspecialchars($row["description"]) ?></td>
+                <td><?= $row["debit"] ?></td>
+                <td><?= $row["credit"] ?></td>
+            </tr>
+
+        <?php endforeach; ?>
+
+        <tr>
+            <td colspan="2"><strong>Total</strong></td>
+            <td><?= $totalDebit ?></td>
+            <td><?= $totalCredit ?></td>
+        </tr>
+
+    <?php endif; ?>
+
+    </tbody>
+</table>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<script src="frontend/shared/export-excel.js?v=<?php echo time(); ?>"></script>
 <script src="frontend/general-ledger/bukubesar-tabel.js?v=<?php echo time(); ?>"></script>

@@ -92,12 +92,12 @@
         </div>
 
         <div class="btn-container">
-            <button class="btn-unduh">Unduh</button>
+            <button class="btn-unduh" id="btnUnduhRealisasi">Unduh</button>
         </div>
     </div>
 </div>
 
-<table id="table-excel" style="display: none;">
+<table id="table-excel-realization" style="display:none;">
     <thead>
         <tr>
             <th style="background-color: #4b7a76; color: #ffffff;">Kategori</th>
@@ -170,40 +170,6 @@
     </tbody>
 </table>
 
-<script>
-document.querySelector('.btn-unduh').addEventListener('click', function() {
-    // 1. Ambil tabel khusus Excel yang tersembunyi
-    const table = document.getElementById('table-excel');
-    if (!table) return;
-
-    const today = new Date().toISOString().slice(0, 10);
-    const filename = 'Laporan_Realisasi_Anggaran_' + today + '.xls';
-
-    // 2. Susun format HTML dengan style khusus
-    const styleExcel = `
-        <style>
-            table { border-collapse: collapse; font-family: Arial, sans-serif; }
-            th, td { border: 1px solid #d4dfdb; padding: 5px; font-size: 11pt; }
-            th { text-align: center; font-weight: bold; }
-        </style>
-    `;
-
-    const finalHtml = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">' +
-                      '<head><meta charset="UTF-8">' + styleExcel + '</head>' +
-                      '<body>' + table.outerHTML + '</body></html>';
-
-    // 3. Download
-    const blob = new Blob(['\ufeff' + finalHtml], { type: 'application/vnd.ms-excel' });
-
-    if (navigator.msSaveOrOpenBlob) {
-        navigator.msSaveOrOpenBlob(blob, filename);
-    } else {
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = filename;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
-});
-</script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<script src="frontend/shared/export-excel.js?v=<?php echo time(); ?>"></script>
+<script src="frontend/budget-realization/budget-realization.js?v=<?php echo time(); ?>"></script>
