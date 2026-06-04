@@ -97,7 +97,7 @@
     </div>
 </div>
 
-<table id="table-excel-realization" style="display:none;">
+<table id="table-excel" style="display:none;">
     <thead>
         <tr>
             <th style="background-color: #4b7a76; color: #ffffff;">Kategori</th>
