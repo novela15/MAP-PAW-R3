@@ -17,14 +17,14 @@
     </div>
 
     <div class="category-grid" id="categoryGrid">
-        <?php $index = 0; ?>
+        <?php $index = 1; ?>
         <?php if (!empty($generalLedgerModel)): ?>
             <?php foreach ($generalLedgerModel as $row): ?>
-                <?php $index = $index + 1; ?>
-                <?php if ($index >= 3): ?>
-                    <?php $index = 0; ?>
+                <?php if ($index > 3): ?>
+                    <?php $index = 1; ?>
                 <?php endif; ?>
                 <a class="box-url" href="general-ledger?account=<?php echo urlencode($row['name']); ?>"><div class="category-box <?php echo 'color-' . $index; ?>"><i><?php echo htmlspecialchars($row["name"]); ?></i></div></a>
+                <?php $index = $index + 1; ?>
             <?php endforeach; ?>
         <?php else: ?>
             <div class="empty-placeholder">Tidak ada kategori anggaran yang ditemukan.</div>

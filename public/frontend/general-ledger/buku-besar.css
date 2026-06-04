@@ -91,8 +91,8 @@
     text-decoration: none;
 }
 .color-1 { background-color: #A8C8C7; }
-.color-2 { background-color: #C8E2DF; }
-.color-3 { background-color: #E7F6F3; }
+.color-2 { background-color: #B4D4CD; }
+.color-3 { background-color: #C8E2DF; }
 
 .category-box:hover {
     transform: translateY(-4px) scale(1.02);
