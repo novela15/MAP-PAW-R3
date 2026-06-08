@@ -102,6 +102,17 @@ class UserModel {
                          <p>Jika anda tidak merasa ingin melakukan ini, anda bisa mengabaikan email ini.</p>"
         ];
 
-        // TODO: Find a suitable SMTP
+        $ch = curl_init("https://api.mailjet.com/v3.1/send");
+
+        curl_setopt_array($ch, [
+            CURLOPT_HTTPHEADER     => ["Content-Type: application/json"],
+            CURLOPT_POST           => true,
+            CURLOPT_POSTFIELDS     => json_encode($data),
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_USERPWD        => MAILJET_PUBLIC_KEY . ":" . MAILJET_PRIVATE_KEY,
+        ]);
+
+        $response = curl_exec($ch);
+        curl_close($ch);
     }
 }
