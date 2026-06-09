@@ -277,7 +277,15 @@ class AuthController {
         }
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $this->userModel->sendPasswordResetEmail($_POST["email_input"]);
+            $isSuccess = $this->userModel->sendPasswordResetEmail($_POST["email_input"]);
+
+            if ($isSuccess) {
+                $this->authHelper->setMessage("request_password_reset", "Email berhasil dikirim.");
+            } else {
+                $this->authHelper->setMessage("request_password_reset", "Gagal mengirim email.");
+            }
+
+            include_once VIEWS_PATH . "auth/request-password-reset.php";
         }
     }
 }

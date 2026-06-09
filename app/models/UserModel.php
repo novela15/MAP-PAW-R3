@@ -80,11 +80,11 @@ class UserModel {
         return $statement->rowCount() > 0;
     }
 
-    public function sendPasswordResetEmail(string $email) {
-        if (!$this->generatePasswordResetToken($email)) { return; }
+    public function sendPasswordResetEmail(string $email): bool {
+        if (!$this->generatePasswordResetToken($email)) { return false; }
 
         $user = $this->getUserByEmail($email);
-        if (empty($user)) { return; }
+        if (empty($user)) { return false; }
 
         $resetUrl = PASSWORD_RESET_URI . "?token=" . $user["reset_token"] . "&email=" . $user["email"];
         $data = [
@@ -114,5 +114,11 @@ class UserModel {
 
         $response = curl_exec($ch);
         curl_close($ch);
+
+        if ($response !== false && curl_getinfo($ch, CURLINFO_HTTP_CODE) === 200) {
+            return true;
+        }
+
+        return false;
     }
 }

@@ -23,7 +23,7 @@
                         class="input email-input"
                         name="email_input"
                         type="email"
-                        placeholder="Email"
+                        placeholder="<?php echo (isset($_SESSION['messages']) && isset($_SESSION['messages']['request_password_reset'])) ? $_SESSION['messages']['request_password_reset'] : 'Email'; ?>"
                     >
 		        </div>
 
