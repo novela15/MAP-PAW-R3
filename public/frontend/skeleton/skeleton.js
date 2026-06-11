@@ -1,21 +1,22 @@
 // Runtime variables
-let is_sidebar_collapsed = false;
+let isSidebarCollapsed = false;
 let pathname = window.location.pathname;
 
 // Single elements
-let container = document.querySelector(".container");
-let current_page_anchor = document.querySelector('a.sidebar-button[href="' + pathname.substring(pathname.lastIndexOf("/") + 1) + '"]');
 const CLOSE_BOOK_BUTTON = document.querySelector(".close-book-button");
 const LOGOUT_BUTTON = document.querySelector(".sidebar-logout-button");
+let container = document.querySelector(".container");
+let currentPageAnchor = document.querySelector('a.sidebar-button[href="' + pathname.substring(pathname.lastIndexOf("/") + 1) + '"]');
 let sidebar = document.querySelector(".sidebar");
-let sidebar_toggle_button = document.querySelector(".sidebar-toggle-button");
+let sidebarToggleButton = document.querySelector(".sidebar-toggle-button");
 
 // Elements list
-let sidebar_anchors = document.querySelectorAll("a.sidebar-button");
-let sidebar_buttons = document.querySelectorAll("button.sidebar-button");
+let sidebarAnchors = document.querySelectorAll("a.sidebar-button");
+let sidebarButtons = document.querySelectorAll("button.sidebar-button");
+let searchBars = document.querySelectorAll(".container .search-bar");
 
 
-function replace_chevron(button, chevron) {
+function replaceChevron(button, chevron) {
     const old_icon = button.querySelector(".submenu-icon");
     const new_icon = document.createElement("i");
     new_icon.className = `fas ${chevron} submenu-icon`;
@@ -23,8 +24,8 @@ function replace_chevron(button, chevron) {
 }
 
 
-function set_tooltips(current_state) {
-    for (const array of [sidebar_anchors, sidebar_buttons]) {
+function setTooltips(current_state) {
+    for (const array of [sidebarAnchors, sidebarButtons]) {
         for (const button of array) {
             if (current_state === "true") {
                 button.title = button.querySelector(".text").textContent;
@@ -36,7 +37,7 @@ function set_tooltips(current_state) {
 }
 
 
-for (const button of sidebar_buttons) {
+for (const button of sidebarButtons) {
     if (!button.classList.contains("has-submenu")) { continue; }
 
     button.addEventListener("click", function() {
@@ -45,9 +46,9 @@ for (const button of sidebar_buttons) {
         submenu.classList.toggle("hidden");
 
         if (submenu.classList.contains("hidden")) {
-            replace_chevron(button, "fa-chevron-right");
+            replaceChevron(button, "fa-chevron-right");
         } else {
-            replace_chevron(button, "fa-chevron-down");
+            replaceChevron(button, "fa-chevron-down");
         }
     });
 }
@@ -63,14 +64,36 @@ LOGOUT_BUTTON.addEventListener("click", function() {
 });
 
 
-sidebar_toggle_button.addEventListener("click", function() {
+sidebarToggleButton.addEventListener("click", function() {
     document.documentElement.classList.toggle("sidebar-collapsed");
 
     const current_state = document.documentElement.classList.contains("sidebar-collapsed").toString();
 
     localStorage.setItem("is_sidebar_collapsed", current_state);
-    set_tooltips(current_state);
+    setTooltips(current_state);
 });
+
+
+for (let i = 0; i < searchBars.length; i++) {
+  let searchBar = searchBars[i];
+  
+  searchBar.addEventListener("input", function (e) {
+    let cards = document.querySelectorAll("." + searchBar.getAttribute("search-class"));
+    
+    for (let j = 0; j < cards.length; j++) {
+      let card = cards[j];
+      let nameElement = card.querySelector("." + searchBar.getAttribute("search-class-filter"));
+      
+      if (nameElement) {
+        if (nameElement.textContent.toLowerCase().includes(e.target.value.toLowerCase())) {
+          card.classList.remove("hidden");
+        } else {
+          card.classList.add("hidden");
+        }
+      }
+    }
+  });
+}
 
 
 // Initializer
@@ -79,10 +102,10 @@ requestAnimationFrame(() => {
     sidebar.classList.remove("no-transition");
 });
 
-current_page_anchor.classList.add("selected-sidebar-button");
+currentPageAnchor.classList.add("selected-sidebar-button");
 
-if (current_page_anchor.parentElement.classList.contains("submenu")) {
-    current_page_anchor.parentElement.previousElementSibling.click();
+if (currentPageAnchor.parentElement.classList.contains("submenu")) {
+    currentPageAnchor.parentElement.previousElementSibling.click();
 }
 
-set_tooltips(document.documentElement.classList.contains("sidebar-collapsed").toString());
+setTooltips(document.documentElement.classList.contains("sidebar-collapsed").toString());

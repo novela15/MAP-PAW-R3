@@ -6,6 +6,8 @@
 
 <div class="subcontainer">
     <div class="horizontal-flex">
+        <input type="text" placeholder="Cari" class="search-bar" search-class="card" search-class-filter="name">
+        <div class="filler"></div>
         <div class="add-container horizontal-flex">
             <button class="add-button">+</button>
             <div>Buat</div>
