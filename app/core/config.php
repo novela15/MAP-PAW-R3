@@ -42,4 +42,4 @@ define("GOOGLE_OAUTH_CLIENT_VERSION", "v3");
 define("IS_GOOGLE_AUTH_ENABLED", false);
 
 // Password Reset Config //
-define("IS_PASSWORD_RESET_ENABLED", true);
+define("IS_PASSWORD_RESET_ENABLED", false);
