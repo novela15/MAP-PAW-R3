@@ -19,7 +19,7 @@
                 <?php echo '<div class="header error-message">' . $_SESSION["messages"]["password_reset_error"] . '</div>'; ?>
             <?php endif; ?>
 
-            <form action="reset-password" method="POST">
+            <form action="reset-password?token=<?php echo $_GET["token"] . '&email=' . $_GET["email"]; ?>" method="POST">
 		        <div class="input-container">
 		            <p class="input-label">Password</p>
 		            <input

@@ -4,6 +4,7 @@
 define("SERVER_ROOT_PATH", dirname(__FILE__, 3) . DIRECTORY_SEPARATOR);
 define("APP_PATH", dirname(__FILE__, 2) . DIRECTORY_SEPARATOR);
 define("PUBLIC_PATH", SERVER_ROOT_PATH . "public" . DIRECTORY_SEPARATOR);
+define("VENDOR_PATH", SERVER_ROOT_PATH . "vendor" . DIRECTORY_SEPARATOR);
 
 define("ASSETS_PATH", PUBLIC_PATH . "assets" . DIRECTORY_SEPARATOR);
 define("FRONTEND_PATH", PUBLIC_PATH . "frontend" . DIRECTORY_SEPARATOR);
@@ -41,4 +42,4 @@ define("GOOGLE_OAUTH_CLIENT_VERSION", "v3");
 define("IS_GOOGLE_AUTH_ENABLED", false);
 
 // Password Reset Config //
-define("IS_PASSWORD_RESET_ENABLED", false);
+define("IS_PASSWORD_RESET_ENABLED", true);

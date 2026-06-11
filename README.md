@@ -4,6 +4,8 @@
 
 ## Attention to Group Members
 
+Run `git submodule update --init --recursive` after cloning the repository.
+
 This web app uses the MVC architecture pattern. The files are separated into `/app` which is used to contain **backend-only** files that are inaccessible to users and `/public` which is used to contain user accessible (frontend) files.
 
 **Please** put CSS and JS files that are used as the frontend in a clearly named directory that is a **direct child** of `MAP-PAW-R3/public/frontend`. Below is an example for the `budget-account` page:

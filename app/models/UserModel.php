@@ -1,5 +1,12 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require VENDOR_PATH . "PHPMailer/src/Exception.php";
+require VENDOR_PATH . "PHPMailer/src/PHPMailer.php";
+require VENDOR_PATH . "PHPMailer/src/SMTP.php";
+
 class UserModel {
     private $db;
 
@@ -39,10 +46,19 @@ class UserModel {
     public function update(array $data): array {
         $this->db->query(
             "UPDATE users SET username = ?, email = ?, password_hash = ? WHERE id = ?",
-            [$data["username"], $data["email"], password_hash($data["password_hash"], PASSWORD_DEFAULT), $data["user_id"]]
+            [$data["username"], $data["email"], password_hash($data["password_hash"], PASSWORD_DEFAULT), $data["id"]]
         );
 
         return $this->getUserById($_SESSION["user_id"]);
+    }
+
+    public function resetPassword(array $data): array {
+        $statement = $this->db->query(
+            "UPDATE users SET password_hash = ? WHERE id = ?",
+            [password_hash($data["password"], PASSWORD_DEFAULT), $data["id"]]
+        );
+
+        return $statement->fetch() ?: [];
     }
 
     public function getUserByEmail(string $email): array {
@@ -87,38 +103,32 @@ class UserModel {
         if (empty($user)) { return false; }
 
         $resetUrl = PASSWORD_RESET_URI . "?token=" . $user["reset_token"] . "&email=" . $user["email"];
-        $data = [
-            "from" => [
-                "email" => "", 
-                "name"  => "MAP (Manajemen Anggaran Proyek)"
-            ],
-            "to" => [
-                ["email" => $user["email"]]
-            ],
-            "subject" => "Reset Password",
-            "html"    => "<p>Halo,</p>
-                         <p>Tampaknya anda melupakan password untuk MAP (Manajemen Anggaran Proyek). Jika ini benar, klik link di bawah untuk mereset password anda:</p>
-                         <p><a href='{$resetUrl}'>{$resetUrl}</a></p>
-                         <p>Jika anda tidak merasa ingin melakukan ini, anda bisa mengabaikan email ini.</p>"
-        ];
 
-        $ch = curl_init("https://api.mailjet.com/v3.1/send");
+        $mail = new PHPMailer(true);
 
-        curl_setopt_array($ch, [
-            CURLOPT_HTTPHEADER     => ["Content-Type: application/json"],
-            CURLOPT_POST           => true,
-            CURLOPT_POSTFIELDS     => json_encode($data),
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_USERPWD        => MAILJET_PUBLIC_KEY . ":" . MAILJET_PRIVATE_KEY,
-        ]);
+        try {
+            $mail->isSMTP();
+            $mail->Host = "smtp.gmail.com";
+            $mail->SMTPAuth = true;
+            $mail->Username = PASSWORD_RESET_EMAIL;
+            $mail->Password = GMAIL_APP_PASSWORD;
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            $mail->Port = 465;
 
-        $response = curl_exec($ch);
-        curl_close($ch);
+            $mail->isHTML(true);
+            $mail->Subject = "Reset Password";
+            $mail->Body = "<p>Halo,</p>
+                <p>Tampaknya anda melupakan password untuk MAP (Manajemen Anggaran Proyek). Jika ini benar, klik link di bawah untuk mereset password anda:</p>
+                <p><a href='{$resetUrl}'>{$resetUrl}</a></p>
+                <p>Jika anda tidak merasa ingin melakukan ini, anda bisa mengabaikan email ini.</p>";
 
-        if ($response !== false && curl_getinfo($ch, CURLINFO_HTTP_CODE) === 200) {
+            $mail->setFrom(PASSWORD_RESET_EMAIL, "MAP (Manajemen Anggaran Proyek)");
+            $mail->addAddress($user["email"], $user["username"]);
+            $mail->send();
+
             return true;
+        } catch (Exception $e) {
+            return false;
         }
-
-        return false;
     }
 }

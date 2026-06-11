@@ -4,9 +4,8 @@
 
 define("GOOGLE_OAUTH_CLIENT_ID", "");
 define("GOOGLE_OAUTH_CLIENT_SECRET", "");
-define("GOOGLE_OAUTH_REDIRECT_URI", "");
+define("GOOGLE_OAUTH_REDIRECT_URI", "http://localhost/MAP-PAW-R3/google-oauth");
 
-define("MAILJET_PRIVATE_KEY", "");
-define("MAILJET_PUBLIC_KEY", "");
-define("MAILJET_SENDER_ADDRESS", "");
-define("PASSWORD_RESET_URI", "");
+define("GMAIL_APP_PASSWORD", "");
+define("PASSWORD_RESET_EMAIL", "");
+define("PASSWORD_RESET_URI", "http://localhost/MAP-PAW-R3/reset-password");

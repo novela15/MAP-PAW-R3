@@ -221,8 +221,9 @@ class AuthController {
     }
 
     public function resetPassword() {
+        $this->authHelper->clearMessages();
+
         if (!isset($_GET["email"]) || !isset($_GET["token"])) {
-            $this->authHelper->clearMessages();
             $this->authHelper->setMessage("password_reset_error", "Link untuk mereset password tidak valid.");
             include_once VIEWS_PATH . "auth/reset-password.php";
             exit;
@@ -230,8 +231,8 @@ class AuthController {
 
         $user = $this->userModel->getUserByEmail($_GET["email"]);
         $isInvalid = empty($user["reset_token_expire_date"])
-            || strtotime($user["reset_token_expire_date"]) < time()
-            || !password_verify($_GET["token"], $user["reset_token"]);
+            || strtotime($user["reset_token_expire_date"] . " UTC") < time()
+            || $_GET["token"] !== $user["reset_token"];
 
         if ($isInvalid) {
             $this->authHelper->setMessage("password_reset_error", "Link untuk mereset password tidak valid.");
@@ -240,16 +241,13 @@ class AuthController {
         }
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $newUser = $this->userModel->update([
-                "user_id" => $user["user_id"],
-                "username" => $user["username"],
-                "email" => $user["email"],
-                "password_hash" => password_hash($_POST["password_input"], PASSWORD_DEFAULT),
+            $newUser = $this->userModel->resetPassword([
+                "id" => $user["id"],
+                "password" => $_POST["password_input"],
             ]);
 
-            $this->authHelper->updateSession($newUser["id"], $newUser["username"]);
             $this->authHelper->clearMessages();
-            header("Refresh: 0");
+            header("Location: login");
             exit;
         } else {
             include_once VIEWS_PATH . "auth/reset-password.php";
